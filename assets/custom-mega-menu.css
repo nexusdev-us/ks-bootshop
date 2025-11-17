@@ -1,69 +1,18 @@
 /*
-  Multi-Level Dropdown Menu Support
-  Essential Starr - Full Menu Navigation
+  Simple Multi-Level Dropdown Menu
 */
 
-/* Third-level dropdown positioning */
+/* Submenu positioning */
 .dropdown-submenu {
   position: relative;
 }
 
 .dropdown-submenu > .dropdown-menu {
   position: absolute;
-  top: 0 !important;
-  left: calc(100% - 1px) !important;
-  margin: 0 !important;
-  border-radius: 6px;
-  display: none !important;
-  visibility: hidden;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-}
-
-/* CSS HOVER - Show submenu when hovering parent item or submenu itself */
-.dropdown-submenu:hover > .dropdown-menu {
-  display: block !important;
-  visibility: visible !important;
-}
-
-/* Keep submenu visible when hovering over the submenu */
-.dropdown-submenu .dropdown-menu:hover {
-  display: block !important;
-  visibility: visible !important;
-}
-
-/* Ensure dropdown items have proper padding for hover */
-.dropdown-submenu > .dropdown-item {
-  padding-right: 2.5rem !important;
-  position: relative;
-}
-
-/* Larger hover area for better UX */
-.navbar .dropdown-item {
-  padding: 0.6rem 1.5rem;
-  line-height: 1.6;
-}
-
-/* Create hover connection between parent and submenu */
-.dropdown-submenu::before {
-  content: "";
-  position: absolute;
   top: 0;
-  right: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-}
-
-/* Smooth transitions for dropdowns */
-@media (min-width: 992px) {
-  .navbar .dropdown-menu {
-    transition: opacity 0.2s ease-in-out;
-    opacity: 0;
-  }
-
-  .navbar .dropdown-menu.show {
-    opacity: 1;
-  }
+  left: 100%;
+  margin-left: -1px;
+  display: none;
 }
 
 /* Dropdown submenu toggle arrow */

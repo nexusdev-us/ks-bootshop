@@ -2,35 +2,25 @@
   Add here your own custom css styles
 */
 
-/* Navigation dropdown hover behavior */
-.navbar .dropdown-toggle {
-  cursor: pointer;
-}
-
-/* Disable automatic CSS hover (handled by JavaScript) */
+/* Simple Navigation Hover - Desktop Only */
 @media (min-width: 992px) {
-  .navbar .dropdown-menu {
-    display: none;
+  /* Main dropdowns - show on hover */
+  .navbar .nav-item.dropdown:hover > .dropdown-menu {
+    display: block;
   }
 
-  .navbar .dropdown-menu.show {
-    display: block !important;
+  /* Submenus - show on hover */
+  .dropdown-submenu:hover > .dropdown-menu {
+    display: block;
   }
 }
 
-/* Fix dropdown menus appearing behind overlay */
+/* Fix dropdown z-index */
 .navbar .dropdown-menu {
-  z-index: 1050 !important;
+  z-index: 1050;
 }
 
-/* Ensure dropdown shows properly */
-.navbar .dropdown-menu.show {
-  display: block !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-}
-
-/* Disable the backdrop overlay when dropdowns are open */
+/* Disable backdrop overlay */
 body.navbar-dropdown-open #main::after,
 body.navbar-dropdown-open #footer-group::after {
   display: none !important;
