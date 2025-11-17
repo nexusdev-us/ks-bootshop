@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero_carousel": {
@@ -6,16 +15,16 @@
         "slide_1": {
           "type": "slide",
           "settings": {
-            "img_mobile": "shopify:\/\/shop_images\/pexels-elina-fairytale-3865680-scaled.jpg",
-            "img_desktop": "shopify:\/\/shop_images\/pexels-elina-fairytale-3865680-scaled.jpg",
+            "img_mobile": "shopify://shop_images/herobg.jpg",
+            "img_desktop": "shopify://shop_images/herobg.jpg",
             "overlay_color": "#000000",
             "overlay_opacity": 10,
             "overlay_blur": 0,
             "subtitle": "Essential Starr's Apothecary",
             "title": "Medicines of Light",
-            "description": "<p>Food for the skin, health for the body.<\/p>",
+            "description": "<p>Food for the skin, health for the body.</p>",
             "btn_primary_text": "Shop now!",
-            "btn_primary_url": "shopify:\/\/collections\/all",
+            "btn_primary_url": "shopify://collections/all",
             "btn_secondary_text": "",
             "btn_secondary_url": ""
           }
@@ -70,7 +79,7 @@
         "text_align": "text-center",
         "title": "Welcome to Essential Starr's Apothecary",
         "title_font_size": "h2",
-        "description": "<p>We specialize in selecting some of the World's Finest Ingredients from boutique distillers around the world. These specially handcrafted products are food for the skin and health for the body.<\/p><p>Today's topical products generally contain synthetics and phthalates that wreak havoc on our bodies and immune system. On the contrary, we can nurture and feed our system with carefully crafted pure ingredients, done in small batches and with love.<\/p><p>We invite you to shop our collections below to experience the Essential Starr difference for yourself!<\/p>",
+        "description": "<p>We specialize in selecting some of the World's Finest Ingredients from boutique distillers around the world. These specially handcrafted products are food for the skin and health for the body.</p><p>Today's topical products generally contain synthetics and phthalates that wreak havoc on our bodies and immune system. On the contrary, we can nurture and feed our system with carefully crafted pure ingredients, done in small batches and with love.</p><p>We invite you to shop our collections below to experience the Essential Starr difference for yourself!</p>",
         "description_font_size": "fs-md",
         "btn_primary_text": "",
         "btn_primary_url": "",
