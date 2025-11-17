@@ -37,58 +37,18 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     });
 
-    // Submenu handling - improved with shared timeout references
+    // Submenu handling - using CSS hover instead of complex JavaScript
+    // CSS will handle show/hide, JavaScript just ensures cleanup
     const submenuItems = document.querySelectorAll('.dropdown-submenu');
 
     submenuItems.forEach(function(item) {
       const submenu = item.querySelector('.dropdown-menu');
       if (!submenu) return;
 
-      // Create a shared timeout object for this item and its submenu
-      const timeouts = {
-        show: null,
-        hide: null
-      };
+      console.log('Submenu found for:', item.querySelector('.dropdown-item').textContent);
 
-      // Function to show submenu
-      function showSubmenu() {
-        clearTimeout(timeouts.hide);
-        clearTimeout(timeouts.show);
-        submenu.style.display = 'block';
-        submenu.style.visibility = 'visible';
-      }
-
-      // Function to hide submenu
-      function hideSubmenu() {
-        clearTimeout(timeouts.show);
-        clearTimeout(timeouts.hide);
-        timeouts.hide = setTimeout(function() {
-          submenu.style.display = 'none';
-          submenu.style.visibility = 'hidden';
-        }, 400); // 400ms delay before hiding
-      }
-
-      // Parent item hover - show immediately
-      item.addEventListener('mouseenter', function() {
-        showSubmenu();
-      });
-
-      // Parent item leave
-      item.addEventListener('mouseleave', function(e) {
-        // Only hide if not moving to the submenu
-        if (!submenu.contains(e.relatedTarget)) {
-          hideSubmenu();
-        }
-      });
-
-      // Submenu itself - keep it open when hovering
-      submenu.addEventListener('mouseenter', function() {
-        showSubmenu();
-      });
-
-      submenu.addEventListener('mouseleave', function() {
-        hideSubmenu();
-      });
+      // Just ensure submenus are properly set up
+      // CSS :hover will handle the display
     });
   }
 });
