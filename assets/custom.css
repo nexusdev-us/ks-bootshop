@@ -2,38 +2,6 @@
   Add here your own custom css styles
 */
 
-/* Simple Navigation Hover - Desktop Only */
-@media (min-width: 992px) {
-  /* Main dropdowns - show on hover */
-  .navbar .nav-item.dropdown:hover > .dropdown-menu {
-    display: block;
-  }
-
-  /* Submenus - show on hover */
-  .dropdown-submenu:hover > .dropdown-menu {
-    display: block;
-  }
-}
-
-/* Fix dropdown z-index */
-.navbar .dropdown-menu {
-  z-index: 1050;
-}
-
-/* Disable backdrop overlay */
-body.navbar-dropdown-open #main::after,
-body.navbar-dropdown-open #footer-group::after {
-  display: none !important;
-}
-
-/* Navbar sticky behavior */
-#navbar-wrapper.sticky-top {
-  position: sticky !important;
-  top: 0 !important;
-  z-index: 1020 !important;
-  background: var(--bs-body-bg);
-}
-
 /* Logo header scrolls away naturally (not sticky) */
 #logo-header {
   position: relative;

@@ -4,7 +4,9 @@
       "Bash(git config:*)",
       "Bash(cat:*)",
       "Bash(nul)",
-      "Bash(git submodule:*)"
+      "Bash(git submodule:*)",
+      "Bash(theme deploy)",
+      "Bash(shopify theme push:*)"
     ],
     "deny": [],
     "ask": []
