@@ -1,0 +1,102 @@
+/*
+  Custom Product Card Styles - Essential Starr
+*/
+
+/* Round product cards with no borders */
+.product-card {
+  border: none !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+.product-card .product-card-img-wrapper img {
+  border-radius: 15px !important;
+  border: none !important;
+  overflow: hidden;
+}
+
+.product-card .card-body {
+  padding: 1rem 0.5rem;
+}
+
+/* Round images in product cards */
+.product-card img.img-thumbnail,
+.product-card .img-thumbnail {
+  border: none !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border-radius: 15px !important;
+}
+
+/* Stylish Add to Cart button */
+.product-card .btn-primary,
+.product-card .btn-add-to-cart,
+.product-block-atc-button .btn-primary,
+.btn-primary[name="add"] {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  border-radius: 25px;
+  padding: 0.6rem 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.product-card .btn-primary:hover,
+.product-card .btn-add-to-cart:hover,
+.product-block-atc-button .btn-primary:hover,
+.btn-primary[name="add"]:hover {
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+/* Add to cart button with icon */
+.btn-primary[name="add"]::before {
+  content: "🛒 ";
+  margin-right: 5px;
+}
+
+/* Product page add to cart button */
+.product-main .btn-primary[name="add"] {
+  width: 100%;
+  padding: 0.8rem 2rem;
+  font-size: 1.1rem;
+  margin-top: 1rem;
+  background: linear-gradient(135deg, #004071 0%, #9b046f 100%);
+  box-shadow: 0 4px 20px rgba(0, 64, 113, 0.3);
+}
+
+.product-main .btn-primary[name="add"]:hover {
+  background: linear-gradient(135deg, #9b046f 0%, #004071 100%);
+  box-shadow: 0 6px 25px rgba(155, 4, 111, 0.4);
+}
+
+/* Quick view button styling */
+.product-card .btn-quick-view,
+.product-card .btn-outline-primary {
+  border-radius: 20px;
+  border-width: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Collection page product cards */
+.collection-products .product-card {
+  margin-bottom: 1.5rem;
+}
+
+/* Fix for carousel in product cards */
+.product-card .carousel-inner {
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.product-card .carousel-item img {
+  border-radius: 0 !important;
+}

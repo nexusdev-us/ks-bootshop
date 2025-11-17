@@ -657,6 +657,15 @@ hr {
   --bs-dropdown-divider-bg: var(--bs-border-color);
   top: 100% !important;
   bottom: auto !important;
+  margin-top: 0.5rem !important;
+}
+
+/* Fix navbar dropdown hover issues */
+.navbar .dropdown:hover .dropdown-menu {
+  pointer-events: none;
+}
+.navbar .dropdown.show .dropdown-menu {
+  pointer-events: auto;
 }
 
 .dropdown-menu.show:not([data-popper-placement]) {

@@ -1,3 +1,24 @@
-/* 
+/*
   Add here your own custom css styles
 */
+
+/* Fix navbar dropdown flickering/random opening */
+.navbar .dropdown-menu {
+  display: none !important;
+}
+
+.navbar .dropdown.show .dropdown-menu {
+  display: block !important;
+}
+
+/* Prevent hover triggering dropdowns */
+.navbar .dropdown-toggle {
+  cursor: pointer;
+}
+
+/* Only open on click, not hover */
+@media (min-width: 1200px) {
+  .navbar .dropdown:hover .dropdown-menu {
+    display: none !important;
+  }
+}
