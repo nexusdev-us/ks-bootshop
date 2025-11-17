@@ -2,6 +2,19 @@
   Add here your own custom css styles
 */
 
+/* Fix horizontal overflow */
+html, body {
+  overflow-x: hidden !important;
+  max-width: 100vw !important;
+}
+
+/* Beautiful Lavender Gradient Background */
+body {
+  background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 50%, #f3e8ff 100%) !important;
+  background-attachment: fixed !important;
+  min-height: 100vh;
+}
+
 /* Logo header scrolls away naturally (not sticky) */
 #logo-header {
   position: relative;
