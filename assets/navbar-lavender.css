@@ -1,0 +1,271 @@
+/* ============================================
+   LAVENDER NAVIGATION BAR - BUILT FROM SCRATCH
+   ============================================ */
+
+/* Navbar Wrapper */
+.lavender-navbar {
+  background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);
+  box-shadow: 0 2px 12px rgba(139, 92, 246, 0.1);
+  border-bottom: 1px solid rgba(167, 139, 250, 0.2);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+}
+
+/* Desktop Navbar Container */
+.navbar-desktop {
+  width: 100%;
+}
+
+.navbar-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.navbar-menu {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.navbar-icons {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.navbar-icon {
+  color: #6b21a8;
+  padding: 0.5rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.navbar-icon:hover {
+  background: rgba(167, 139, 250, 0.15);
+  color: #7c3aed;
+  transform: scale(1.1);
+}
+
+.navbar-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+/* Main Menu */
+.main-menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.menu-item {
+  position: relative;
+}
+
+.menu-link {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.75rem 1.25rem;
+  color: #6b21a8;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.menu-link:hover {
+  background: rgba(167, 139, 250, 0.15);
+  color: #7c3aed;
+  transform: translateY(-1px);
+}
+
+.menu-link.active {
+  background: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 100%);
+  color: white;
+  box-shadow: 0 2px 8px rgba(139, 92, 246, 0.3);
+}
+
+.menu-arrow {
+  font-size: 0.7rem;
+  transition: transform 0.3s ease;
+}
+
+.menu-item:hover .menu-arrow {
+  transform: rotate(180deg);
+}
+
+/* Submenus */
+.submenu {
+  position: absolute;
+  list-style: none;
+  margin: 0;
+  padding: 0.5rem;
+  background: white;
+  border: 1px solid rgba(167, 139, 250, 0.2);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(139, 92, 246, 0.15);
+  min-width: 220px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  z-index: 100;
+}
+
+/* Level 1 Submenu - appears below parent */
+.submenu.level-1 {
+  top: 100%;
+  left: 0;
+  margin-top: 0.5rem;
+}
+
+/* Level 2 Submenu - appears to the right */
+.submenu.level-2 {
+  top: 0;
+  left: 100%;
+  margin-left: 0.25rem;
+  margin-top: 0;
+}
+
+/* Show submenu on hover */
+.menu-item:hover > .submenu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.submenu-item:hover > .submenu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.submenu-item {
+  position: relative;
+}
+
+.submenu-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.65rem 1rem;
+  color: #6b21a8;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.submenu-link:hover {
+  background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);
+  color: #7c3aed;
+  padding-left: 1.25rem;
+}
+
+.submenu-link.active {
+  background: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 100%);
+  color: white;
+}
+
+.submenu-arrow {
+  font-size: 1.2rem;
+  color: #a78bfa;
+  margin-left: 0.5rem;
+}
+
+.submenu-divider {
+  height: 1px;
+  background: rgba(167, 139, 250, 0.2);
+  margin: 0.5rem 0;
+  list-style: none;
+}
+
+/* Mobile Navbar Styling */
+@media (max-width: 991px) {
+  .navbar-mobile .nav-link-icon {
+    color: #6b21a8;
+    padding: 0.75rem;
+    transition: all 0.3s ease;
+    border-radius: 8px;
+  }
+
+  .navbar-mobile .nav-link-icon:hover {
+    background: rgba(167, 139, 250, 0.15);
+    color: #7c3aed;
+  }
+
+  .navbar-mobile .nav-link-icon svg {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+/* Cart Badge */
+.cart-count-badge {
+  background: linear-gradient(135deg, #ec4899 0%, #db2777 100%);
+  color: white;
+  border-radius: 10px;
+  padding: 2px 6px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  box-shadow: 0 2px 6px rgba(219, 39, 119, 0.4);
+  min-width: 18px;
+  text-align: center;
+}
+
+/* Focus States for Accessibility */
+.menu-link:focus,
+.submenu-link:focus,
+.navbar-icon:focus {
+  outline: 2px solid #a78bfa;
+  outline-offset: 2px;
+}
+
+/* Smooth Transitions */
+* {
+  box-sizing: border-box;
+}
+
+/* Ensure submenus don't cause horizontal scroll */
+.lavender-navbar {
+  overflow-x: visible;
+  overflow-y: visible;
+}
+
+/* Hover Bridge - Small gap coverage for better UX */
+.menu-item.has-children::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: 0.5rem;
+}
+
+.submenu-item.has-children::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 100%;
+  width: 0.25rem;
+  height: 100%;
+}

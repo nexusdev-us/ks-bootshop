@@ -1,0 +1,47 @@
+<ul class="main-menu">
+  {% for link in linklists[menu_handle].links %}
+    <li class="menu-item {% if link.links != blank %}has-children{% endif %}">
+      <a href="{{ link.url }}" class="menu-link {% if link.active or link.child_active %}active{% endif %}">
+        {{ link.title }}
+        {% if link.links != blank %}
+          <span class="menu-arrow">▼</span>
+        {% endif %}
+      </a>
+
+      {% if link.links != blank %}
+        <ul class="submenu level-1">
+          {% for child_link in link.links %}
+            {% unless child_link.title == '-' %}
+              <li class="submenu-item {% if child_link.links != blank %}has-children{% endif %}">
+                <a href="{{ child_link.url }}" class="submenu-link {% if child_link.active %}active{% endif %}">
+                  {{ child_link.title }}
+                  {% if child_link.links != blank %}
+                    <span class="submenu-arrow">›</span>
+                  {% endif %}
+                </a>
+
+                {% if child_link.links != blank %}
+                  <ul class="submenu level-2">
+                    {% for grandchild_link in child_link.links %}
+                      {% unless grandchild_link.title == '-' %}
+                        <li class="submenu-item">
+                          <a href="{{ grandchild_link.url }}" class="submenu-link {% if grandchild_link.active %}active{% endif %}">
+                            {{ grandchild_link.title }}
+                          </a>
+                        </li>
+                      {% else %}
+                        <li class="submenu-divider"></li>
+                      {% endunless %}
+                    {% endfor %}
+                  </ul>
+                {% endif %}
+              </li>
+            {% else %}
+              <li class="submenu-divider"></li>
+            {% endunless %}
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </li>
+  {% endfor %}
+</ul>

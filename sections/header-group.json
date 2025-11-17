@@ -56,16 +56,13 @@
       }
     },
     "navbar": {
-      "type": "navbar",
+      "type": "navbar-new",
       "blocks": {
         "37d4f863-aecd-4a86-87c1-a5887bf87140": {
           "type": "mobile",
           "settings": {
             "container_max_width": "",
-            "logo": "",
-            "logo_height": 50,
             "main_menu": "sense",
-            "collections_menu": "",
             "social_icons": true,
             "pt": 2,
             "pb": 2
@@ -75,8 +72,6 @@
           "type": "desktop",
           "settings": {
             "container_max_width": "",
-            "logo": "",
-            "logo_height": 52,
             "main_menu": "sense",
             "pt": 5,
             "pb": 5
@@ -88,15 +83,7 @@
         "069e870e-aed4-4929-bf73-c0daca8be18e"
       ],
       "settings": {
-        "bg_color": "bg-body",
-        "bg_opacity": 100,
-        "bg_gradient": "",
-        "text_color": "text-body",
-        "border_top_width": 0,
-        "border_bottom_width": 0,
-        "border_color": "border-body",
-        "border_opacity": 100,
-        "shadow": "shadow-sm"
+        "bg_opacity": 100
       }
     }
   },

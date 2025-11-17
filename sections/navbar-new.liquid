@@ -1,0 +1,192 @@
+<navbar-wrapper
+  id="navbar-wrapper"
+  class="lavender-navbar sticky-top"
+  style="--bs-bg-opacity: {{ section.settings.bg_opacity | append: '%' }};">
+
+  {% for block in section.blocks %}
+    {% if block.type == 'mobile' %}
+      {%- comment -%} Mobile Navigation {%- endcomment -%}
+      <nav id="navbar-mobile" class="navbar d-desktop-none p-0" {{ block.shopify_attributes }}>
+        <div class="container d-block pt-{{ block.settings.pt }} pb-{{ block.settings.pb }}" style="max-width: {{ block.settings.container_max_width | append: 'px' }};">
+          <div class="row align-items-center">
+            <div class="col-6">
+              <ul class="nav flex-nowrap">
+                <li class="nav-item">
+                  <a class="nav-link nav-link-icon ms-n3" href="#offcanvas-menu" data-bs-toggle="offcanvas" aria-controls="offcanvas-menu" aria-label="{{ 'general.accessibility.menu' | t }}" role="button">
+                    {% render 'svg-icons', icon: 'menu' %}
+                  </a>
+                </li>
+                {% if shop.customer_accounts_enabled %}
+                  <li class="nav-item">
+                    <a class="nav-link nav-link-icon {% if template.name == 'login' or template.name == 'account' %}active{% endif %}" aria-current="{% if template.name == 'login' or template.name == 'account' %}page{% endif %}" href="{{ routes.account_url }}" aria-label="{{ 'general.accessibility.account' | t }}">
+                      {% render 'svg-icons', icon: 'account' %}
+                    </a>
+                  </li>
+                {% endif %}
+              </ul>
+            </div>
+            <div class="col-6">
+              <ul class="nav flex-nowrap justify-content-end">
+                {% if settings.search %}
+                  <li class="nav-item">
+                    <a class="nav-link nav-link-icon" href="#offcanvas-search" data-bs-toggle="offcanvas" aria-controls="offcanvas-search" aria-label="{{ 'general.accessibility.search' | t }}" role="button">
+                      {% render 'svg-icons', icon: 'search' %}
+                    </a>
+                  </li>
+                {% endif %}
+                <li class="nav-item">
+                  <a class="nav-link nav-link-icon me-n3" href="#offcanvas-cart" data-bs-toggle="offcanvas" aria-controls="offcanvas-cart" aria-label="{{ 'general.accessibility.cart' | t }} {{ cart.item_count }}" role="button">
+                    {% render 'svg-icons', icon: 'cart' %}
+                    {% render 'cart-count-badge' %}
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+    {% else %}
+      {%- comment -%} Desktop Navigation - Completely New Structure {%- endcomment -%}
+      <nav id="navbar-desktop" class="navbar-desktop d-none d-desktop-block" {{ block.shopify_attributes }}>
+        <div class="container pt-{{ block.settings.pt }} pb-{{ block.settings.pb }}" style="max-width: {{ block.settings.container_max_width | append: 'px' }};">
+          <div class="navbar-content">
+            {%- comment -%} Main Menu {%- endcomment -%}
+            <div class="navbar-menu">
+              {% render 'navbar-menu-new', menu_handle: block.settings.main_menu %}
+            </div>
+
+            {%- comment -%} Icons {%- endcomment -%}
+            <div class="navbar-icons">
+              {% if settings.search %}
+                <a href="#offcanvas-search" data-bs-toggle="offcanvas" aria-controls="offcanvas-search" aria-label="{{ 'general.accessibility.search' | t }}" class="navbar-icon">
+                  {% render 'svg-icons', icon: 'search' %}
+                </a>
+              {% endif %}
+
+              {% if shop.customer_accounts_enabled %}
+                <a href="{{ routes.account_url }}" aria-label="{{ 'general.accessibility.account' | t }}" class="navbar-icon {% if template.name == 'login' or template.name == 'account' %}active{% endif %}">
+                  {% render 'svg-icons', icon: 'account' %}
+                </a>
+              {% endif %}
+
+              <a href="#offcanvas-cart" data-bs-toggle="offcanvas" aria-controls="offcanvas-cart" aria-label="{{ 'general.accessibility.cart' | t }} {{ cart.item_count }}" class="navbar-icon">
+                {% render 'svg-icons', icon: 'cart' %}
+                {% render 'cart-count-badge' %}
+              </a>
+            </div>
+          </div>
+        </div>
+      </nav>
+    {% endif %}
+  {% endfor %}
+</navbar-wrapper>
+
+{% for block in section.blocks %}
+  {% if block.type == 'mobile' %}
+    {% render 'offcanvas-menu', block: block %}
+  {% endif %}
+{% endfor %}
+
+{% schema %}
+{
+  "name": "Navbar New",
+  "limit": 1,
+  "settings": [
+    {
+      "type": "range",
+      "id": "bg_opacity",
+      "label": "Background opacity",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 100,
+      "unit": "%"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "mobile",
+      "name": "Mobile",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "container_max_width",
+          "label": "Container max-width (px)"
+        },
+        {
+          "type": "link_list",
+          "id": "main_menu",
+          "label": "Main menu",
+          "default": "main-menu"
+        },
+        {
+          "type": "checkbox",
+          "id": "social_icons",
+          "label": "Show social icons",
+          "default": true
+        },
+        {
+          "type": "range",
+          "id": "pt",
+          "label": "Top padding",
+          "min": 0,
+          "max": 20,
+          "step": 1,
+          "default": 3
+        },
+        {
+          "type": "range",
+          "id": "pb",
+          "label": "Bottom padding",
+          "min": 0,
+          "max": 20,
+          "step": 1,
+          "default": 3
+        }
+      ]
+    },
+    {
+      "type": "desktop",
+      "name": "Desktop",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "container_max_width",
+          "label": "Container max-width (px)"
+        },
+        {
+          "type": "link_list",
+          "id": "main_menu",
+          "label": "Main menu",
+          "default": "main-menu"
+        },
+        {
+          "type": "range",
+          "id": "pt",
+          "label": "Top padding",
+          "min": 0,
+          "max": 20,
+          "step": 1,
+          "default": 5
+        },
+        {
+          "type": "range",
+          "id": "pb",
+          "label": "Bottom padding",
+          "min": 0,
+          "max": 20,
+          "step": 1,
+          "default": 5
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Navbar New"
+    }
+  ]
+}
+{% endschema %}
