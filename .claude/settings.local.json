@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git config:*)",
+      "Bash(cat:*)",
+      "Bash(nul)",
+      "Bash(git submodule:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
