@@ -8,7 +8,7 @@ class Navbar extends HTMLElement {
     super()
 
     this.handleDropdownsBackdrop()
-    this.handleHeaderReveal()
+    // this.handleHeaderReveal() // Disabled to prevent navbar flickering
     this.adjustOffcanvasMenu()
   }
 

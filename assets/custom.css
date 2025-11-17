@@ -22,3 +22,20 @@
     display: none !important;
   }
 }
+
+/* Disable navbar hide-on-scroll behavior to prevent flickering */
+#header-group {
+  transform: none !important;
+  transition: none !important;
+}
+
+#header-group.hide {
+  transform: none !important;
+}
+
+/* Keep navbar always visible */
+#header-group.sticky-top {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 1020 !important;
+}

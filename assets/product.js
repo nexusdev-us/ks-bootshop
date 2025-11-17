@@ -153,7 +153,7 @@ class ProductMediaGallery extends HTMLElement {
 
     this.main.slideTo(initialSlide)
 
-    this.setStickyPosition()
+    // this.setStickyPosition() // Disabled to prevent scroll-related issues
     this.listenVariantChange()
   }
 
