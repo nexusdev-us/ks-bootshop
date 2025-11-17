@@ -31,17 +31,17 @@
         "8b92bb0f-7aaa-4462-8660-b6a23bd9c31c": {
           "type": "menu",
           "settings": {
-            "menu": "shop",
+            "menu": "footer",
             "title_font_size": "fs-xl",
-            "title": "Collections"
+            "title": "Quick Links"
           }
         },
         "79b0b9d4-1bf4-4490-a48e-94be1aecf12a": {
           "type": "menu",
           "settings": {
-            "menu": "company",
+            "menu": "footer",
             "title_font_size": "fs-xl",
-            "title": "Company"
+            "title": "Customer Care"
           }
         },
         "7468602d-7e94-4bd5-9673-02b2f8269581": {

@@ -16,6 +16,7 @@
   - "Essential Starr joins Lavender Hill Botanicals - Continuing the Legacy of Light, Love, and Botanical Beauty"
   - "Shop our collection of Essential Oils, Carrier Oils, and Natural Remedies"
 - **Navbar Logo**: Updated to use `e.png` with appropriate sizing
+- **Navigation Menu**: Now using your existing "sense" menu from the old store
 
 ### 3. Homepage Template (templates/index.json)
 Completely rebuilt to display ALL your collections and products:
@@ -32,6 +33,7 @@ Completely rebuilt to display ALL your collections and products:
 ### 4. Footer Configuration (sections/footer-group.json)
 - **Newsletter Section**: Updated with "Subscribe to our emails" and Essential Starr messaging
 - **About Section**: Updated with Essential Starr's Apothecary branding
+- **Footer Menu**: Now using your existing "footer" menu from the old store
 - **Social Icons**: Enabled (configure links in Shopify Admin → Settings → Social media)
 - **Payment Icons**: Enabled
 
