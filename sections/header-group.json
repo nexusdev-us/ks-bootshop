@@ -6,12 +6,12 @@
       "type": "logo-header",
       "settings": {
         "logo": "shopify:\/\/shop_images\/e.png",
-        "logo_width": 200,
+        "logo_width": 120,
         "bg_color": "bg-body",
         "bg_opacity": 100,
         "text_color": "text-body",
-        "pt": 6,
-        "pb": 6
+        "pt": 4,
+        "pb": 4
       }
     },
     "announcement_bar_Ge9W3V": {

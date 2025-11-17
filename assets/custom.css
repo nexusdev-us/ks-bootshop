@@ -2,9 +2,16 @@
   Add here your own custom css styles
 */
 
-/* Prevent hover triggering dropdowns */
+/* Navigation dropdown hover behavior */
 .navbar .dropdown-toggle {
   cursor: pointer;
+}
+
+/* Keep dropdowns open while hovering over them on desktop */
+@media (min-width: 992px) {
+  .navbar .dropdown:hover .dropdown-menu {
+    display: block !important;
+  }
 }
 
 /* Fix dropdown menus appearing behind overlay */

@@ -8,18 +8,63 @@
   position: relative;
 }
 
-.dropdown-submenu .dropdown-menu {
-  top: 0;
-  left: 100%;
-  margin-top: -6px;
-  margin-left: -1px;
-  border-radius: 0 6px 6px 6px;
+.dropdown-submenu > .dropdown-menu {
+  position: absolute;
+  top: 0 !important;
+  left: 100% !important;
+  margin-top: 0 !important;
+  margin-left: 2px !important;
+  border-radius: 6px;
   display: none;
 }
 
 /* Show submenu on hover */
 .dropdown-submenu:hover > .dropdown-menu {
-  display: block;
+  display: block !important;
+  visibility: visible !important;
+}
+
+/* Ensure dropdown items have proper padding for hover */
+.dropdown-submenu > .dropdown-item {
+  padding-right: 2rem !important;
+  position: relative;
+}
+
+/* Create a hover bridge to prevent dropdown from closing */
+.dropdown-submenu::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: -2px;
+  width: 4px;
+  height: 100%;
+  z-index: 1051;
+}
+
+/* Enable hover for main navigation dropdowns on desktop */
+@media (min-width: 992px) {
+  .navbar .nav-item.dropdown:hover > .dropdown-menu {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  /* Smooth fade-in on hover */
+  .navbar .dropdown-menu {
+    display: none;
+    animation: dropdownFadeIn 0.2s ease-in-out;
+  }
+
+  @keyframes dropdownFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-5px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 }
 
 /* Dropdown submenu toggle arrow */
