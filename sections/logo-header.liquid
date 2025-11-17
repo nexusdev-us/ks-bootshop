@@ -1,0 +1,135 @@
+{% comment %}
+  Logo Header - Sits above navbar
+  Disappears when scrolling, reappears at top
+{% endcomment %}
+
+<div
+  id="logo-header"
+  class="logo-header {{ section.settings.bg_color }} {{ section.settings.text_color }}"
+  style="
+    --bs-bg-opacity: {{ section.settings.bg_opacity | append: '%' }};
+  ">
+  <div class="container text-center {{ section.settings.pt | prepend: 'pt-' }} {{ section.settings.pb | prepend: 'pb-' }}">
+    {% if section.settings.logo %}
+      <a href="{{ routes.root_url }}" class="logo-header-link">
+        <img
+          src="{{ section.settings.logo | image_url: width: section.settings.logo_width }}"
+          alt="{{ shop.name }}"
+          width="{{ section.settings.logo_width }}"
+          height="auto"
+          loading="eager"
+          class="logo-header-img">
+      </a>
+    {% else %}
+      <a href="{{ routes.root_url }}" class="logo-header-link">
+        <h1 class="logo-header-text mb-0">{{ shop.name }}</h1>
+      </a>
+    {% endif %}
+  </div>
+</div>
+
+<style>
+  .logo-header {
+    transition: opacity 0.3s ease;
+  }
+
+  .logo-header-link {
+    display: inline-block;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .logo-header-link:hover {
+    opacity: 0.85;
+  }
+
+  .logo-header-img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .logo-header-text {
+    font-family: var(--bs-headings-font-family);
+    color: currentColor;
+  }
+
+  /* Responsive sizing */
+  @media (max-width: 767px) {
+    .logo-header-img {
+      max-width: 200px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Logo Header",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo"
+    },
+    {
+      "type": "range",
+      "id": "logo_width",
+      "min": 50,
+      "max": 400,
+      "step": 10,
+      "default": 200,
+      "label": "Logo width (px)"
+    },
+    {
+      "type": "select",
+      "id": "bg_color",
+      "label": "Background color",
+      "options": [
+        { "value": "bg-body", "label": "Body" },
+        { "value": "bg-primary", "label": "Primary" },
+        { "value": "bg-secondary", "label": "Secondary" },
+        { "value": "bg-white", "label": "White" }
+      ],
+      "default": "bg-body"
+    },
+    {
+      "type": "range",
+      "id": "bg_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 100,
+      "label": "Background opacity (%)"
+    },
+    {
+      "type": "select",
+      "id": "text_color",
+      "label": "Text color",
+      "options": [
+        { "value": "text-body", "label": "Body" },
+        { "value": "text-primary", "label": "Primary" },
+        { "value": "text-secondary", "label": "Secondary" },
+        { "value": "text-white", "label": "White" }
+      ],
+      "default": "text-body"
+    },
+    {
+      "type": "range",
+      "id": "pt",
+      "min": 0,
+      "max": 20,
+      "step": 1,
+      "default": 6,
+      "label": "Padding top"
+    },
+    {
+      "type": "range",
+      "id": "pb",
+      "min": 0,
+      "max": 20,
+      "step": 1,
+      "default": 6,
+      "label": "Padding bottom"
+    }
+  ]
+}
+{% endschema %}

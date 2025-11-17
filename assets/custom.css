@@ -25,19 +25,16 @@ body.navbar-dropdown-open #footer-group::after {
   display: none !important;
 }
 
-/* Disable navbar hide-on-scroll behavior to prevent flickering */
-#header-group {
-  transform: none !important;
-  transition: none !important;
-}
-
-#header-group.hide {
-  transform: none !important;
-}
-
-/* Keep navbar always visible */
-#header-group.sticky-top {
+/* Navbar sticky behavior */
+#navbar-wrapper.sticky-top {
   position: sticky !important;
   top: 0 !important;
   z-index: 1020 !important;
+  background: var(--bs-body-bg);
+}
+
+/* Logo header scrolls away naturally (not sticky) */
+#logo-header {
+  position: relative;
+  z-index: 1010;
 }

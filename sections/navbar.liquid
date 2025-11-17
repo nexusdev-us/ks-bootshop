@@ -1,12 +1,13 @@
-<navbar-wrapper 
+<navbar-wrapper
   id="navbar-wrapper"
   class="
-    {{ section.settings.bg_color }} 
+    sticky-top
+    {{ section.settings.bg_color }}
     {{ section.settings.bg_gradient }}
-    {{ section.settings.text_color }} 
+    {{ section.settings.text_color }}
     {{ section.settings.border_top_width | prepend: 'border-top-' }}
     {{ section.settings.border_bottom_width | prepend: 'border-bottom-' }}
-    {{ section.settings.border_color }} 
+    {{ section.settings.border_color }}
     {{ section.settings.shadow }}
   "
   style="
@@ -23,13 +24,13 @@
           class="container d-block {{ block.settings.pt | prepend: 'pt-' }} {{  block.settings.pb | prepend: 'pb-' }}"
           style="max-width: {{ block.settings.container_max_width | append: 'px' }};">
           <div class="row align-items-center">
-            <div class="col-5">
+            <div class="col-6">
               <ul class="nav flex-nowrap">
                 <li class="nav-item">
-                  <a 
+                  <a
                     class="nav-link nav-link-icon ms-n3"
-                    href="#offcanvas-menu" 
-                    data-bs-toggle="offcanvas" 
+                    href="#offcanvas-menu"
+                    data-bs-toggle="offcanvas"
                     aria-controls="offcanvas-menu"
                     aria-label="{{ 'general.accessibility.menu' | t }}"
                     role="button">
@@ -38,9 +39,9 @@
                 </li>
                 {% if shop.customer_accounts_enabled %}
                   <li class="nav-item">
-                    <a 
-                      class="nav-link nav-link-icon {% if template.name == 'login' or template.name == 'account' %}active{% endif %}" 
-                      aria-current="{% if template.name == 'login' or template.name == 'account' %}page{% endif %}" 
+                    <a
+                      class="nav-link nav-link-icon {% if template.name == 'login' or template.name == 'account' %}active{% endif %}"
+                      aria-current="{% if template.name == 'login' or template.name == 'account' %}page{% endif %}"
                       href="{{ routes.account_url }}"
                       aria-label="{{ 'general.accessibility.account' | t }}">
                       {% render 'svg-icons', icon: 'account' %}
@@ -49,10 +50,7 @@
                 {% endif %}
               </ul>
             </div>
-            <div class="col-8 text-center">
-              {% render 'navbar-logo', block: block %}
-            </div>
-            <div class="col-5">
+            <div class="col-6">
               <ul class="nav flex-nowrap justify-content-end">
                 {% if settings.search %}
                   <li class="nav-item">
@@ -92,15 +90,11 @@
         <div 
           class="container d-block {{ block.settings.pt | prepend: 'pt-' }} {{  block.settings.pb | prepend: 'pb-' }}"
           style="max-width: {{ block.settings.container_max_width | append: 'px' }};">
-          <div
-            class="row align-items-center flex-grow-1">
-            <div class="col-4">
-              {% render 'navbar-logo', block: block %}
-            </div>
-            <div class="col-10">
+          <div class="d-flex align-items-center justify-content-between w-100">
+            <div class="flex-grow-1 d-flex justify-content-center">
               {% render 'navbar-desktop-menu-full', block: block %}
             </div>
-            <div class="col-4">
+            <div class="ms-3">
               {% render 'navbar-desktop-icons', block: block %}
             </div>
           </div>

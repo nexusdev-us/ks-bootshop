@@ -12,11 +12,11 @@
 - **Fonts**: Changed to `lora_n4` for both body and headings (matches old store)
 
 ### 2. Header Configuration (sections/header-group.json)
-- **Announcement Bar**: Updated with Essential Starr messaging:
-  - "Essential Starr joins Lavender Hill Botanicals - Continuing the Legacy of Light, Love, and Botanical Beauty"
-  - "Shop our collection of Essential Oils, Carrier Oils, and Natural Remedies"
+- **Announcement Bar**: DISABLED (can be re-enabled - see ANNOUNCEMENT_BAR.md)
+  - Messages preserved: Essential Starr + Lavender Hill Botanicals transition message
+  - To re-enable: Change `"disabled": true` to `"disabled": false` in header-group.json
 - **Navbar Logo**: Updated to use `e.png` with appropriate sizing
-- **Navigation Menu**: Now using your existing "sense" menu from the old store
+- **Navigation Menu**: Now using your existing "sense" menu from the old store with full multi-level support
 
 ### 3. Homepage Template (templates/index.json)
 Completely rebuilt to display ALL your collections and products:
