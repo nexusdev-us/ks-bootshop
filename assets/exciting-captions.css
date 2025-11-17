@@ -1,0 +1,276 @@
+/* ============================================
+   EXCITING CAPTION BOXES & TEXT STYLING
+   Mobile Friendly & Beautiful
+   ============================================ */
+
+/* Richtext Section - Homepage Welcome Message */
+.richtext .container {
+  position: relative;
+}
+
+.richtext .title {
+  background: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+  text-shadow: none;
+  margin-bottom: 1.5rem !important;
+  animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.richtext .description {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(247, 243, 255, 0.95) 100%);
+  border: 2px solid rgba(167, 139, 250, 0.3);
+  border-radius: 20px;
+  padding: 2rem 2.5rem;
+  box-shadow:
+    0 10px 30px rgba(139, 92, 246, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  line-height: 1.8;
+}
+
+/* Decorative corner elements */
+.richtext .description::before {
+  content: '✨';
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  font-size: 1.5rem;
+  opacity: 0.6;
+}
+
+.richtext .description::after {
+  content: '✨';
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  opacity: 0.6;
+}
+
+/* Paragraph styling within caption box */
+.richtext .description p {
+  margin-bottom: 1.25rem;
+  color: #4a5568;
+  font-size: 1.05rem;
+}
+
+.richtext .description p:last-child {
+  margin-bottom: 0;
+}
+
+/* Highlight effect on hover */
+.richtext .description:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 15px 40px rgba(139, 92, 246, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  border-color: rgba(167, 139, 250, 0.5);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================
+   COLLECTION HEADER - Better Text Readability
+   ============================================ */
+
+.collection-header {
+  position: relative;
+}
+
+/* Enhance overlay for better text readability */
+.collection-header .img-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.4) 0%,
+    rgba(0, 0, 0, 0.6) 50%,
+    rgba(0, 0, 0, 0.7) 100%
+  );
+  z-index: 1;
+}
+
+.collection-header .container {
+  position: relative;
+  z-index: 2;
+}
+
+/* Beautiful caption box for collection description */
+.collection-header .title {
+  color: white !important;
+  text-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.6),
+    0 4px 16px rgba(0, 0, 0, 0.4);
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  padding: 0.5rem 1.5rem;
+  background: linear-gradient(135deg, rgba(167, 139, 250, 0.3) 0%, rgba(139, 92, 246, 0.3) 100%);
+  border-left: 4px solid #a78bfa;
+  border-radius: 8px;
+  display: inline-block;
+}
+
+.collection-header .description {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(247, 243, 255, 0.98) 100%);
+  border: 2px solid rgba(167, 139, 250, 0.4);
+  border-radius: 16px;
+  padding: 1.75rem 2rem;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  color: #2d3748 !important;
+  backdrop-filter: blur(10px);
+  line-height: 1.7;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Decorative accent */
+.collection-header .description::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(to bottom, #a78bfa, #8b5cf6);
+}
+
+.collection-header .description p {
+  margin-bottom: 1rem;
+  color: #2d3748 !important;
+  font-weight: 500;
+  padding-left: 1rem;
+}
+
+.collection-header .description p:last-child {
+  margin-bottom: 0;
+}
+
+/* ============================================
+   MOBILE RESPONSIVENESS
+   ============================================ */
+
+@media (max-width: 767px) {
+  .richtext .description {
+    padding: 1.5rem 1.25rem;
+    border-radius: 16px;
+  }
+
+  .richtext .description::before,
+  .richtext .description::after {
+    font-size: 1.2rem;
+  }
+
+  .richtext .description p {
+    font-size: 1rem;
+  }
+
+  .collection-header .title {
+    padding: 0.5rem 1rem;
+    font-size: 1.5rem !important;
+  }
+
+  .collection-header .description {
+    padding: 1.25rem 1rem;
+    border-radius: 12px;
+  }
+
+  .collection-header .description p {
+    font-size: 0.95rem;
+    padding-left: 0.75rem;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .richtext .description {
+    padding: 1.75rem 2rem;
+  }
+
+  .collection-header .description {
+    padding: 1.5rem 1.75rem;
+  }
+}
+
+/* Tablet and up - extra polish */
+@media (min-width: 992px) {
+  .richtext .description {
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .collection-header .description {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* ============================================
+   ADDITIONAL ENHANCEMENTS
+   ============================================ */
+
+/* Smooth transitions for all caption boxes */
+.richtext .description,
+.collection-header .description,
+.collection-header .title {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Floating animation for richtext */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.richtext .description::before,
+.richtext .description::after {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Collection header text always readable */
+.collection-header.text-white .description {
+  color: #2d3748 !important;
+}
+
+.collection-header.text-white .description * {
+  color: #2d3748 !important;
+}
+
+/* Ensure link colors remain visible */
+.richtext .description a,
+.collection-header .description a {
+  color: #7c3aed;
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: rgba(124, 58, 237, 0.3);
+  transition: all 0.3s ease;
+}
+
+.richtext .description a:hover,
+.collection-header .description a:hover {
+  color: #6b21a8;
+  text-decoration-color: rgba(107, 33, 168, 0.6);
+}

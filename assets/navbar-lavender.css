@@ -6,12 +6,30 @@
 .lavender-navbar {
   background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);
   box-shadow: 0 2px 12px rgba(139, 92, 246, 0.1);
-  border-top: none;
+  border-top: none !important;
+  border-top-width: 0 !important;
+  border-top-style: none !important;
   border-bottom: 1px solid rgba(167, 139, 250, 0.2);
   position: sticky;
   top: 0;
   z-index: 1000;
   width: 100%;
+}
+
+/* Remove any borders from header elements */
+#header-group,
+#logo-header,
+.logo-header {
+  border: none !important;
+  border-top: none !important;
+  border-bottom: none !important;
+}
+
+/* Override sections.css navbar-wrapper border */
+#navbar-wrapper {
+  border-top: none !important;
+  border-top-width: 0 !important;
+  border-top-style: none !important;
 }
 
 /* Desktop Navbar Container */

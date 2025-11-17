@@ -20,13 +20,40 @@
 /* Ensure product card link grows to fill space */
 .product-card > .product-card-link {
   flex-grow: 1;
-  display: flex;
-  flex-direction: column;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+/* Card body should also use flexbox */
+.product-card .card-body {
+  padding: 1rem 0.5rem;
+  display: flex !important;
+  flex-direction: column !important;
+  flex-grow: 1 !important;
+}
+
+/* Product info (title, description, price) should grow */
+.product-card .product-card-info,
+.product-card .card-title,
+.product-card .product-card-title {
+  flex-grow: 0 !important;
+}
+
+/* Description should have fixed height or clamp */
+.product-card .product-card-description,
+.product-card .card-text {
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  min-height: 3rem !important;
 }
 
 /* Push the form/button to the bottom */
 .product-card > form,
-.product-card > .product-card-form {
+.product-card > .product-card-form,
+.product-card .product-card-atc {
   margin-top: auto !important;
 }
 
@@ -34,10 +61,6 @@
   border-radius: 15px !important;
   border: none !important;
   overflow: hidden;
-}
-
-.product-card .card-body {
-  padding: 1rem 0.5rem;
 }
 
 /* Round images in product cards */
