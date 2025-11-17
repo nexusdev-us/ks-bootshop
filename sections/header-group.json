@@ -8,13 +8,13 @@
         "slide_j46kwk": {
           "type": "slide",
           "settings": {
-            "announcement": "Announce something important here"
+            "announcement": "Essential Starr joins Lavender Hill Botanicals - Continuing the Legacy of Light, Love, and Botanical Beauty"
           }
         },
         "slide_mwF4Tk": {
           "type": "slide",
           "settings": {
-            "announcement": "Free Shipping For All Orders Over $100"
+            "announcement": "Shop our collection of Essential Oils, Carrier Oils, and Natural Remedies"
           }
         }
       },
@@ -49,8 +49,8 @@
           "type": "mobile",
           "settings": {
             "container_max_width": "",
-            "logo": "shopify:\/\/shop_images\/ks-bootshop-logo.png",
-            "logo_height": 30,
+            "logo": "shopify:\/\/shop_images\/e.png",
+            "logo_height": 50,
             "main_menu": "dropdown-menu",
             "collections_menu": "",
             "social_icons": true,
@@ -62,8 +62,8 @@
           "type": "desktop",
           "settings": {
             "container_max_width": "",
-            "logo": "shopify:\/\/shop_images\/ks-bootshop-logo.png",
-            "logo_height": 32,
+            "logo": "shopify:\/\/shop_images\/e.png",
+            "logo_height": 52,
             "main_menu": "dropdown-menu",
             "pt": 5,
             "pb": 5

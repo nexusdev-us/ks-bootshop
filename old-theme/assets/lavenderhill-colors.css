@@ -1,0 +1,506 @@
+/* ===============================================
+   LavenderHill Botanicals Color Theme Override
+   This file overrides the default Shopify theme colors
+   with the LavenderHill Botanicals brand colors
+   =============================================== */
+
+/* Define LavenderHill Brand Colors */
+:root {
+  /* Primary Lavender Colors */
+  --lavenderhill-primary: #9b7fb8;
+  --lavenderhill-light: #e6dff2;
+  --lavenderhill-dark: #6b4f8c;
+  --lavenderhill-accent: #b8a3d0;
+  --lavenderhill-gradient: linear-gradient(135deg, #9b7fb8 0%, #b8a3d0 100%);
+
+  /* Neutral Colors */
+  --lavenderhill-white: #ffffff;
+  --lavenderhill-off-white: #fafafa;
+  --lavenderhill-light-gray: #f5f5f5;
+  --lavenderhill-gray: #666666;
+  --lavenderhill-dark-gray: #333333;
+  --lavenderhill-black: #000000;
+
+  /* Shadows with Lavender Tint */
+  --lavenderhill-shadow-sm: 0 2px 8px rgba(155, 127, 184, 0.15);
+  --lavenderhill-shadow-md: 0 4px 20px rgba(155, 127, 184, 0.2);
+  --lavenderhill-shadow-lg: 0 8px 40px rgba(155, 127, 184, 0.25);
+  --lavenderhill-shadow-xl: 0 16px 60px rgba(155, 127, 184, 0.3);
+
+  /* Transition Effects */
+  --lavenderhill-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --lavenderhill-transition-slow: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Override Shopify Theme Color Variables */
+:root {
+  /* Map Shopify colors to LavenderHill colors */
+  --color-base-text: 51, 51, 51; /* Dark gray for text */
+  --color-base-background-1: 255, 255, 255; /* White background */
+  --color-base-background-2: 250, 250, 250; /* Off-white background */
+  --color-base-solid-button-labels: 255, 255, 255; /* White button text */
+  --color-base-outline-button-labels: 155, 127, 184; /* Lavender for outline buttons */
+  --color-base-accent-1: 155, 127, 184; /* Primary lavender */
+  --color-base-accent-2: 184, 163, 208; /* Accent lavender */
+}
+
+/* Header and Navigation Overrides */
+.header,
+.header-wrapper {
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(10px);
+  box-shadow: var(--lavenderhill-shadow-sm);
+}
+
+.header__menu-item span,
+.header__menu-item {
+  color: var(--lavenderhill-dark-gray);
+  transition: var(--lavenderhill-transition);
+}
+
+.header__menu-item:hover span,
+.header__menu-item:hover {
+  color: var(--lavenderhill-primary);
+}
+
+.header__active-menu-item {
+  color: var(--lavenderhill-primary);
+}
+
+/* Button Styles Override */
+.button,
+.shopify-payment-button__button,
+button[type="submit"],
+.btn {
+  background: var(--lavenderhill-gradient) !important;
+  color: var(--lavenderhill-white) !important;
+  border: none;
+  box-shadow: var(--lavenderhill-shadow-md);
+  transition: var(--lavenderhill-transition);
+  border-radius: 25px;
+}
+
+.button:hover,
+.shopify-payment-button__button:hover,
+button[type="submit"]:hover,
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--lavenderhill-shadow-lg);
+}
+
+.button--secondary {
+  background: transparent !important;
+  color: var(--lavenderhill-primary) !important;
+  border: 2px solid var(--lavenderhill-primary) !important;
+}
+
+.button--secondary:hover {
+  background: var(--lavenderhill-primary) !important;
+  color: var(--lavenderhill-white) !important;
+}
+
+/* Announcement Bar - Transition Notice */
+.announcement-bar-section {
+  background: var(--lavenderhill-gradient) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.announcement-bar-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0.1) 100%);
+  animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.announcement-bar__message {
+  color: var(--lavenderhill-white) !important;
+  font-weight: 600;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.announcement-bar__message::before {
+  content: '🌿';
+  font-size: 1.2em;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+.announcement-bar__link {
+  color: var(--lavenderhill-white) !important;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  transition: var(--lavenderhill-transition);
+}
+
+.announcement-bar__link:hover {
+  border-bottom-color: var(--lavenderhill-white);
+}
+
+/* Product Cards */
+.card,
+.card-wrapper {
+  border-radius: 15px;
+  overflow: hidden;
+  transition: var(--lavenderhill-transition);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--lavenderhill-shadow-lg);
+}
+
+.card__content {
+  background: var(--lavenderhill-white);
+}
+
+.card__heading a {
+  color: var(--lavenderhill-dark-gray);
+  transition: var(--lavenderhill-transition);
+}
+
+.card__heading a:hover {
+  color: var(--lavenderhill-primary);
+}
+
+/* Fix for product card images showing half/blank */
+.card__media img,
+.card__inner img,
+.media img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center !important;
+}
+
+.card__media,
+.card__inner {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.card .media {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.card .media img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Price Styling */
+.price {
+  color: var(--lavenderhill-primary);
+  font-weight: 700;
+}
+
+.price--on-sale .price__sale {
+  color: var(--lavenderhill-primary);
+}
+
+.price--on-sale .price__regular {
+  color: var(--lavenderhill-gray);
+}
+
+/* Forms and Inputs */
+.field__input,
+.customer .field input,
+.customer select,
+select {
+  border: 2px solid var(--lavenderhill-light);
+  border-radius: 10px;
+  transition: var(--lavenderhill-transition);
+}
+
+.field__input:focus,
+.customer .field input:focus,
+.customer select:focus,
+select:focus {
+  border-color: var(--lavenderhill-primary);
+  box-shadow: 0 0 0 3px rgba(155, 127, 184, 0.1);
+  outline: none;
+}
+
+/* Footer */
+.footer {
+  background: var(--lavenderhill-dark);
+  color: var(--lavenderhill-white);
+}
+
+.footer a {
+  color: var(--lavenderhill-white);
+  opacity: 0.8;
+  transition: var(--lavenderhill-transition);
+}
+
+.footer a:hover {
+  opacity: 1;
+  color: var(--lavenderhill-accent);
+}
+
+/* Collection Hero */
+.collection-hero__title {
+  color: var(--lavenderhill-dark-gray);
+}
+
+/* Badges */
+.badge {
+  background: var(--lavenderhill-gradient);
+  color: var(--lavenderhill-white);
+  border-radius: 20px;
+  padding: 0.3rem 0.8rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+/* Cart Notification */
+.cart-notification {
+  border: 2px solid var(--lavenderhill-primary);
+  box-shadow: var(--lavenderhill-shadow-lg);
+}
+
+.cart-notification__heading {
+  color: var(--lavenderhill-primary);
+}
+
+/* Quick Add and Modal */
+.quick-add-modal__content,
+.modal__content {
+  border-radius: 20px;
+  box-shadow: var(--lavenderhill-shadow-xl);
+}
+
+/* Pagination */
+.pagination__item--current {
+  background: var(--lavenderhill-primary);
+  color: var(--lavenderhill-white);
+  border-radius: 50%;
+}
+
+.pagination__item a:hover {
+  color: var(--lavenderhill-primary);
+}
+
+/* Search */
+.search-modal__form {
+  border-bottom: 2px solid var(--lavenderhill-light);
+}
+
+.search__input:focus {
+  outline: none;
+  border-color: var(--lavenderhill-primary);
+}
+
+/* Mobile Menu */
+.menu-drawer {
+  background: var(--lavenderhill-white);
+}
+
+.menu-drawer__navigation .menu-drawer__menu-item {
+  color: var(--lavenderhill-dark-gray);
+  transition: var(--lavenderhill-transition);
+}
+
+.menu-drawer__navigation .menu-drawer__menu-item:hover {
+  color: var(--lavenderhill-primary);
+  background: var(--lavenderhill-light);
+}
+
+/* Loading States */
+.loading__spinner {
+  border-color: var(--lavenderhill-light);
+  border-top-color: var(--lavenderhill-primary);
+}
+
+/* Links */
+a {
+  color: var(--lavenderhill-primary);
+  transition: var(--lavenderhill-transition);
+}
+
+a:hover {
+  color: var(--lavenderhill-dark);
+}
+
+/* Selection */
+::selection {
+  background-color: var(--lavenderhill-light);
+  color: var(--lavenderhill-dark);
+}
+
+/* Scrollbar (Webkit browsers) */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--lavenderhill-light-gray);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--lavenderhill-primary);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--lavenderhill-dark);
+}
+
+/* Image Overlays */
+.card-wrapper .card__media::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(180deg,
+    transparent 0%,
+    rgba(155, 127, 184, 0.05) 100%);
+  pointer-events: none;
+  opacity: 0;
+  transition: var(--lavenderhill-transition);
+}
+
+.card-wrapper:hover .card__media::after {
+  opacity: 1;
+}
+
+/* Quantity Selector */
+.quantity__input {
+  border: 2px solid var(--lavenderhill-light);
+  border-radius: 8px;
+}
+
+.quantity__button {
+  color: var(--lavenderhill-primary);
+  transition: var(--lavenderhill-transition);
+}
+
+.quantity__button:hover {
+  background: var(--lavenderhill-light);
+}
+
+/* Facets and Filters */
+.facets__wrapper {
+  border-top: 2px solid var(--lavenderhill-light);
+}
+
+.facets__heading {
+  color: var(--lavenderhill-dark-gray);
+}
+
+.active-facets__button {
+  background: var(--lavenderhill-light);
+  color: var(--lavenderhill-primary);
+  border-radius: 20px;
+}
+
+/* Newsletter */
+.newsletter-form__field-wrapper {
+  border: 2px solid var(--lavenderhill-light);
+  border-radius: 25px;
+  overflow: hidden;
+}
+
+.newsletter-form__field-wrapper:focus-within {
+  border-color: var(--lavenderhill-primary);
+  box-shadow: 0 0 0 3px rgba(155, 127, 184, 0.1);
+}
+
+/* Special Hover Effects */
+.card-wrapper .card__media,
+.media {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-wrapper .card__media img {
+  transition: transform 0.6s ease;
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.card-wrapper:hover .card__media img {
+  transform: scale(1.05);
+}
+
+/* Add Subtle Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* Responsive Adjustments */
+@media screen and (max-width: 749px) {
+  .announcement-bar__message {
+    font-size: 0.9rem;
+  }
+
+  .button,
+  .btn {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.95rem;
+  }
+}
+
+/* Custom Utility Classes */
+.lavender-bg {
+  background: var(--lavenderhill-light) !important;
+}
+
+.lavender-text {
+  color: var(--lavenderhill-primary) !important;
+}
+
+.lavender-border {
+  border-color: var(--lavenderhill-primary) !important;
+}
+
+/* Product Badges with Animation */
+.card__badge {
+  animation: badgePulse 2s ease-in-out infinite;
+}
+
+@keyframes badgePulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
