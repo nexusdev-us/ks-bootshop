@@ -2,25 +2,27 @@
   Add here your own custom css styles
 */
 
-/* Fix navbar dropdown flickering/random opening */
-.navbar .dropdown-menu {
-  display: none !important;
-}
-
-.navbar .dropdown.show .dropdown-menu {
-  display: block !important;
-}
-
 /* Prevent hover triggering dropdowns */
 .navbar .dropdown-toggle {
   cursor: pointer;
 }
 
-/* Only open on click, not hover */
-@media (min-width: 1200px) {
-  .navbar .dropdown:hover .dropdown-menu {
-    display: none !important;
-  }
+/* Fix dropdown menus appearing behind overlay */
+.navbar .dropdown-menu {
+  z-index: 1050 !important;
+}
+
+/* Ensure dropdown shows properly */
+.navbar .dropdown-menu.show {
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Disable the backdrop overlay when dropdowns are open */
+body.navbar-dropdown-open #main::after,
+body.navbar-dropdown-open #footer-group::after {
+  display: none !important;
 }
 
 /* Disable navbar hide-on-scroll behavior to prevent flickering */

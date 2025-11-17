@@ -660,13 +660,6 @@ hr {
   margin-top: 0.5rem !important;
 }
 
-/* Fix navbar dropdown hover issues */
-.navbar .dropdown:hover .dropdown-menu {
-  pointer-events: none;
-}
-.navbar .dropdown.show .dropdown-menu {
-  pointer-events: auto;
-}
 
 .dropdown-menu.show:not([data-popper-placement]) {
   animation: dropdown-menu-aninatiom 0.2s ease-out;

@@ -13,12 +13,11 @@
           class="nav-link dropdown-toggle {% if link.child_active %}active{% endif %}"
           href="#"
           data-bs-toggle="dropdown"
-          data-bs-auto-close="true"
           aria-expanded="false"
           role="button">
           {{ link.title }}
         </a>
-        <ul class="dropdown-menu dropdown-menu-end">
+        <ul class="dropdown-menu">
           {% for child_link in link.links %}
             <li>
               {% if child_link.title == '-' %}
