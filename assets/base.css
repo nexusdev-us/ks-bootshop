@@ -655,6 +655,8 @@ hr {
   --bs-dropdown-link-active-color: currentColor;
   --bs-dropdown-spacer: .25rem;
   --bs-dropdown-divider-bg: var(--bs-border-color);
+  top: 100% !important;
+  bottom: auto !important;
 }
 
 .dropdown-menu.show:not([data-popper-placement]) {
