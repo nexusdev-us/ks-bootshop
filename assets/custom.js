@@ -43,10 +43,11 @@ document.addEventListener('DOMContentLoaded', function() {
     submenuItems.forEach(function(item) {
       let showTimeout;
       let hideTimeout;
+      const submenu = item.querySelector('.dropdown-menu');
 
+      // Parent item hover
       item.addEventListener('mouseenter', function() {
         clearTimeout(hideTimeout);
-        const submenu = this.querySelector('.dropdown-menu');
         if (submenu) {
           showTimeout = setTimeout(function() {
             submenu.style.display = 'block';
@@ -55,16 +56,32 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       });
 
-      item.addEventListener('mouseleave', function() {
+      item.addEventListener('mouseleave', function(e) {
         clearTimeout(showTimeout);
-        const submenu = this.querySelector('.dropdown-menu');
-        if (submenu) {
+        // Check if we're moving to the submenu
+        if (submenu && !submenu.contains(e.relatedTarget)) {
           hideTimeout = setTimeout(function() {
             submenu.style.display = 'none';
             submenu.style.visibility = 'hidden';
           }, 300); // 300ms delay before hiding
         }
       });
+
+      // Submenu itself - keep it open when hovering
+      if (submenu) {
+        submenu.addEventListener('mouseenter', function() {
+          clearTimeout(hideTimeout);
+          this.style.display = 'block';
+          this.style.visibility = 'visible';
+        });
+
+        submenu.addEventListener('mouseleave', function() {
+          hideTimeout = setTimeout(function() {
+            submenu.style.display = 'none';
+            submenu.style.visibility = 'hidden';
+          }, 300);
+        });
+      }
     });
   }
 });
