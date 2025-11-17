@@ -7,9 +7,13 @@
   cursor: pointer;
 }
 
-/* Keep dropdowns open while hovering over them on desktop */
+/* Disable automatic CSS hover (handled by JavaScript) */
 @media (min-width: 992px) {
-  .navbar .dropdown:hover .dropdown-menu {
+  .navbar .dropdown-menu {
+    display: none;
+  }
+
+  .navbar .dropdown-menu.show {
     display: block !important;
   }
 }

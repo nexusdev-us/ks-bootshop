@@ -10,60 +10,35 @@
 
 .dropdown-submenu > .dropdown-menu {
   position: absolute;
-  top: 0 !important;
-  left: 100% !important;
-  margin-top: 0 !important;
-  margin-left: 2px !important;
+  top: -8px !important;
+  left: calc(100% - 2px) !important;
+  margin: 0 !important;
   border-radius: 6px;
   display: none;
-}
-
-/* Show submenu on hover */
-.dropdown-submenu:hover > .dropdown-menu {
-  display: block !important;
-  visibility: visible !important;
+  visibility: hidden;
 }
 
 /* Ensure dropdown items have proper padding for hover */
 .dropdown-submenu > .dropdown-item {
-  padding-right: 2rem !important;
+  padding-right: 2.5rem !important;
   position: relative;
 }
 
-/* Create a hover bridge to prevent dropdown from closing */
-.dropdown-submenu::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: -2px;
-  width: 4px;
-  height: 100%;
-  z-index: 1051;
+/* Larger hover area for better UX */
+.navbar .dropdown-item {
+  padding: 0.5rem 1.5rem;
+  line-height: 1.8;
 }
 
-/* Enable hover for main navigation dropdowns on desktop */
+/* Smooth transitions for dropdowns */
 @media (min-width: 992px) {
-  .navbar .nav-item.dropdown:hover > .dropdown-menu {
-    display: block !important;
-    opacity: 1 !important;
-    visibility: visible !important;
-  }
-
-  /* Smooth fade-in on hover */
   .navbar .dropdown-menu {
-    display: none;
-    animation: dropdownFadeIn 0.2s ease-in-out;
+    transition: opacity 0.2s ease-in-out;
+    opacity: 0;
   }
 
-  @keyframes dropdownFadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(-5px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  .navbar .dropdown-menu.show {
+    opacity: 1;
   }
 }
 
@@ -77,10 +52,17 @@
   vertical-align: middle;
 }
 
-/* Adjust dropdown width for better readability */
+/* Adjust dropdown width and positioning for better readability */
 .navbar .dropdown-menu {
   min-width: 250px;
   max-width: 350px;
+  margin-top: 0.25rem;
+}
+
+/* Ensure main dropdowns appear directly below their trigger */
+.navbar .nav-item > .dropdown-menu {
+  top: 100%;
+  left: 0;
 }
 
 /* Improve dropdown item spacing */
