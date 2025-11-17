@@ -12,11 +12,11 @@
   position: absolute;
   top: -8px !important;
   left: 100% !important;
-  margin: 0 0 0 -4px !important;
+  margin: 0 0 0 -8px !important;
   border-radius: 6px;
   display: none;
   visibility: hidden;
-  padding-left: 4px !important;
+  padding-left: 8px !important;
 }
 
 /* Ensure dropdown items have proper padding for hover */
@@ -36,10 +36,11 @@
   content: "";
   position: absolute;
   top: 0;
-  right: -6px;
-  width: 10px;
+  right: -10px;
+  width: 20px;
   height: 100%;
   z-index: 1049;
+  pointer-events: auto;
 }
 
 /* Smooth transitions for dropdowns */

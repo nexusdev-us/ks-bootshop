@@ -37,51 +37,58 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     });
 
-    // Submenu handling
+    // Submenu handling - improved with shared timeout references
     const submenuItems = document.querySelectorAll('.dropdown-submenu');
 
     submenuItems.forEach(function(item) {
-      let showTimeout;
-      let hideTimeout;
       const submenu = item.querySelector('.dropdown-menu');
+      if (!submenu) return;
 
-      // Parent item hover
+      // Create a shared timeout object for this item and its submenu
+      const timeouts = {
+        show: null,
+        hide: null
+      };
+
+      // Function to show submenu
+      function showSubmenu() {
+        clearTimeout(timeouts.hide);
+        clearTimeout(timeouts.show);
+        submenu.style.display = 'block';
+        submenu.style.visibility = 'visible';
+      }
+
+      // Function to hide submenu
+      function hideSubmenu() {
+        clearTimeout(timeouts.show);
+        clearTimeout(timeouts.hide);
+        timeouts.hide = setTimeout(function() {
+          submenu.style.display = 'none';
+          submenu.style.visibility = 'hidden';
+        }, 400); // 400ms delay before hiding
+      }
+
+      // Parent item hover - show immediately
       item.addEventListener('mouseenter', function() {
-        clearTimeout(hideTimeout);
-        if (submenu) {
-          showTimeout = setTimeout(function() {
-            submenu.style.display = 'block';
-            submenu.style.visibility = 'visible';
-          }, 100); // 100ms delay for submenus
-        }
+        showSubmenu();
       });
 
+      // Parent item leave
       item.addEventListener('mouseleave', function(e) {
-        clearTimeout(showTimeout);
-        // Check if we're moving to the submenu
-        if (submenu && !submenu.contains(e.relatedTarget)) {
-          hideTimeout = setTimeout(function() {
-            submenu.style.display = 'none';
-            submenu.style.visibility = 'hidden';
-          }, 300); // 300ms delay before hiding
+        // Only hide if not moving to the submenu
+        if (!submenu.contains(e.relatedTarget)) {
+          hideSubmenu();
         }
       });
 
       // Submenu itself - keep it open when hovering
-      if (submenu) {
-        submenu.addEventListener('mouseenter', function() {
-          clearTimeout(hideTimeout);
-          this.style.display = 'block';
-          this.style.visibility = 'visible';
-        });
+      submenu.addEventListener('mouseenter', function() {
+        showSubmenu();
+      });
 
-        submenu.addEventListener('mouseleave', function() {
-          hideTimeout = setTimeout(function() {
-            submenu.style.display = 'none';
-            submenu.style.visibility = 'hidden';
-          }, 300);
-        });
-      }
+      submenu.addEventListener('mouseleave', function() {
+        hideSubmenu();
+      });
     });
   }
 });
