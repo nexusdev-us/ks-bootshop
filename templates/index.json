@@ -22,15 +22,9 @@
             "overlay_blur": 0,
             "subtitle": "Essential Starr's Apothecary",
             "title": "Medicines of Light",
-<<<<<<< HEAD
-            "description": "<p>Food for the skin, health for the body.<\/p>",
+            "description": "<p>Food for the skin, health for the body.</p>",
             "btn_primary_text": "",
             "btn_primary_url": "",
-=======
-            "description": "<p>Food for the skin, health for the body.</p>",
-            "btn_primary_text": "Shop now!",
-            "btn_primary_url": "shopify://collections/all",
->>>>>>> 19c1f2eb42a0560bd41a11966709da17a2d81425
             "btn_secondary_text": "",
             "btn_secondary_url": ""
           }
@@ -54,8 +48,8 @@
         "carousel_transition_duration": 500,
         "carousel_autoplay": 0,
         "carousel_effect": "carousel-zoom-in",
-        "media_mobile_height": 350,
-        "media_desktop_height": 400,
+        "media_mobile_height": 105,
+        "media_desktop_height": 120,
         "media_adapt": false,
         "media_full": true,
         "caption_max_width": "900",
