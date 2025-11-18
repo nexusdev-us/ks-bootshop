@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "type": "header",
   "name": "Header Group",
@@ -5,7 +14,7 @@
     "logo_header": {
       "type": "logo-header",
       "settings": {
-        "logo": "shopify:\/\/shop_images\/e.png",
+        "logo": "shopify://shop_images/logo_orig.webp",
         "logo_width": 120,
         "bg_color": "bg-body",
         "bg_opacity": 100,
@@ -26,7 +35,6 @@
     },
     "announcement_bar_Ge9W3V": {
       "type": "announcement-bar",
-      "disabled": true,
       "blocks": {
         "slide_j46kwk": {
           "type": "slide",
@@ -45,6 +53,7 @@
         "slide_j46kwk",
         "slide_mwF4Tk"
       ],
+      "disabled": true,
       "settings": {
         "bg_color": "bg-primary",
         "bg_opacity": 100,
@@ -72,7 +81,7 @@
           "type": "mobile",
           "settings": {
             "container_max_width": "",
-            "main_menu": "sense",
+            "main_menu": "lavenderhillbotanicals",
             "social_icons": true,
             "pt": 2,
             "pb": 2
@@ -82,7 +91,7 @@
           "type": "desktop",
           "settings": {
             "container_max_width": "",
-            "main_menu": "sense",
+            "main_menu": "lavenderhillbotanicals",
             "pt": 5,
             "pb": 5
           }
