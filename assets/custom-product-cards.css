@@ -1,145 +1,337 @@
 /*
-  Custom Product Card Styles - Essential Starr
+  Elegant Product Card Design - Essential Starr
+  Mobile-Friendly, Centered, Compact
 */
 
-/* Round product cards with no borders */
+/* ============================================
+   PRODUCT CARD CONTAINER
+   ============================================ */
+
 .product-card {
   border: none !important;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  transition: all 0.3s ease;
-  display: grid !important;
-  grid-template-rows: 1fr auto !important;
+  background: rgba(255, 255, 255, 0.8) !important;
+  backdrop-filter: blur(10px);
+  border-radius: 12px !important;
+  box-shadow: 0 2px 12px rgba(139, 92, 246, 0.08);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex !important;
+  flex-direction: column !important;
   height: 100% !important;
-}
-
-.product-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-}
-
-/* Ensure product card link grows to fill space */
-.product-card > .product-card-link {
-  display: grid !important;
-  grid-template-rows: auto minmax(3rem, auto) auto auto !important;
-  gap: 0.5rem !important;
-  align-content: start !important;
-}
-
-/* Fixed height for product titles - exactly 2 lines */
-.product-card .product-card-title,
-.product-card .product-title {
-  display: -webkit-box !important;
-  -webkit-line-clamp: 2 !important;
-  -webkit-box-orient: vertical !important;
-  overflow: hidden !important;
-  text-overflow: ellipsis !important;
-  min-height: 3rem !important;
-  max-height: 3rem !important;
-  line-height: 1.5 !important;
-  margin-bottom: 0.5rem !important;
-}
-
-/* Fixed height for rating area */
-.product-card .product-rating-badge,
-.product-card .product-rating {
-  min-height: 1.5rem !important;
-  margin-bottom: 0.5rem !important;
-}
-
-/* Fixed height for price area */
-.product-card .product-card-price,
-.product-card .product-price {
-  min-height: 2rem !important;
-  margin-bottom: 0.5rem !important;
-}
-
-/* Push the form/button to the bottom */
-.product-card > form,
-.product-card > .product-card-form,
-.product-card .product-card-atc {
-  margin-top: auto !important;
-  align-self: end !important;
-}
-
-.product-card .product-card-img-wrapper img {
-  border-radius: 15px !important;
-  border: none !important;
+  padding: 1rem !important;
+  text-align: center !important;
   overflow: hidden;
 }
 
-/* Round images in product cards */
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(139, 92, 246, 0.15);
+  background: rgba(255, 255, 255, 0.95) !important;
+}
+
+/* ============================================
+   PRODUCT LINK WRAPPER
+   ============================================ */
+
+.product-card > .product-card-link {
+  display: flex !important;
+  flex-direction: column !important;
+  flex: 1 !important;
+  text-decoration: none !important;
+  color: inherit !important;
+  gap: 0.5rem !important;
+}
+
+/* ============================================
+   PRODUCT IMAGE
+   ============================================ */
+
+.product-card .product-card-img-wrapper {
+  margin-bottom: 0.75rem !important;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.product-card .product-card-img-wrapper img {
+  border-radius: 10px !important;
+  border: none !important;
+  width: 100% !important;
+  height: auto !important;
+  object-fit: cover !important;
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover .product-card-img-wrapper img {
+  transform: scale(1.05);
+}
+
 .product-card img.img-thumbnail,
 .product-card .img-thumbnail {
   border: none !important;
   padding: 0 !important;
   background: transparent !important;
-  border-radius: 15px !important;
+  border-radius: 10px !important;
 }
 
-/* Stylish Add to Cart button */
+/* ============================================
+   PRODUCT TITLE
+   ============================================ */
+
+.product-card .product-card-title,
+.product-card .product-title {
+  font-size: 0.95rem !important;
+  font-weight: 600 !important;
+  color: #4a5568 !important;
+  line-height: 1.4 !important;
+  margin: 0 !important;
+  padding: 0 0.25rem !important;
+  text-align: center !important;
+
+  /* Single line truncation */
+  display: block !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  max-width: 100% !important;
+}
+
+.product-card:hover .product-card-title,
+.product-card:hover .product-title {
+  color: #7c3aed !important;
+}
+
+/* ============================================
+   PRODUCT RATING
+   ============================================ */
+
+.product-card .product-rating-badge,
+.product-card .product-rating {
+  margin: 0.25rem 0 !important;
+  justify-content: center !important;
+  font-size: 0.85rem !important;
+}
+
+/* ============================================
+   PRODUCT PRICE
+   ============================================ */
+
+.product-card .product-card-price,
+.product-card .product-price {
+  font-size: 1rem !important;
+  font-weight: 700 !important;
+  color: #7c3aed !important;
+  margin: 0.5rem 0 !important;
+  text-align: center !important;
+}
+
+.product-card .product-price .price-compare {
+  font-size: 0.85rem !important;
+  color: #9ca3af !important;
+  text-decoration: line-through !important;
+  margin-right: 0.25rem !important;
+}
+
+/* ============================================
+   ADD TO CART BUTTON - ELEGANT & COMPACT
+   ============================================ */
+
+.product-card > form,
+.product-card > .product-card-form {
+  margin-top: auto !important;
+  padding-top: 0.5rem !important;
+}
+
 .product-card .btn-primary,
 .product-card .btn-add-to-cart,
-.product-block-atc-button .btn-primary,
-.btn-primary[name="add"] {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  border: none;
-  border-radius: 25px;
-  padding: 0.6rem 1.5rem;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+.product-card button[name="add"] {
+  background: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 100%) !important;
+  border: none !important;
+  border-radius: 8px !important;
+  padding: 0.5rem 1rem !important;
+  font-size: 0.875rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.3px !important;
+  color: white !important;
+  width: 100% !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 2px 8px rgba(139, 92, 246, 0.2) !important;
+  text-transform: none !important;
 }
 
 .product-card .btn-primary:hover,
 .product-card .btn-add-to-cart:hover,
-.product-block-atc-button .btn-primary:hover,
-.btn-primary[name="add"]:hover {
-  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+.product-card button[name="add"]:hover {
+  background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3) !important;
 }
 
-/* Add to cart button with icon */
-.btn-primary[name="add"]::before {
-  content: "🛒 ";
-  margin-right: 5px;
+/* Remove cart emoji for cleaner look */
+.product-card .btn-primary[name="add"]::before,
+.product-card button[name="add"]::before {
+  content: "" !important;
+  margin-right: 0 !important;
 }
 
-/* Product page add to cart button */
+/* ============================================
+   BADGES (SALE/SOLD OUT)
+   ============================================ */
+
+.product-card .product-sale-badge {
+  position: absolute !important;
+  top: 0.5rem !important;
+  right: 0.5rem !important;
+  background: linear-gradient(135deg, #ec4899 0%, #db2777 100%) !important;
+  color: white !important;
+  font-size: 0.75rem !important;
+  font-weight: 700 !important;
+  padding: 0.25rem 0.6rem !important;
+  border-radius: 6px !important;
+  box-shadow: 0 2px 8px rgba(219, 39, 119, 0.3) !important;
+  z-index: 2 !important;
+}
+
+.product-card .product-sold-out-badge {
+  position: absolute !important;
+  top: 0.5rem !important;
+  left: 0.5rem !important;
+  background: rgba(31, 41, 55, 0.9) !important;
+  color: white !important;
+  font-size: 0.75rem !important;
+  font-weight: 700 !important;
+  padding: 0.25rem 0.6rem !important;
+  border-radius: 6px !important;
+  z-index: 2 !important;
+}
+
+/* ============================================
+   PRODUCT PAGE ADD TO CART (LARGER)
+   ============================================ */
+
 .product-main .btn-primary[name="add"] {
-  width: 100%;
-  padding: 0.8rem 2rem;
-  font-size: 1.1rem;
-  margin-top: 1rem;
-  background: linear-gradient(135deg, #004071 0%, #9b046f 100%);
-  box-shadow: 0 4px 20px rgba(0, 64, 113, 0.3);
+  width: 100% !important;
+  padding: 0.85rem 2rem !important;
+  font-size: 1rem !important;
+  margin-top: 1rem !important;
+  background: linear-gradient(135deg, #7c3aed 0%, #6b21a8 100%) !important;
+  border-radius: 10px !important;
+  box-shadow: 0 4px 16px rgba(124, 58, 237, 0.3) !important;
 }
 
 .product-main .btn-primary[name="add"]:hover {
-  background: linear-gradient(135deg, #9b046f 0%, #004071 100%);
-  box-shadow: 0 6px 25px rgba(155, 4, 111, 0.4);
+  background: linear-gradient(135deg, #6b21a8 0%, #581c87 100%) !important;
+  box-shadow: 0 6px 20px rgba(107, 33, 168, 0.4) !important;
 }
 
-/* Quick view button styling */
+.product-main .btn-primary[name="add"]::before {
+  content: "🛒 " !important;
+  margin-right: 0.5rem !important;
+}
+
+/* ============================================
+   QUICK VIEW BUTTON
+   ============================================ */
+
 .product-card .btn-quick-view,
 .product-card .btn-outline-primary {
-  border-radius: 20px;
-  border-width: 2px;
-  transition: all 0.3s ease;
+  border-radius: 8px !important;
+  border: 2px solid #a78bfa !important;
+  color: #7c3aed !important;
+  padding: 0.4rem 0.8rem !important;
+  font-size: 0.85rem !important;
+  font-weight: 600 !important;
+  transition: all 0.3s ease !important;
+  background: transparent !important;
 }
 
-/* Collection page product cards */
-.collection-products .product-card {
-  margin-bottom: 1.5rem;
+.product-card .btn-quick-view:hover,
+.product-card .btn-outline-primary:hover {
+  background: #a78bfa !important;
+  color: white !important;
+  border-color: #a78bfa !important;
 }
 
-/* Fix for carousel in product cards */
+/* ============================================
+   CAROUSEL IN PRODUCT CARDS
+   ============================================ */
+
 .product-card .carousel-inner {
-  border-radius: 15px;
-  overflow: hidden;
+  border-radius: 10px !important;
+  overflow: hidden !important;
 }
 
 .product-card .carousel-item img {
   border-radius: 0 !important;
+}
+
+.product-card .carousel-control-prev,
+.product-card .carousel-control-next {
+  opacity: 0 !important;
+  transition: opacity 0.3s ease !important;
+}
+
+.product-card:hover .carousel-control-prev,
+.product-card:hover .carousel-control-next {
+  opacity: 0.7 !important;
+}
+
+/* ============================================
+   MOBILE RESPONSIVENESS
+   ============================================ */
+
+@media (max-width: 576px) {
+  .product-card {
+    padding: 0.75rem !important;
+  }
+
+  .product-card .product-card-title,
+  .product-card .product-title {
+    font-size: 0.9rem !important;
+  }
+
+  .product-card .btn-primary,
+  .product-card .btn-add-to-cart,
+  .product-card button[name="add"] {
+    padding: 0.45rem 0.8rem !important;
+    font-size: 0.85rem !important;
+  }
+}
+
+@media (min-width: 577px) and (max-width: 991px) {
+  .product-card {
+    padding: 0.85rem !important;
+  }
+}
+
+/* ============================================
+   COLLECTION PAGE SPACING
+   ============================================ */
+
+.collection-products .product-card,
+.featured-products .product-card {
+  margin-bottom: 1.25rem !important;
+}
+
+/* ============================================
+   LOADING STATE (OPTIONAL)
+   ============================================ */
+
+.product-card.loading {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* ============================================
+   FOCUS STATES FOR ACCESSIBILITY
+   ============================================ */
+
+.product-card:focus-within {
+  outline: 2px solid #a78bfa !important;
+  outline-offset: 2px !important;
+}
+
+.product-card .btn-primary:focus,
+.product-card .btn-add-to-cart:focus {
+  outline: 2px solid #7c3aed !important;
+  outline-offset: 2px !important;
 }
