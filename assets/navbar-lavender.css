@@ -240,24 +240,6 @@
     border-top: 3px solid #a78bfa;
   }
 
-  #offcanvas-menu .offcanvas-header {
-    background: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 100%);
-    color: white;
-    padding: 1rem 1.5rem;
-    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
-  }
-
-  #offcanvas-menu .offcanvas-title {
-    font-weight: 700;
-    font-size: 1.25rem;
-    color: white;
-  }
-
-  #offcanvas-menu .btn-close {
-    filter: brightness(0) invert(1);
-    opacity: 1;
-  }
-
   #offcanvas-menu .offcanvas-body {
     padding: 2rem 1.5rem;
   }
@@ -271,15 +253,6 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    cursor: pointer;
-    user-select: none;
-    -webkit-tap-highlight-color: rgba(167, 139, 250, 0.2);
-  }
-
-  /* Ensure collapse toggle links are clearly interactive */
-  #offcanvas-menu .nav-link[data-bs-toggle="collapse"] {
-    pointer-events: auto !important;
-    touch-action: manipulation !important;
   }
 
   #offcanvas-menu .nav-link:hover {
@@ -314,48 +287,6 @@
   #offcanvas-menu .collapse {
     margin-top: 0.5rem;
     padding-left: 0.5rem;
-  }
-
-  /* Chevron rotation for dropdowns */
-  #offcanvas-menu .nav-link svg {
-    transition: transform 0.3s ease;
-  }
-
-  #offcanvas-menu .nav-link[aria-expanded="true"] svg {
-    transform: rotate(180deg);
-  }
-
-  /* Ensure collapse elements work properly */
-  #offcanvas-menu .collapse {
-    transition: none !important; /* Remove transition for immediate response */
-  }
-
-  #offcanvas-menu .collapse.show {
-    display: block !important;
-    background: rgba(255, 255, 255, 0.5);
-    border-radius: 8px;
-    padding: 0.5rem;
-    margin-top: 0.5rem;
-  }
-
-  #offcanvas-menu .collapse:not(.show) {
-    display: none !important;
-  }
-
-  /* Style the nested menu items */
-  #offcanvas-menu .collapse ul {
-    list-style: none !important;
-    padding: 0 !important;
-    margin: 0 !important;
-  }
-
-  #offcanvas-menu .collapse li {
-    margin: 0.25rem 0 !important;
-  }
-
-  /* Make sure collapse is visible and clickable */
-  #offcanvas-menu .collapse-wrapper {
-    position: relative !important;
   }
 }
 
