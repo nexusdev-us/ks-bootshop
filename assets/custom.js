@@ -2,34 +2,37 @@
   Add here your own custom javascript codes
 */
 
-// Mobile menu - close offcanvas when clicking a link (but not collapse toggles)
+// Mobile menu - close offcanvas when clicking actual navigation links only
 document.addEventListener('DOMContentLoaded', function() {
   const offcanvasMenu = document.getElementById('offcanvas-menu');
 
   if (offcanvasMenu) {
-    // Only get links that are actual navigation links (not collapse toggles)
-    const navigationLinks = offcanvasMenu.querySelectorAll('a.dropdown-item');
+    // Wait for Bootstrap to be ready
+    setTimeout(function() {
+      // Get ALL links in the offcanvas
+      const allLinks = offcanvasMenu.querySelectorAll('a');
 
-    navigationLinks.forEach(link => {
-      link.addEventListener('click', function(e) {
-        // Close the offcanvas when clicking a submenu item
-        const bsOffcanvas = bootstrap.Offcanvas.getInstance(offcanvasMenu);
-        if (bsOffcanvas) {
-          bsOffcanvas.hide();
-        }
-      });
-    });
+      allLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          const href = this.getAttribute('href');
+          const hasToggle = this.getAttribute('data-bs-toggle');
 
-    // Handle top-level links that don't have children
-    const topLevelLinks = offcanvasMenu.querySelectorAll('.nav-item:not(.collapse-wrapper) > a.nav-link');
-    topLevelLinks.forEach(link => {
-      link.addEventListener('click', function(e) {
-        // Close the offcanvas when clicking a top-level link without children
-        const bsOffcanvas = bootstrap.Offcanvas.getInstance(offcanvasMenu);
-        if (bsOffcanvas) {
-          bsOffcanvas.hide();
-        }
+          // Only close if:
+          // 1. It's a real URL (not a collapse toggle starting with #offcanvas-menu-collapse)
+          // 2. It doesn't have data-bs-toggle="collapse"
+          if (href &&
+              !href.startsWith('#offcanvas-menu-collapse') &&
+              hasToggle !== 'collapse') {
+
+            // This is a navigation link, close the menu
+            const bsOffcanvas = bootstrap.Offcanvas.getInstance(offcanvasMenu);
+            if (bsOffcanvas) {
+              bsOffcanvas.hide();
+            }
+          }
+          // If it has data-bs-toggle="collapse", do nothing and let Bootstrap handle it
+        });
       });
-    });
+    }, 100);
   }
 });
