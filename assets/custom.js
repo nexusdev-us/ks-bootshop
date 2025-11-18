@@ -2,7 +2,7 @@
   Add here your own custom javascript codes
 */
 
-// Mobile menu - close offcanvas when clicking a link
+// Mobile menu - add dismiss attribute to links
 document.addEventListener('DOMContentLoaded', function() {
   const offcanvasMenu = document.getElementById('offcanvas-menu');
 
@@ -11,16 +11,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const menuLinks = offcanvasMenu.querySelectorAll('a.nav-link, a.dropdown-item');
 
     menuLinks.forEach(link => {
-      link.addEventListener('click', function(e) {
-        // Only close if it's an actual link (not a collapse toggle)
-        if (this.getAttribute('href') && !this.getAttribute('href').startsWith('#offcanvas-menu-collapse')) {
-          // Close the offcanvas
-          const bsOffcanvas = bootstrap.Offcanvas.getInstance(offcanvasMenu);
-          if (bsOffcanvas) {
-            bsOffcanvas.hide();
-          }
-        }
-      });
+      const href = link.getAttribute('href');
+
+      // Only add dismiss to actual page links (not collapse toggles)
+      if (href && !href.startsWith('#offcanvas-menu-collapse') && !href.startsWith('#modal')) {
+        link.setAttribute('data-bs-dismiss', 'offcanvas');
+      }
     });
   }
 });
