@@ -240,6 +240,24 @@
     border-top: 3px solid #a78bfa;
   }
 
+  #offcanvas-menu .offcanvas-header {
+    background: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 100%);
+    color: white;
+    padding: 1rem 1.5rem;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+  }
+
+  #offcanvas-menu .offcanvas-title {
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: white;
+  }
+
+  #offcanvas-menu .btn-close {
+    filter: brightness(0) invert(1);
+    opacity: 1;
+  }
+
   #offcanvas-menu .offcanvas-body {
     padding: 2rem 1.5rem;
   }

@@ -1,9 +1,15 @@
-<div 
-  id="offcanvas-menu" 
-  class="offcanvas offcanvas-bottom" 
-  tabindex="-1" 
-  data-bs-backdrop="false"
+<div
+  id="offcanvas-menu"
+  class="offcanvas offcanvas-bottom"
+  tabindex="-1"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  data-bs-scroll="true"
   aria-label="{{ 'general.accessibility.menu' | t }}">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title">Menu</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
   <div class="offcanvas-body">
     {% unless block.settings.main_menu == nil %}
       <ul class="nav accordion-nav mb-9">
