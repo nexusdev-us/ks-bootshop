@@ -2,21 +2,34 @@
   Add here your own custom javascript codes
 */
 
-// Mobile menu - add dismiss attribute to links
+// Mobile menu - close offcanvas when clicking a link (but not collapse toggles)
 document.addEventListener('DOMContentLoaded', function() {
   const offcanvasMenu = document.getElementById('offcanvas-menu');
 
   if (offcanvasMenu) {
-    // Get all links in the offcanvas menu
-    const menuLinks = offcanvasMenu.querySelectorAll('a.nav-link, a.dropdown-item');
+    // Only get links that are actual navigation links (not collapse toggles)
+    const navigationLinks = offcanvasMenu.querySelectorAll('a.dropdown-item');
 
-    menuLinks.forEach(link => {
-      const href = link.getAttribute('href');
+    navigationLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        // Close the offcanvas when clicking a submenu item
+        const bsOffcanvas = bootstrap.Offcanvas.getInstance(offcanvasMenu);
+        if (bsOffcanvas) {
+          bsOffcanvas.hide();
+        }
+      });
+    });
 
-      // Only add dismiss to actual page links (not collapse toggles)
-      if (href && !href.startsWith('#offcanvas-menu-collapse') && !href.startsWith('#modal')) {
-        link.setAttribute('data-bs-dismiss', 'offcanvas');
-      }
+    // Handle top-level links that don't have children
+    const topLevelLinks = offcanvasMenu.querySelectorAll('.nav-item:not(.collapse-wrapper) > a.nav-link');
+    topLevelLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        // Close the offcanvas when clicking a top-level link without children
+        const bsOffcanvas = bootstrap.Offcanvas.getInstance(offcanvasMenu);
+        if (bsOffcanvas) {
+          bsOffcanvas.hide();
+        }
+      });
     });
   }
 });
