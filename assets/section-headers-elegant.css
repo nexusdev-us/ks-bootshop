@@ -3,16 +3,16 @@
    ============================================ */
 
 .section-header {
-  margin-bottom: 3.5rem !important;
-  padding: 2rem 1rem !important;
+  margin-bottom: 2rem !important;
+  padding: 1.5rem 1rem !important;
   position: relative;
 }
 
 /* Desktop - more spacing */
 @media (min-width: 992px) {
   .section-header {
-    margin-bottom: 4.5rem !important;
-    padding: 2.5rem 2rem !important;
+    margin-bottom: 2.5rem !important;
+    padding: 1.75rem 2rem !important;
   }
 }
 
@@ -137,8 +137,8 @@
 
 @media (max-width: 767px) {
   .section-header {
-    margin-bottom: 2.5rem !important;
-    padding: 1.5rem 0.5rem !important;
+    margin-bottom: 1.5rem !important;
+    padding: 1rem 0.5rem !important;
   }
 
   .section-header .title {
@@ -165,7 +165,7 @@
 
 @media (min-width: 768px) and (max-width: 991px) {
   .section-header {
-    margin-bottom: 3rem !important;
+    margin-bottom: 2rem !important;
   }
 
   .section-header .title {
