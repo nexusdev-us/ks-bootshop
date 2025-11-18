@@ -11,28 +11,6 @@
   "sections": {
     "hero_carousel": {
       "type": "hero-carousel",
-      "blocks": {
-        "slide_1": {
-          "type": "slide",
-          "settings": {
-            "img_mobile": "shopify://shop_images/herobg.jpg",
-            "img_desktop": "shopify://shop_images/herobg.jpg",
-            "overlay_color": "#000000",
-            "overlay_opacity": 10,
-            "overlay_blur": 0,
-            "subtitle": "Essential Starr's Apothecary",
-            "title": "Medicines of Light",
-            "description": "<p>Food for the skin, health for the body.</p>",
-            "btn_primary_text": "",
-            "btn_primary_url": "",
-            "btn_secondary_text": "",
-            "btn_secondary_url": ""
-          }
-        }
-      },
-      "block_order": [
-        "slide_1"
-      ],
       "settings": {
         "bg_color": "bg-body",
         "bg_opacity": 100,
@@ -48,8 +26,8 @@
         "carousel_transition_duration": 500,
         "carousel_autoplay": 0,
         "carousel_effect": "carousel-zoom-in",
-        "media_mobile_height": 105,
-        "media_desktop_height": 120,
+        "media_mobile_height": 500,
+        "media_desktop_height": 600,
         "media_adapt": false,
         "media_full": true,
         "caption_max_width": "900",
@@ -62,33 +40,6 @@
         "btn_font_size": "fs-md",
         "pt": 0,
         "pb": 0
-      }
-    },
-    "richtext_welcome": {
-      "type": "richtext",
-      "settings": {
-        "bg_color": "bg-body",
-        "bg_opacity": 100,
-        "bg_gradient": "",
-        "text_color": "text-body",
-        "border_top_width": 0,
-        "border_bottom_width": 0,
-        "border_color": "border-primary",
-        "border_opacity": 100,
-        "container_max_width": "900",
-        "text_align": "text-center",
-        "title": "Welcome to Essential Starr's Apothecary",
-        "title_font_size": "h2",
-        "description": "<p>We specialize in selecting some of the World's Finest Ingredients from boutique distillers around the world. These specially handcrafted products are food for the skin and health for the body.</p><p>Today's topical products generally contain synthetics and phthalates that wreak havoc on our bodies and immune system. On the contrary, we can nurture and feed our system with carefully crafted pure ingredients, done in small batches and with love.</p><p>We invite you to shop our collections below to experience the Essential Starr difference for yourself!</p>",
-        "description_font_size": "fs-md",
-        "btn_primary_text": "",
-        "btn_primary_url": "",
-        "btn_primary_color": "btn-primary",
-        "btn_secondary_text": "",
-        "btn_secondary_url": "",
-        "btn_secondary_color": "btn-secondary",
-        "pt": 10,
-        "pb": 8
       }
     },
     "featured_summer": {
@@ -108,7 +59,7 @@
         "limit": 4,
         "recommended_mode": false,
         "recommended_mode_intent": "related",
-        "header_title": "Featured Products",
+        "header_title": "Premium Products",
         "header_title_font_size": "h2",
         "header_description": "",
         "header_description_font_size": "fs-md",
@@ -139,11 +90,11 @@
         "border_opacity": 100,
         "container_max_width": "",
         "products": [],
-        "collection": "all",
+        "collection": "pure-essential-oils-single-note",
         "limit": 4,
         "recommended_mode": false,
         "recommended_mode_intent": "related",
-        "header_title": "Tea Collection",
+        "header_title": "Essential Oils",
         "header_title_font_size": "h2",
         "header_description": "",
         "header_description_font_size": "fs-md",
@@ -304,7 +255,6 @@
   },
   "order": [
     "hero_carousel",
-    "richtext_welcome",
     "featured_summer",
     "featured_tea",
     "featured_essential_oils",
