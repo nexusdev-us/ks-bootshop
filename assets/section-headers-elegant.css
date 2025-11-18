@@ -1,0 +1,230 @@
+/* ============================================
+   ELEGANT SECTION HEADERS - BADASS DESIGN
+   ============================================ */
+
+.section-header {
+  margin-bottom: 3.5rem !important;
+  padding: 2rem 1rem !important;
+  position: relative;
+}
+
+/* Desktop - more spacing */
+@media (min-width: 992px) {
+  .section-header {
+    margin-bottom: 4.5rem !important;
+    padding: 2.5rem 2rem !important;
+  }
+}
+
+/* ============================================
+   TITLE STYLING - ELEGANT & BADASS
+   ============================================ */
+
+.section-header .title {
+  font-weight: 700 !important;
+  letter-spacing: 0.5px !important;
+  margin-bottom: 1rem !important;
+  position: relative;
+  display: inline-block;
+  padding: 1rem 2.5rem !important;
+
+  /* Gradient text effect */
+  background: linear-gradient(135deg, #7c3aed 0%, #a78bfa 50%, #6b21a8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  background-size: 200% 200%;
+  animation: gradientShift 4s ease infinite;
+
+  /* Background shape behind text */
+  z-index: 1;
+}
+
+.section-header .title::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(100% + 1.5rem);
+  height: calc(100% + 0.75rem);
+  background: linear-gradient(135deg, rgba(167, 139, 250, 0.12) 0%, rgba(139, 92, 246, 0.12) 100%);
+  border-radius: 12px;
+  z-index: -1;
+  border: 2px solid rgba(167, 139, 250, 0.2);
+  box-shadow:
+    0 4px 20px rgba(139, 92, 246, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+/* Decorative accents on either side */
+.section-header .title::after {
+  content: '';
+  position: absolute;
+  bottom: -0.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #a78bfa, transparent);
+  border-radius: 2px;
+}
+
+/* Animated gradient shift */
+@keyframes gradientShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Hover effect - subtle glow */
+.section-header .title:hover::before {
+  background: linear-gradient(135deg, rgba(167, 139, 250, 0.18) 0%, rgba(139, 92, 246, 0.18) 100%);
+  border-color: rgba(167, 139, 250, 0.35);
+  box-shadow:
+    0 6px 28px rgba(139, 92, 246, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  transition: all 0.3s ease;
+}
+
+/* ============================================
+   DESCRIPTION STYLING
+   ============================================ */
+
+.section-header .description {
+  max-width: 700px !important;
+  margin: 1.5rem auto 0 !important;
+  color: #6b7280 !important;
+  font-size: 1rem !important;
+  line-height: 1.7 !important;
+  padding: 0 1rem !important;
+}
+
+/* ============================================
+   ALTERNATIVE STYLE - UNDERLINE EFFECT
+   ============================================ */
+
+.featured-products:nth-child(even) .section-header .title::before {
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.08) 0%, rgba(124, 58, 237, 0.08) 100%);
+  border-left: 4px solid #a78bfa;
+  border-right: 4px solid #a78bfa;
+}
+
+/* ============================================
+   ICON DECORATION (OPTIONAL)
+   ============================================ */
+
+.section-header .title > span::before {
+  content: '✨';
+  margin-right: 0.75rem;
+  font-size: 0.9em;
+  opacity: 0.7;
+}
+
+.section-header .title > span::after {
+  content: '✨';
+  margin-left: 0.75rem;
+  font-size: 0.9em;
+  opacity: 0.7;
+}
+
+/* ============================================
+   MOBILE RESPONSIVENESS
+   ============================================ */
+
+@media (max-width: 767px) {
+  .section-header {
+    margin-bottom: 2.5rem !important;
+    padding: 1.5rem 0.5rem !important;
+  }
+
+  .section-header .title {
+    font-size: 1.5rem !important;
+    padding: 0.75rem 1.5rem !important;
+  }
+
+  .section-header .title::before {
+    width: calc(100% + 1rem);
+    height: calc(100% + 0.5rem);
+  }
+
+  .section-header .description {
+    font-size: 0.95rem !important;
+    margin-top: 1rem !important;
+  }
+
+  /* Remove sparkle emojis on mobile for cleaner look */
+  .section-header .title > span::before,
+  .section-header .title > span::after {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .section-header {
+    margin-bottom: 3rem !important;
+  }
+
+  .section-header .title {
+    font-size: 1.75rem !important;
+  }
+}
+
+/* ============================================
+   SPECIAL EFFECTS FOR FIRST SECTION
+   ============================================ */
+
+.shopify-section:first-of-type .section-header .title::before {
+  background: linear-gradient(135deg, rgba(167, 139, 250, 0.15) 0%, rgba(139, 92, 246, 0.15) 100%);
+  box-shadow:
+    0 6px 24px rgba(139, 92, 246, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+/* ============================================
+   COLLECTION PAGE HEADERS
+   ============================================ */
+
+.collection-header .title,
+.collection-products .section-header .title {
+  background: linear-gradient(135deg, #7c3aed 0%, #ec4899 50%, #a78bfa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  background-size: 200% 200%;
+  animation: gradientShift 4s ease infinite;
+}
+
+/* ============================================
+   CENTERED LAYOUT
+   ============================================ */
+
+.section-header {
+  text-align: center !important;
+}
+
+.section-header .title {
+  text-align: center !important;
+}
+
+/* ============================================
+   SPACING ADJUSTMENTS
+   ============================================ */
+
+/* Add extra space after section header before swiper */
+.section-header + .swiper {
+  margin-top: 0 !important;
+}
+
+.featured-products .section-header {
+  padding-bottom: 2rem !important;
+}
+
+/* Remove negative margins that might reduce spacing */
+.featured-products .swiper.mt-n3,
+.featured-products .swiper.mt-desktop-n5 {
+  margin-top: 0 !important;
+}

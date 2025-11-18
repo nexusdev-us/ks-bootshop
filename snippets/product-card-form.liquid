@@ -16,20 +16,6 @@
 
 <product-form>
   {% form 'product', product, data-productid: product.id %}
-    {% if product.has_only_default_variant %}
-      <input type="hidden" name="id" data-productid="{{ product.id }}" value="{{ product.first_available_variant.id }}">
-    {% else %}
-      <select 
-        class="form-select form-select-sm mb-3"
-        name="id" 
-        aria-label="{{ 'product.select_variant' | t }}">
-        {% for variant in product.variants %}
-          <option value="{{ variant.id }}" {% unless variant.available %}disabled{% endunless %}>
-            {{ variant.title }} - {{ variant.price | money_without_trailing_zeros }}
-          </option>
-        {% endfor %}
-      </select>
-    {% endif %}
     <button
       class="btn btn-atc btn-sm {{ btn_color }}"
       type="submit"
@@ -41,5 +27,19 @@
         {{ 'product.sold_out' | t }}
       {% endif %}
     </button>
+    {% if product.has_only_default_variant %}
+      <input type="hidden" name="id" data-productid="{{ product.id }}" value="{{ product.first_available_variant.id }}">
+    {% else %}
+      <select
+        class="form-select form-select-sm mt-3"
+        name="id"
+        aria-label="{{ 'product.select_variant' | t }}">
+        {% for variant in product.variants %}
+          <option value="{{ variant.id }}" {% unless variant.available %}disabled{% endunless %}>
+            {{ variant.title }} - {{ variant.price | money_without_trailing_zeros }}
+          </option>
+        {% endfor %}
+      </select>
+    {% endif %}
   {% endform %}
 </product-form>
