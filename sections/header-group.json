@@ -14,6 +14,16 @@
         "pb": 4
       }
     },
+    "announce_transition": {
+      "type": "announce",
+      "settings": {
+        "collapsed_text": "Awesome Announcement!",
+        "highlight_text": "Essential Starr joins Lavender Hill Botanicals",
+        "button_text": "Read the Full Story →",
+        "letter_title": "✨ Essential Starr Transitions to Lavender Hill Botanicals",
+        "letter_subtitle": "Continuing the Legacy of Light, Love, and Botanical Beauty"
+      }
+    },
     "announcement_bar_Ge9W3V": {
       "type": "announcement-bar",
       "disabled": true,
@@ -89,6 +99,7 @@
   },
   "order": [
     "logo_header",
+    "announce_transition",
     "announcement_bar_Ge9W3V",
     "navbar"
   ]

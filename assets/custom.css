@@ -15,6 +15,16 @@ body {
   min-height: 100vh;
 }
 
+/* Desktop margins - 7% on each side */
+@media (min-width: 992px) {
+  #header-group,
+  #main,
+  #footer-group {
+    margin-left: 7% !important;
+    margin-right: 7% !important;
+  }
+}
+
 /* Logo header scrolls away naturally (not sticky) */
 #logo-header {
   position: relative;

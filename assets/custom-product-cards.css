@@ -7,8 +7,8 @@
   border: none !important;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   transition: all 0.3s ease;
-  display: flex !important;
-  flex-direction: column !important;
+  display: grid !important;
+  grid-template-rows: 1fr auto !important;
   height: 100% !important;
 }
 
@@ -19,35 +19,38 @@
 
 /* Ensure product card link grows to fill space */
 .product-card > .product-card-link {
-  flex-grow: 1;
-  display: flex !important;
-  flex-direction: column !important;
+  display: grid !important;
+  grid-template-rows: auto minmax(3rem, auto) auto auto !important;
+  gap: 0.5rem !important;
+  align-content: start !important;
 }
 
-/* Card body should also use flexbox */
-.product-card .card-body {
-  padding: 1rem 0.5rem;
-  display: flex !important;
-  flex-direction: column !important;
-  flex-grow: 1 !important;
-}
-
-/* Product info (title, description, price) should grow */
-.product-card .product-card-info,
-.product-card .card-title,
-.product-card .product-card-title {
-  flex-grow: 0 !important;
-}
-
-/* Description should have fixed height or clamp */
-.product-card .product-card-description,
-.product-card .card-text {
+/* Fixed height for product titles - exactly 2 lines */
+.product-card .product-card-title,
+.product-card .product-title {
   display: -webkit-box !important;
   -webkit-line-clamp: 2 !important;
   -webkit-box-orient: vertical !important;
   overflow: hidden !important;
   text-overflow: ellipsis !important;
   min-height: 3rem !important;
+  max-height: 3rem !important;
+  line-height: 1.5 !important;
+  margin-bottom: 0.5rem !important;
+}
+
+/* Fixed height for rating area */
+.product-card .product-rating-badge,
+.product-card .product-rating {
+  min-height: 1.5rem !important;
+  margin-bottom: 0.5rem !important;
+}
+
+/* Fixed height for price area */
+.product-card .product-card-price,
+.product-card .product-price {
+  min-height: 2rem !important;
+  margin-bottom: 0.5rem !important;
 }
 
 /* Push the form/button to the bottom */
@@ -55,6 +58,7 @@
 .product-card > .product-card-form,
 .product-card .product-card-atc {
   margin-top: auto !important;
+  align-self: end !important;
 }
 
 .product-card .product-card-img-wrapper img {

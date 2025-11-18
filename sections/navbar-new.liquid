@@ -8,8 +8,8 @@
       {%- comment -%} Mobile Navigation {%- endcomment -%}
       <nav id="navbar-mobile" class="navbar d-desktop-none p-0" {{ block.shopify_attributes }}>
         <div class="container d-block pt-{{ block.settings.pt }} pb-{{ block.settings.pb }}" style="max-width: {{ block.settings.container_max_width | append: 'px' }};">
-          <div class="row align-items-center">
-            <div class="col-6">
+          <div class="d-flex align-items-center justify-content-between w-100">
+            <div>
               <ul class="nav flex-nowrap">
                 <li class="nav-item">
                   <a class="nav-link nav-link-icon ms-n3" href="#offcanvas-menu" data-bs-toggle="offcanvas" aria-controls="offcanvas-menu" aria-label="{{ 'general.accessibility.menu' | t }}" role="button">
@@ -25,8 +25,8 @@
                 {% endif %}
               </ul>
             </div>
-            <div class="col-6">
-              <ul class="nav flex-nowrap justify-content-end">
+            <div>
+              <ul class="nav flex-nowrap">
                 {% if settings.search %}
                   <li class="nav-item">
                     <a class="nav-link nav-link-icon" href="#offcanvas-search" data-bs-toggle="offcanvas" aria-controls="offcanvas-search" aria-label="{{ 'general.accessibility.search' | t }}" role="button">
