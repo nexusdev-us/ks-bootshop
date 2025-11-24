@@ -185,21 +185,99 @@
   font-size: 0.85rem !important;
   color: #4a5568 !important;
   background-color: rgba(255, 255, 255, 0.9) !important;
-  transition: all 0.3s ease !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
   text-align: center !important;
+  cursor: pointer !important;
+  appearance: none !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%237c3aed' d='M6 9L1 4h10z'/%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-position: right 0.75rem center !important;
+  background-size: 12px !important;
+  padding-right: 2rem !important;
+  transform: translateY(0) !important;
+  box-shadow: 0 1px 3px rgba(139, 92, 246, 0.1) !important;
 }
 
-.product-card select.form-select:hover,
-.product-card .form-select:hover {
-  border-color: #c4b5fd !important;
-  background-color: white !important;
+/* Desktop-specific smooth animations */
+@media (min-width: 992px) {
+  .product-card select.form-select,
+  .product-card .form-select {
+    animation: fadeInUp 0.3s ease-out !important;
+    position: relative !important;
+    z-index: 10 !important;
+  }
+
+  .product-card select.form-select:hover,
+  .product-card .form-select:hover {
+    border-color: #a78bfa !important;
+    background-color: white !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 16px rgba(139, 92, 246, 0.18) !important;
+    backdrop-filter: blur(8px) !important;
+  }
+
+  .product-card select.form-select:focus,
+  .product-card .form-select:focus {
+    border-color: #7c3aed !important;
+    box-shadow: 0 8px 24px rgba(139, 92, 246, 0.25), 0 0 0 3px rgba(167, 139, 250, 0.15) !important;
+    outline: none !important;
+    transform: translateY(-3px) scale(1.02) !important;
+    background-color: white !important;
+    backdrop-filter: blur(10px) !important;
+  }
+
+  /* Smooth animation when select appears */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(5px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Subtle pulse animation for hover */
+  @keyframes subtlePulse {
+    0% {
+      transform: translateY(0) scale(1);
+    }
+    50% {
+      transform: translateY(-1px) scale(1.02);
+    }
+    100% {
+      transform: translateY(-1px) scale(1);
+    }
+  }
+
+  /* Option hover effect (for browsers that support it) */
+  .product-card select.form-select option:hover,
+  .product-card .form-select option:hover {
+    background-color: #f3f4f6 !important;
+  }
+
+  /* Active/open state */
+  .product-card select.form-select:active,
+  .product-card .form-select:active {
+    transform: scale(0.99) !important;
+  }
 }
 
-.product-card select.form-select:focus,
-.product-card .form-select:focus {
-  border-color: #a78bfa !important;
-  box-shadow: 0 0 0 3px rgba(167, 139, 250, 0.1) !important;
-  outline: none !important;
+/* Mobile-specific styles (keep existing behavior) */
+@media (max-width: 991px) {
+  .product-card select.form-select:hover,
+  .product-card .form-select:hover {
+    border-color: #c4b5fd !important;
+    background-color: white !important;
+  }
+
+  .product-card select.form-select:focus,
+  .product-card .form-select:focus {
+    border-color: #a78bfa !important;
+    box-shadow: 0 0 0 3px rgba(167, 139, 250, 0.1) !important;
+    outline: none !important;
+  }
 }
 
 /* ============================================
