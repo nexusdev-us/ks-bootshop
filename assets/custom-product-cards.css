@@ -464,54 +464,72 @@
    CENTER INCOMPLETE COLLECTION ROWS
    ============================================ */
 
-/* Center product grids with incomplete rows */
+/* Use flexbox for centering incomplete rows */
 .product-list.row,
-.collection-products .row,
-.search-main .row {
+.collection-products .product-list,
+.search-main .product-list {
   display: flex !important;
   flex-wrap: wrap !important;
   justify-content: center !important;
-  align-items: flex-start !important;
+  margin-left: -1rem !important;
+  margin-right: -1rem !important;
 }
 
-/* Ensure proper spacing for centered items */
+/* Override Bootstrap's percentage-based widths with fixed max-widths */
 .product-list > div {
-  display: flex !important;
-  justify-content: center !important;
-  flex: 0 0 auto !important;
+  flex: 0 1 auto !important;
+  width: auto !important;
+  max-width: none !important;
+  padding: 1rem !important;
 }
 
-/* Alternative centering for any grid container with products */
-.featured-products .row,
-.collection-products .product-list,
-.search-main .product-list {
-  justify-content: center !important;
+/* Mobile: 1-2 columns */
+@media (max-width: 599px) {
+  .product-list.row-cols-1 > div {
+    flex-basis: 100% !important;
+    max-width: 360px !important;
+  }
+
+  .product-list.row-cols-2 > div {
+    flex-basis: 50% !important;
+    max-width: 200px !important;
+  }
 }
 
-/* Prevent Bootstrap's default left alignment */
-.row-cols-1 > *,
-.row-cols-2 > *,
-.row-cols-3 > *,
-.row-cols-4 > *,
-.row-cols-5 > *,
-.row-cols-6 > * {
-  flex: 0 0 auto !important;
+/* Tablet: 2-3 columns */
+@media (min-width: 600px) and (max-width: 1199px) {
+  .product-list.row-cols-tablet-2 > div {
+    flex-basis: 50% !important;
+    max-width: 300px !important;
+  }
+
+  .product-list.row-cols-tablet-3 > div {
+    flex-basis: 33.333% !important;
+    max-width: 260px !important;
+  }
 }
 
-.row-cols-tablet-1 > *,
-.row-cols-tablet-2 > *,
-.row-cols-tablet-3 > *,
-.row-cols-tablet-4 > * {
-  flex: 0 0 auto !important;
-}
+/* Desktop: 3-4+ columns */
+@media (min-width: 1200px) {
+  .product-list.row-cols-desktop-3 > div {
+    flex-basis: 33.333% !important;
+    max-width: 360px !important;
+  }
 
-.row-cols-desktop-1 > *,
-.row-cols-desktop-2 > *,
-.row-cols-desktop-3 > *,
-.row-cols-desktop-4 > *,
-.row-cols-desktop-5 > *,
-.row-cols-desktop-6 > * {
-  flex: 0 0 auto !important;
+  .product-list.row-cols-desktop-4 > div {
+    flex-basis: 25% !important;
+    max-width: 300px !important;
+  }
+
+  .product-list.row-cols-desktop-5 > div {
+    flex-basis: 20% !important;
+    max-width: 260px !important;
+  }
+
+  .product-list.row-cols-desktop-6 > div {
+    flex-basis: 16.666% !important;
+    max-width: 220px !important;
+  }
 }
 
 
