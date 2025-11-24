@@ -17,9 +17,11 @@
   display: flex !important;
   flex-direction: column !important;
   height: 100% !important;
+  max-height: 420px !important;
   padding: 1rem !important;
   text-align: center !important;
-  overflow: hidden;
+  overflow: visible !important;
+  position: relative !important;
 }
 
 .product-card:hover {
@@ -38,7 +40,9 @@
   flex: 1 !important;
   text-decoration: none !important;
   color: inherit !important;
-  gap: 0.5rem !important;
+  gap: 0.25rem !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
 }
 
 /* ============================================
@@ -50,13 +54,16 @@
   position: relative;
   overflow: hidden;
   border-radius: 10px;
+  height: 200px !important;
+  max-height: 200px !important;
+  flex-shrink: 0 !important;
 }
 
 .product-card .product-card-img-wrapper img {
   border-radius: 10px !important;
   border: none !important;
   width: 100% !important;
-  height: auto !important;
+  height: 100% !important;
   object-fit: cover !important;
   transition: transform 0.3s ease;
 }
@@ -106,9 +113,10 @@
 
 .product-card .product-rating-badge,
 .product-card .product-rating {
-  margin: 0.25rem 0 !important;
+  margin: 0.125rem 0 !important;
   justify-content: center !important;
   font-size: 0.85rem !important;
+  line-height: 1.2 !important;
 }
 
 /* ============================================
@@ -120,8 +128,9 @@
   font-size: 1rem !important;
   font-weight: 700 !important;
   color: #7c3aed !important;
-  margin: 0.5rem 0 !important;
+  margin: 0.25rem 0 !important;
   text-align: center !important;
+  line-height: 1.2 !important;
 }
 
 .product-card .product-price .price-compare {
@@ -136,9 +145,13 @@
    ============================================ */
 
 .product-card > form,
-.product-card > .product-card-form {
+.product-card > .product-card-form,
+.product-card product-form {
   margin-top: auto !important;
-  padding-top: 0.5rem !important;
+  padding-top: 0.25rem !important;
+  overflow: visible !important;
+  padding-bottom: 0.25rem !important;
+  flex-shrink: 0 !important;
 }
 
 .product-card .btn-primary,
@@ -184,7 +197,7 @@
   padding: 0.4rem 0.75rem !important;
   font-size: 0.85rem !important;
   color: #4a5568 !important;
-  background-color: rgba(255, 255, 255, 0.9) !important;
+  background-color: rgba(255, 255, 255, 0.95) !important;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
   text-align: center !important;
   cursor: pointer !important;
@@ -195,7 +208,11 @@
   background-size: 12px !important;
   padding-right: 2rem !important;
   transform: translateY(0) !important;
-  box-shadow: 0 1px 3px rgba(139, 92, 246, 0.1) !important;
+  box-shadow: 0 1px 3px rgba(139, 92, 246, 0.1), inset 0 0 0 2px #e9d5ff !important;
+  margin-bottom: 0.25rem !important;
+  width: 100% !important;
+  display: block !important;
+  box-sizing: border-box !important;
 }
 
 /* Desktop-specific smooth animations */
@@ -212,14 +229,14 @@
     border-color: #a78bfa !important;
     background-color: white !important;
     transform: translateY(-2px) !important;
-    box-shadow: 0 4px 16px rgba(139, 92, 246, 0.18) !important;
+    box-shadow: 0 4px 16px rgba(139, 92, 246, 0.18), inset 0 0 0 2px #a78bfa !important;
     backdrop-filter: blur(8px) !important;
   }
 
   .product-card select.form-select:focus,
   .product-card .form-select:focus {
     border-color: #7c3aed !important;
-    box-shadow: 0 8px 24px rgba(139, 92, 246, 0.25), 0 0 0 3px rgba(167, 139, 250, 0.15) !important;
+    box-shadow: 0 8px 24px rgba(139, 92, 246, 0.25), 0 0 0 3px rgba(167, 139, 250, 0.15), inset 0 0 0 2px #7c3aed !important;
     outline: none !important;
     transform: translateY(-3px) scale(1.02) !important;
     background-color: white !important;
@@ -270,12 +287,13 @@
   .product-card .form-select:hover {
     border-color: #c4b5fd !important;
     background-color: white !important;
+    box-shadow: 0 1px 3px rgba(139, 92, 246, 0.1), inset 0 0 0 2px #c4b5fd !important;
   }
 
   .product-card select.form-select:focus,
   .product-card .form-select:focus {
     border-color: #a78bfa !important;
-    box-shadow: 0 0 0 3px rgba(167, 139, 250, 0.1) !important;
+    box-shadow: 0 0 0 3px rgba(167, 139, 250, 0.1), inset 0 0 0 2px #a78bfa !important;
     outline: none !important;
   }
 }
@@ -389,6 +407,12 @@
 @media (max-width: 576px) {
   .product-card {
     padding: 0.75rem !important;
+    max-height: 380px !important;
+  }
+
+  .product-card .product-card-img-wrapper {
+    height: 160px !important;
+    max-height: 160px !important;
   }
 
   .product-card .product-card-title,
@@ -407,6 +431,23 @@
 @media (min-width: 577px) and (max-width: 991px) {
   .product-card {
     padding: 0.85rem !important;
+    max-height: 400px !important;
+  }
+
+  .product-card .product-card-img-wrapper {
+    height: 180px !important;
+    max-height: 180px !important;
+  }
+}
+
+@media (min-width: 992px) {
+  .product-card {
+    max-height: 420px !important;
+  }
+
+  .product-card .product-card-img-wrapper {
+    height: 200px !important;
+    max-height: 200px !important;
   }
 }
 
@@ -418,6 +459,61 @@
 .featured-products .product-card {
   margin-bottom: 1.25rem !important;
 }
+
+/* ============================================
+   CENTER INCOMPLETE COLLECTION ROWS
+   ============================================ */
+
+/* Center product grids with incomplete rows */
+.product-list.row,
+.collection-products .row,
+.search-main .row {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+  align-items: flex-start !important;
+}
+
+/* Ensure proper spacing for centered items */
+.product-list > div {
+  display: flex !important;
+  justify-content: center !important;
+  flex: 0 0 auto !important;
+}
+
+/* Alternative centering for any grid container with products */
+.featured-products .row,
+.collection-products .product-list,
+.search-main .product-list {
+  justify-content: center !important;
+}
+
+/* Prevent Bootstrap's default left alignment */
+.row-cols-1 > *,
+.row-cols-2 > *,
+.row-cols-3 > *,
+.row-cols-4 > *,
+.row-cols-5 > *,
+.row-cols-6 > * {
+  flex: 0 0 auto !important;
+}
+
+.row-cols-tablet-1 > *,
+.row-cols-tablet-2 > *,
+.row-cols-tablet-3 > *,
+.row-cols-tablet-4 > * {
+  flex: 0 0 auto !important;
+}
+
+.row-cols-desktop-1 > *,
+.row-cols-desktop-2 > *,
+.row-cols-desktop-3 > *,
+.row-cols-desktop-4 > *,
+.row-cols-desktop-5 > *,
+.row-cols-desktop-6 > * {
+  flex: 0 0 auto !important;
+}
+
 
 /* ============================================
    LOADING STATE (OPTIONAL)
