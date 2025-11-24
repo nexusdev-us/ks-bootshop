@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-KS BootShop is a free Shopify theme powered by Bootstrap 5 framework. This theme is designed to meet Shopify theme requirements while providing a robust, accessible foundation built on Bootstrap.
+KS BootShop v5.0.0 is a free, production-ready Shopify theme built on Bootstrap 5. This instance (Strapify) is customized for Essential Starr's Apothecary. The theme implements Shopify 2.0 architecture with section groups, dynamic Theme Editor customization, and extensive Bootstrap customization.
 
 ## Development Commands
 
@@ -63,7 +63,20 @@ ESLint is configured to use Standard style with 2-space indentation. Vendor file
 
 The repository includes two auto-running tasks (configured in `.vscode/tasks.json`):
 - `npm watch` - Auto-compiles SCSS
-- `theme watch` - Auto-syncs with Shopify
+- `theme watch --allow-live` - Auto-syncs with Shopify
+
+### Testing Individual Files
+
+```bash
+# Deploy specific file
+theme deploy assets/base.css
+
+# Deploy multiple files
+theme deploy assets/base.css sections/navbar.liquid
+
+# Deploy with verbose output
+theme deploy --verbose
+```
 
 ## Architecture & Structure
 
@@ -97,12 +110,17 @@ The theme heavily customizes Bootstrap via `src/bootstrap.scss`:
 
 **CSS Files:**
 - `assets/vendor-bootstrap.min.css` - Compiled Bootstrap (generated, don't edit directly)
-- `assets/base.css` - Core theme styles
-- `assets/sections.css` - Section-specific styles
-- `assets/product.css` - Product page styles
-- `assets/collection.css` - Collection page styles
-- `assets/cart.css` - Cart styles
+- `assets/base.css` - Core theme styles (40 KB)
+- `assets/sections.css` - Section-specific styles (8 KB)
+- `assets/product.css` - Product page styles (14 KB)
+- `assets/collection.css` - Collection page styles (2 KB)
+- `assets/cart.css` - Cart styles (1 KB)
+- `assets/variables.css.liquid` - Dynamic CSS variables from Theme Editor
 - `assets/custom.css` - **Safe for user customizations** (won't be overwritten on upgrade)
+
+**Instance-specific custom CSS files:**
+- `custom-mega-menu.css`, `custom-navbar.css`, `custom-product-cards.css`
+- `exciting-captions.css`, `navbar-lavender.css`, `section-headers-elegant.css`
 
 ### JavaScript Architecture
 
@@ -121,7 +139,12 @@ The theme uses vanilla JavaScript. Bootstrap 5 is also jQuery-free.
 - `assets/custom.js` - **Safe for user customizations** (won't be overwritten on upgrade)
 
 **Global Theme Object:**
-The theme uses `window.theme` namespace for utilities like `debounce()`, `throttle()`, and `createCookie()`.
+The theme uses `window.theme` namespace for utilities:
+- `theme.debounce(callback, wait)` - Debounce function calls
+- `theme.throttle(callback, timeFrame)` - Throttle function calls
+- `theme.createCookie(name, value, days)` - Cookie management
+- `theme.calcTimeAgo(timestamp)` - Calculate relative time
+- `theme.locales` - Localization object
 
 ### Key Sections
 
@@ -175,14 +198,21 @@ Product blocks (`snippets/product-block-*.liquid`) are modular components for pr
 
 ### Theme Settings
 
-**Color Variables:**
-Defined in `config/settings_schema.json`:
-- `color_primary` - Primary brand color (default: #d63384)
-- `color_secondary` - Secondary color (default: #6C757D)
-- `color_body_bg` - Background color
-- `color_body_color` - Text color
+**Settings Schema (`config/settings_schema.json` - 1,117 lines):**
 
-These are injected as CSS variables in the theme and can be customized via Theme Editor.
+Key configuration groups:
+1. **Colors** - Primary (#d63384), Secondary (#6C757D), Body bg/color
+2. **General** - Container width (1400px), border radius, logo, favicon
+3. **Typography** - Body and heading fonts
+4. **Buttons** - Size, weight, padding, text transform
+5. **Modal/Offcanvas** - Backdrop, header styling
+6. **Product Cards** - Display options, wishlist, ATC button
+7. **Cart** - Cart goal, upsells, shipping calculator
+8. **Search** - Suggestions, quick view
+9. **Features** - Wishlist, recently-viewed
+10. **Social** - Facebook, Instagram, X, TikTok, etc.
+
+Settings are injected as CSS variables in `assets/variables.css.liquid` and accessible via Theme Editor.
 
 ### Localization
 
@@ -233,8 +263,31 @@ The theme is built with accessibility best practices:
 
 The theme includes "Advanced styling for each section" - sections can be styled individually through the Theme Editor with spacing, colors, and layout options.
 
+## Common Tasks
+
+### Update Navigation Menu
+1. Edit `sections/navbar.liquid` or variant files (`navbar-new.liquid`, `logo-header.liquid`)
+2. Update desktop menu in `snippets/navbar-desktop-menu.liquid`
+3. Update mobile menu in `snippets/offcanvas-menu.liquid`
+4. Deploy: `theme deploy sections/navbar.liquid snippets/navbar-desktop-menu.liquid`
+
+### Add Product Block
+1. Create new snippet: `snippets/product-block-[name].liquid`
+2. Add block to `sections/product-main.liquid` blocks array
+3. Update product template if needed: `templates/product.json`
+
+### Create Custom Section
+1. Create section file: `sections/[section-name].liquid`
+2. Add schema at bottom with settings
+3. Include in template JSON or use Theme Editor to add
+4. Deploy: `theme deploy sections/[section-name].liquid`
+
 ## Git Workflow
 
-The repository uses git with Theme Kit. The current branch is `master` (also the main branch for PRs).
+Repository remotes:
+- `origin` → https://github.com/nexusdev-us/ks-bootshop.git (fork)
+- `upstream` → https://github.com/falconthemeco/ks-bootshop.git (original)
 
-**Note:** There is an `old-theme/` directory in the repository (currently untracked) which appears to contain a previous version of the theme. This should likely be ignored or removed.
+Current branch: `master` (main branch for PRs)
+
+**Note:** The `old-theme/` directory contains a previous theme version (untracked, can be ignored).

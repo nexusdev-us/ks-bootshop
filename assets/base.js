@@ -198,7 +198,8 @@ class SwiperSlider extends HTMLElement {
       pagination: this.pagination,
       scrollbar: this.scrollbar,
       breakpoints: this.breakpoints,
-      rewind: true
+      loop: false,
+      rewind: false
     })
   }
 
