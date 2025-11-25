@@ -201,26 +201,50 @@ class SwiperSlider extends HTMLElement {
     } else if (width < 1200) {
       expectedSlides = Number(this.dataset.breakpointTablet) || 2
     } else {
-      expectedSlides = Number(this.dataset.breakpointDesktop) || 4
+      expectedSlides = Math.min(Number(this.dataset.breakpointDesktop) || 4, 4) // Max 4 on desktop
     }
 
-    // Add class if there are fewer slides than expected
     const swiperEl = this.querySelector('.swiper')
-    if (slideCount <= expectedSlides) {
-      swiperEl.classList.add('swiper-few-slides')
-      this.classList.add('has-few-slides')
-    }
+    const shouldCenter = slideCount <= expectedSlides
 
-    this.slider = new window.Swiper(swiperEl, {
+    // Configure swiper based on slide count
+    let config = {
       speed: this.speed,
       autoplay: this.autoplay,
       navigation: this.navigation,
       pagination: this.pagination,
       scrollbar: this.scrollbar,
-      breakpoints: this.breakpoints,
       loop: false,
       rewind: false
-    })
+    }
+
+    if (shouldCenter) {
+      // Few slides: center them, disable swiping
+      this.classList.add('has-few-slides')
+      swiperEl.classList.add('swiper-few-slides')
+      config.allowTouchMove = false
+      config.allowSlideNext = false
+      config.allowSlidePrev = false
+      // Show all slides that fit without scrolling
+      config.breakpoints = {
+        0: { slidesPerView: Math.min(slideCount, 1), spaceBetween: 20 },
+        600: { slidesPerView: Math.min(slideCount, 2), spaceBetween: 25 },
+        1200: { slidesPerView: Math.min(slideCount, 4), spaceBetween: 30 }
+      }
+    } else {
+      // Many slides: use normal carousel
+      const desktopSlides = Math.min(Number(this.dataset.breakpointDesktop) || 4, 4)
+      const tabletSlides = Math.min(Number(this.dataset.breakpointTablet) || 2, 3)
+      const mobileSlides = Number(this.dataset.breakpointMobile) || 1
+
+      config.breakpoints = {
+        0: { slidesPerView: mobileSlides, spaceBetween: 20 },
+        600: { slidesPerView: tabletSlides, spaceBetween: 25 },
+        1200: { slidesPerView: desktopSlides, spaceBetween: 30 }
+      }
+    }
+
+    this.slider = new window.Swiper(swiperEl, config)
   }
 
   speed = Number(this.dataset.sliderSpeed)

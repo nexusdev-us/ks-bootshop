@@ -465,97 +465,67 @@
    ============================================ */
 
 /* When there are few slides, center the swiper wrapper */
-.swiper-few-slides .swiper-wrapper,
-.has-few-slides .swiper-wrapper,
-swiper-slider.has-few-slides .swiper .swiper-wrapper {
-  display: flex !important;
+.has-few-slides .swiper-wrapper {
   justify-content: center !important;
-  align-items: stretch !important;
-  transform: translateX(0) !important;
+}
+
+/* Let Swiper handle slide sizing - it knows best based on our config */
+.featured-collections .swiper-slide,
+.featured-products .swiper-slide {
+  flex-shrink: 0 !important;
+  height: auto !important;
+}
+
+/* Ensure cards inside slides maintain proper sizing */
+.featured-products .swiper-slide .product-card {
   width: 100% !important;
-  margin: 0 !important;
-  padding: 0 !important;
+  max-width: 320px !important;
+  margin: 0 auto !important;
 }
 
-/* Override any Swiper inline transforms */
-.swiper-few-slides.swiper-initialized .swiper-wrapper,
-swiper-slider.has-few-slides .swiper-initialized .swiper-wrapper {
-  transform: translateX(0) !important;
-  transition: none !important;
+.featured-collections .swiper-slide .collection-card {
+  width: 100% !important;
+  max-width: 320px !important;
+  margin: 0 auto !important;
 }
 
-/* Force centering with higher specificity */
-.featured-collections.has-few-slides .swiper .swiper-wrapper,
-.featured-products.has-few-slides .swiper .swiper-wrapper,
-swiper-slider.featured-collections.has-few-slides .swiper .swiper-wrapper,
-swiper-slider.featured-products.has-few-slides .swiper .swiper-wrapper {
-  display: flex !important;
-  justify-content: center !important;
-  transform: translateX(0) !important;
-}
-
-/* Ensure slides don't stretch when centered */
-.swiper-few-slides .swiper-slide,
-.has-few-slides .swiper-slide {
-  flex: 0 0 auto !important;
-  width: auto !important;
-  margin-right: 0 !important;
-}
-
-/* Add gap between centered slides */
-.swiper-few-slides .swiper-slide:not(:last-child),
-.has-few-slides .swiper-slide:not(:last-child) {
-  margin-right: 2rem !important;
-}
-
-/* Maintain slide padding */
-.has-few-slides .swiper-slide {
-  padding: 1rem !important;
-}
-
-/* Set proper widths for slides based on viewport */
-@media (max-width: 599px) {
-  .swiper-few-slides .swiper-slide,
-  .has-few-slides .swiper-slide {
-    width: 280px !important;
-    min-width: 280px !important;
-    max-width: 280px !important;
-  }
-}
-
-@media (min-width: 600px) and (max-width: 1199px) {
-  .swiper-few-slides .swiper-slide,
-  .has-few-slides .swiper-slide {
-    width: 280px !important;
-    min-width: 280px !important;
-    max-width: 280px !important;
-  }
-}
-
+/* Desktop: enforce reasonable max widths */
 @media (min-width: 1200px) {
-  .swiper-few-slides .swiper-slide,
-  .has-few-slides .swiper-slide {
-    width: 300px !important;
-    min-width: 300px !important;
+  .featured-collections .swiper-slide .collection-card,
+  .featured-products .swiper-slide .product-card {
+    max-width: 280px !important;
+  }
+}
+
+/* Tablet: reasonable sizing */
+@media (min-width: 600px) and (max-width: 1199px) {
+  .featured-collections .swiper-slide .collection-card,
+  .featured-products .swiper-slide .product-card {
     max-width: 300px !important;
   }
 }
 
-/* Hide navigation arrows when slides are centered */
+/* Hide navigation when not needed */
 .has-few-slides .swiper-button-prev,
 .has-few-slides .swiper-button-next {
   display: none !important;
 }
 
-/* Ensure the swiper container itself is full width */
-.has-few-slides .swiper {
-  width: 100% !important;
-  overflow: visible !important;
-}
-
-/* Disable scrollbar when centered */
+/* Hide scrollbar when centered */
 .has-few-slides .swiper-scrollbar {
   display: none !important;
+}
+
+/* Ensure swiper container doesn't overflow */
+.featured-collections .swiper,
+.featured-products .swiper {
+  overflow: hidden !important;
+}
+
+/* Maintain proper padding on swiper containers */
+.featured-collections,
+.featured-products {
+  overflow: hidden !important;
 }
 
 /* ============================================
