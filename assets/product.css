@@ -47,7 +47,26 @@ body.template-product section {
   }
 }
 
-/* Desktop layout - sticky image on left, scrolling info on right */
+/* ============================================
+   PRODUCT PAGE - DESKTOP SPLIT LAYOUT
+   Image sticky on left, info scrolls on right
+   ============================================ */
+
+/* Mobile - normal stacked layout */
+.product-desktop-layout {
+  display: block;
+}
+
+.product-image-side {
+  margin-bottom: 2rem;
+}
+
+.product-image-side .product-media-gallery {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* Desktop - side by side with sticky image */
 @media (min-width: 1200px) {
   .product-main .container {
     max-width: 1400px;
@@ -55,33 +74,29 @@ body.template-product section {
     padding-right: 2rem;
   }
 
-  /* Use CSS Grid for proper sticky behavior */
-  .product-main .product-layout {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+  .product-desktop-layout {
+    display: flex;
+    align-items: flex-start;
     gap: 3rem;
-    align-items: start;
   }
 
-  /* Left column - the sticky element needs height: fit-content */
-  .product-main .product-media-col {
+  /* LEFT SIDE - Sticky image */
+  .product-image-side {
+    flex: 0 0 50%;
     position: sticky;
     top: 100px;
-    height: fit-content;
+    margin-bottom: 0;
+    align-self: flex-start;
   }
 
-  .product-main .product-media-sticky {
-    position: static;
-  }
-
-  .product-main .product-media-gallery {
+  .product-image-side .product-media-gallery {
     max-width: 100%;
-    position: static;
   }
 
-  /* Right column - scrolls naturally */
-  .product-main .product-info-col {
-    min-height: 100vh;
+  /* RIGHT SIDE - Scrollable info - MUST be taller than left for sticky to work */
+  .product-info-side {
+    flex: 0 0 calc(50% - 3rem);
+    padding-bottom: 200px;
   }
 
   .product-main .product-title {
@@ -89,7 +104,6 @@ body.template-product section {
   }
 }
 
-/* Larger screens */
 @media (min-width: 1600px) {
   .product-main .container {
     max-width: 1500px;
