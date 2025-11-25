@@ -82,7 +82,7 @@
           "type": "ai_gen_block_4723888",
           "settings": {
             "title": "Soaps",
-            "subtitle": "Discover our handpicked selection",
+            "subtitle": "Get ready to lather up with our fab goat and oatmael soaps! Feel totally in tune with nature, amazing, and squeaky clean",
             "collection": "lavender-hill-botanicals",
             "products_limit": 12,
             "show_vendor": true,
@@ -100,8 +100,8 @@
             "subtitle_color": "#6b7280",
             "accent_color": "#004071",
             "card_background": "#ffffff",
-            "product_title_color": "#2e2a39",
-            "price_color": "#004071",
+            "product_title_color": "#241b5a",
+            "price_color": "#7261c6",
             "compare_price_color": "#6b7280",
             "badge_color": "#9b046f",
             "badge_text_color": "#ffffff",
@@ -135,7 +135,7 @@
             "accent_color": "#004071",
             "card_background": "#ffffff",
             "product_title_color": "#2e2a39",
-            "price_color": "#004071",
+            "price_color": "#7261c6",
             "compare_price_color": "#6b7280",
             "badge_color": "#9b046f",
             "badge_text_color": "#ffffff",
@@ -227,41 +227,6 @@
         "pt": 10,
         "pb": 10
       }
-    },
-    "featured_best_selling": {
-      "type": "featured-products",
-      "settings": {
-        "bg_color": "bg-body",
-        "bg_opacity": 100,
-        "bg_gradient": "",
-        "text_color": "text-body",
-        "border_top_width": 0,
-        "border_bottom_width": 0,
-        "border_color": "border-primary",
-        "border_opacity": 100,
-        "container_max_width": "",
-        "products": [],
-        "collection": "best-selling-collection",
-        "limit": 5,
-        "recommended_mode": false,
-        "recommended_mode_intent": "related",
-        "header_title": "Best Selling Products",
-        "header_title_font_size": "h2",
-        "header_description": "",
-        "header_description_font_size": "fs-md",
-        "slider_speed": 300,
-        "slider_navigation": true,
-        "slider_pagination": true,
-        "slider_pagination_type": "bullets",
-        "slider_scrollbar": true,
-        "slider_partial_slides_mobile": false,
-        "slider_autoplay": 0,
-        "breakpoint_mobile": 2,
-        "breakpoint_tablet": 3,
-        "breakpoint_desktop": 5,
-        "pt": 10,
-        "pb": 11
-      }
     }
   },
   "order": [
@@ -269,7 +234,6 @@
     "1764085580a126eecd",
     "featured_essential_oils",
     "1764086094ddb9a349",
-    "featured_remedies",
-    "featured_best_selling"
+    "featured_remedies"
   ]
 }
