@@ -461,6 +461,44 @@
 }
 
 /* ============================================
+   SWIPER SLIDER CENTERING FOR HOME PAGE
+   ============================================ */
+
+/* When centered slides are active, set proper widths */
+.swiper-centered .swiper-slide {
+  width: auto !important;
+  max-width: 320px !important;
+}
+
+/* Mobile width adjustments */
+@media (max-width: 599px) {
+  .swiper-centered .swiper-slide {
+    max-width: 280px !important;
+  }
+}
+
+/* Tablet width adjustments */
+@media (min-width: 600px) and (max-width: 1199px) {
+  .swiper-centered .swiper-slide {
+    max-width: 300px !important;
+  }
+}
+
+/* Desktop width adjustments */
+@media (min-width: 1200px) {
+  .swiper-centered .swiper-slide {
+    max-width: 320px !important;
+  }
+}
+
+/* Ensure product cards inside centered slides maintain proper sizing */
+.swiper-centered .swiper-slide .product-card,
+.swiper-centered .swiper-slide .collection-card {
+  width: 100% !important;
+  min-width: 260px !important;
+}
+
+/* ============================================
    CENTER INCOMPLETE COLLECTION ROWS
    ============================================ */
 
