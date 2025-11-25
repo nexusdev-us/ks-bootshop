@@ -43,7 +43,7 @@
       }
     },
     "featured_summer": {
-      "type": "featured-products",
+      "type": "featured-products-grid",
       "settings": {
         "bg_color": "bg-body",
         "bg_opacity": 100,
@@ -57,36 +57,24 @@
         "products": [],
         "collection": "lavender-hill-botanicals",
         "limit": 4,
-        "recommended_mode": false,
-        "recommended_mode_intent": "related",
         "header_title": "NEW! Homemade Soaps",
         "header_title_font_size": "h2",
         "header_description": "<p>Enhance your everyday routine with premium quality artisanal soaps from Lavender Hill Botanicals</p>",
         "header_description_font_size": "fs-xl",
-        "slider_speed": 300,
-        "slider_navigation": true,
-        "slider_pagination": true,
-        "slider_pagination_type": "bullets",
-        "slider_scrollbar": true,
-        "slider_partial_slides_mobile": false,
-        "slider_autoplay": 0,
-        "breakpoint_mobile": 2,
+        "breakpoint_mobile": 1,
         "breakpoint_tablet": 2,
         "breakpoint_desktop": 4,
-<<<<<<< HEAD
         "grid_gap": 2,
-        "card_max_width": 380,
-        "card_min_width": 200,
+        "card_max_width": 450,
+        "card_min_width": 280,
         "show_view_all": false,
         "view_all_text": "View All",
-=======
->>>>>>> 367e9c530259db5986031a04c2c5c99fba18c6eb
         "pt": 8,
         "pb": 8
       }
     },
     "featured_tea": {
-      "type": "featured-products",
+      "type": "featured-products-grid",
       "settings": {
         "bg_color": "bg-body",
         "bg_opacity": 100,
@@ -100,30 +88,18 @@
         "products": [],
         "collection": "lavender-hill-botanicals-essential-oils",
         "limit": 4,
-        "recommended_mode": false,
-        "recommended_mode_intent": "related",
         "header_title": "NEW! Essential Oils",
         "header_title_font_size": "h2",
         "header_description": "<p>Smell Your Best, Feel Better with These Essential Oils NEW from Lavender Hill Botanicals</p>",
         "header_description_font_size": "fs-md",
-        "slider_speed": 300,
-        "slider_navigation": true,
-        "slider_pagination": true,
-        "slider_pagination_type": "bullets",
-        "slider_scrollbar": true,
-        "slider_partial_slides_mobile": false,
-        "slider_autoplay": 0,
-        "breakpoint_mobile": 2,
+        "breakpoint_mobile": 1,
         "breakpoint_tablet": 2,
         "breakpoint_desktop": 4,
-<<<<<<< HEAD
         "grid_gap": 2,
-        "card_max_width": 380,
-        "card_min_width": 200,
+        "card_max_width": 450,
+        "card_min_width": 280,
         "show_view_all": false,
         "view_all_text": "View All",
-=======
->>>>>>> 367e9c530259db5986031a04c2c5c99fba18c6eb
         "pt": 8,
         "pb": 8
       }
@@ -199,7 +175,7 @@
       }
     },
     "featured_best_selling": {
-      "type": "featured-products",
+      "type": "featured-products-grid",
       "settings": {
         "bg_color": "bg-body",
         "bg_opacity": 100,
@@ -213,30 +189,18 @@
         "products": [],
         "collection": "best-selling-collection",
         "limit": 5,
-        "recommended_mode": false,
-        "recommended_mode_intent": "related",
         "header_title": "Best Selling Products",
         "header_title_font_size": "h2",
         "header_description": "",
         "header_description_font_size": "fs-md",
-        "slider_speed": 300,
-        "slider_navigation": true,
-        "slider_pagination": true,
-        "slider_pagination_type": "bullets",
-        "slider_scrollbar": true,
-        "slider_partial_slides_mobile": false,
-        "slider_autoplay": 0,
-        "breakpoint_mobile": 2,
-        "breakpoint_tablet": 3,
+        "breakpoint_mobile": 1,
+        "breakpoint_tablet": 2,
         "breakpoint_desktop": 5,
-<<<<<<< HEAD
         "grid_gap": 2,
-        "card_max_width": 380,
-        "card_min_width": 200,
+        "card_max_width": 450,
+        "card_min_width": 280,
         "show_view_all": false,
         "view_all_text": "View All",
-=======
->>>>>>> 367e9c530259db5986031a04c2c5c99fba18c6eb
         "pt": 10,
         "pb": 11
       }
