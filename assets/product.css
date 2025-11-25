@@ -15,45 +15,7 @@
    PRODUCT PAGE LAYOUT - STICKY IMAGE / SCROLL INFO
    ============================================ */
 
-/* Lavender background for entire product page */
-/* Note: body class is "page-type-product" not "template-product" */
-body.page-type-product,
-body.template-product {
-  background-color: #f8f5ff !important;
-}
-
-/* Override bg-body and bg-white on product pages - EXCEPT footer */
-body.page-type-product #main .bg-body,
-body.page-type-product #main .bg-white,
-body.page-type-product #main section,
-body.page-type-product .product-main,
-body.page-type-product .product-contents,
-body.page-type-product .product-info-side,
-body.page-type-product .product-block-collapse,
-body.page-type-product .collapse-wrapper,
-body.page-type-product #main .separator,
-body.page-type-product #main > .container,
-body.page-type-product #main {
-  background-color: #f8f5ff !important;
-  background: #f8f5ff !important;
-}
-
-/* Keep form inputs, buttons, and footer with their normal styling */
-body.page-type-product .form-control,
-body.page-type-product .form-select,
-body.page-type-product .btn,
-body.page-type-product #footer,
-body.page-type-product #footer-group,
-body.page-type-product #footer *,
-body.page-type-product footer,
-body.page-type-product footer * {
-  background-color: revert;
-  background: revert;
-}
-
-.product-main {
-  background-color: #f8f5ff !important;
-}
+/* Background handled globally in custom.css */
 
 /* Mobile layout */
 @media (max-width: 1199px) {

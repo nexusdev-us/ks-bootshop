@@ -16,6 +16,48 @@ body {
   min-height: 100vh;
 }
 
+/* Make all sections transparent so body gradient shows through */
+/* This ensures consistent background across all pages */
+section,
+header,
+footer,
+#main,
+#header-group,
+#footer-group,
+.bg-body,
+.bg-white,
+.newsletter,
+.separator,
+.container,
+.product-main,
+.product-contents,
+.product-desktop-layout,
+.product-image-side,
+.product-info-side,
+.collapse-wrapper,
+.collapse-inner,
+[class*="bg-body"],
+[class*="bg-white"] {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* Keep specific elements that NEED a background color */
+.btn,
+.form-control,
+.form-select,
+.card,
+.modal,
+.offcanvas,
+.dropdown-menu,
+.alert,
+.badge,
+.img-thumbnail,
+.swiper-main-wrapper.img-thumbnail {
+  background: revert !important;
+  background-color: revert !important;
+}
+
 /* Desktop margins - 7% on each side for product sections only */
 @media (min-width: 992px) {
   .featured-products .container,
