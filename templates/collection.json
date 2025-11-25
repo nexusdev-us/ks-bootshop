@@ -35,46 +35,6 @@
     },
     "blocks_kEbgPY": {
       "type": "_blocks",
-      "blocks": {
-        "ai_gen_block_4723888_rHC7aC": {
-          "type": "ai_gen_block_4723888",
-          "settings": {
-            "title": "",
-            "subtitle": "",
-            "collection": "carrier-oils",
-            "products_limit": 12,
-            "show_vendor": true,
-            "show_rating": true,
-            "section_padding": 60,
-            "card_width": 320,
-            "card_gap": 30,
-            "card_border_radius": 16,
-            "header_padding_top": 0,
-            "title_size": 36,
-            "subtitle_size": 16,
-            "product_title_size": 18,
-            "price_size": 20,
-            "background_color": "#ffffff",
-            "title_color": "#2e2a39",
-            "subtitle_color": "#6b7280",
-            "accent_color": "#004071",
-            "card_background": "#ffffff",
-            "product_title_color": "#2e2a39",
-            "price_color": "#004071",
-            "compare_price_color": "#6b7280",
-            "badge_color": "#9b046f",
-            "badge_text_color": "#ffffff",
-            "button_color": "#ffffff",
-            "button_text_color": "#2e2a39",
-            "nav_button_color": "#ffffff",
-            "nav_button_icon_color": "#004071"
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "ai_gen_block_4723888_rHC7aC"
-      ],
       "name": "Elegant product carousel",
       "settings": {}
     }
