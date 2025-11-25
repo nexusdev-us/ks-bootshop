@@ -124,9 +124,9 @@
 }
 
 .menu-link.active {
-  background: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 100%);
-  color: white;
-  box-shadow: 0 2px 8px rgba(139, 92, 246, 0.3);
+  background: linear-gradient(135deg, #ddd6fe 0%, #c4b5fd 100%);
+  color: #5b21b6 !important;
+  box-shadow: 0 2px 8px rgba(167, 139, 250, 0.25);
 }
 
 .menu-arrow {
@@ -210,8 +210,8 @@
 }
 
 .submenu-link.active {
-  background: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 100%);
-  color: white;
+  background: linear-gradient(135deg, #ddd6fe 0%, #c4b5fd 100%);
+  color: #5b21b6 !important;
 }
 
 .submenu-arrow {
@@ -273,8 +273,8 @@
   }
 
   #offcanvas-menu .nav-link.active {
-    background: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 100%);
-    color: white;
+    background: linear-gradient(135deg, #ddd6fe 0%, #c4b5fd 100%);
+    color: #5b21b6;
   }
 
   #offcanvas-menu .dropdown-item {
@@ -291,8 +291,8 @@
   }
 
   #offcanvas-menu .dropdown-item.active {
-    background: rgba(167, 139, 250, 0.2);
-    color: #7c3aed;
+    background: linear-gradient(135deg, #ddd6fe 0%, #c4b5fd 100%);
+    color: #5b21b6;
     font-weight: 600;
   }
 
