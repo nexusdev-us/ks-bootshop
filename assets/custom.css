@@ -48,7 +48,16 @@ footer,
 .form-select,
 .card,
 .modal,
+.modal-content,
 .offcanvas,
+.offcanvas-cart,
+.offcanvas-search,
+#offcanvas-cart,
+#offcanvas-search,
+#offcanvas-menu,
+.offcanvas-body,
+.offcanvas-header,
+.offcanvas-footer,
 .dropdown-menu,
 .alert,
 .badge,
@@ -56,6 +65,15 @@ footer,
 .swiper-main-wrapper.img-thumbnail {
   background: revert !important;
   background-color: revert !important;
+}
+
+/* Ensure offcanvas sidebars have solid background */
+.offcanvas {
+  background-color: #ffffff !important;
+}
+
+#offcanvas-menu {
+  background: linear-gradient(180deg, #f5f3ff 0%, #faf5ff 100%) !important;
 }
 
 /* Desktop margins - 7% on each side for product sections only */
