@@ -83,30 +83,17 @@
     margin: 0 auto;
   }
 
+  /* Cards have FIXED width, not percentage - this is key for centering */
   #featured-products-grid-{{ section.id }} .product-grid-item {
-    flex: 0 1 auto;
-    width: calc((100% - {{ section.settings.grid_gap | times: 1 }}rem) / 2);
-    max-width: {{ section.settings.card_max_width }}px;
-    min-width: {{ section.settings.card_min_width }}px;
+    flex: 0 0 auto;
+    width: {{ section.settings.card_max_width }}px;
+    max-width: calc(50% - {{ section.settings.grid_gap | divided_by: 2.0 }}rem);
   }
 
   @media (min-width: 600px) {
     #featured-products-grid-{{ section.id }} .product-grid-item {
-      width: calc((100% - {{ section.settings.grid_gap | times: 2 }}rem) / {{ section.settings.breakpoint_tablet }});
+      max-width: {{ section.settings.card_max_width }}px;
     }
-  }
-
-  @media (min-width: 1200px) {
-    #featured-products-grid-{{ section.id }} .product-grid-item {
-      width: calc((100% - {{ section.settings.grid_gap | times: section.settings.breakpoint_desktop | minus: 1 }}rem) / {{ section.settings.breakpoint_desktop }});
-    }
-  }
-
-  /* When fewer products than columns, center them nicely */
-  #featured-products-grid-{{ section.id }} .products-grid[data-product-count="1"],
-  #featured-products-grid-{{ section.id }} .products-grid[data-product-count="2"],
-  #featured-products-grid-{{ section.id }} .products-grid[data-product-count="3"] {
-    justify-content: center;
   }
 
   #featured-products-grid-{{ section.id }} .product-card {
