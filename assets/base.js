@@ -191,55 +191,16 @@ class SwiperSlider extends HTMLElement {
   }
 
   init () {
-    // Count the number of slides
-    const slideCount = this.querySelectorAll('.swiper-slide').length
-    const slidesPerView = this.getSlidesPerView()
-
-    // Only center slides if there are fewer slides than can fit in viewport
-    const shouldCenter = slideCount <= slidesPerView
-
-    // Add class to indicate centering is active
-    const swiperEl = this.querySelector('.swiper')
-    if (shouldCenter) {
-      swiperEl.classList.add('swiper-centered')
-    }
-
-    // Build config based on whether we're centering
-    const config = {
+    this.slider = new window.Swiper(this.querySelector('.swiper'), {
       speed: this.speed,
       autoplay: this.autoplay,
       navigation: this.navigation,
       pagination: this.pagination,
       scrollbar: this.scrollbar,
+      breakpoints: this.breakpoints,
       loop: false,
-      rewind: false,
-      slideToClickedSlide: true
-    }
-
-    if (shouldCenter) {
-      // When centering, use auto slides per view and center them
-      config.slidesPerView = 'auto'
-      config.centeredSlides = true
-      config.centeredSlidesBounds = true
-      config.spaceBetween = 30
-    } else {
-      // When not centering, use responsive breakpoints
-      config.breakpoints = this.breakpoints
-    }
-
-    this.slider = new window.Swiper(swiperEl, config)
-  }
-
-  getSlidesPerView () {
-    // Get current slides per view based on viewport width
-    const width = window.innerWidth
-    if (width >= 1200) {
-      return Number(this.dataset.breakpointDesktop)
-    } else if (width >= 600) {
-      return Number(this.dataset.breakpointTablet)
-    } else {
-      return Number(this.dataset.breakpointMobile)
-    }
+      rewind: false
+    })
   }
 
   speed = Number(this.dataset.sliderSpeed)
