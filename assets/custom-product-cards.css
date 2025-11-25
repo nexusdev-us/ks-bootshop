@@ -524,3 +524,69 @@
   outline: 2px solid #7c3aed !important;
   outline-offset: 2px !important;
 }
+
+/* ============================================
+   HOMEPAGE FEATURED PRODUCTS - BIGGER & CENTERED
+   Targets the existing Swiper slider sections
+   ============================================ */
+
+/* Make swiper slides bigger with max-width and center them */
+.featured-products .swiper-wrapper {
+  justify-content: center !important;
+}
+
+.featured-products .swiper-slide {
+  max-width: 400px !important;
+  flex-shrink: 0 !important;
+}
+
+/* Bigger padding inside cards on homepage */
+.featured-products .product-card {
+  padding: 1.5rem !important;
+}
+
+/* Bigger title */
+.featured-products .product-card .product-card-title,
+.featured-products .product-card .product-title {
+  font-size: 1.1rem !important;
+  white-space: normal !important;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2 !important;
+  -webkit-box-orient: vertical !important;
+  line-height: 1.4 !important;
+}
+
+/* Bigger price */
+.featured-products .product-card .product-card-price,
+.featured-products .product-card .product-price {
+  font-size: 1.2rem !important;
+}
+
+/* Bigger button */
+.featured-products .product-card .btn-primary,
+.featured-products .product-card .btn-add-to-cart,
+.featured-products .product-card button[name="add"] {
+  padding: 0.75rem 1.5rem !important;
+  font-size: 1rem !important;
+}
+
+/* Desktop: even bigger cards */
+@media (min-width: 1200px) {
+  .featured-products .swiper-slide {
+    max-width: 450px !important;
+  }
+
+  .featured-products .product-card {
+    padding: 1.75rem !important;
+  }
+
+  .featured-products .product-card .product-card-title,
+  .featured-products .product-card .product-title {
+    font-size: 1.2rem !important;
+  }
+
+  .featured-products .product-card .product-card-price,
+  .featured-products .product-card .product-price {
+    font-size: 1.3rem !important;
+  }
+}
