@@ -1,47 +1,106 @@
-<div 
-  id="offcanvas-menu" 
-  class="offcanvas offcanvas-bottom" 
-  tabindex="-1" 
+<div
+  id="offcanvas-menu"
+  class="offcanvas offcanvas-bottom"
+  tabindex="-1"
   data-bs-backdrop="false"
   aria-label="{{ 'general.accessibility.menu' | t }}">
-  <div class="offcanvas-body">
-    {% unless block.settings.main_menu == nil %}
-      <ul class="nav accordion-nav mb-9">
-        {% for link in linklists[block.settings.main_menu].links %}
-          {% if link.links == blank %}
-            <li class="nav-item">
-              <a 
-                class="nav-link {% if link.active %}active{% endif %}" 
-                href="{{ link.url }}" 
-                aria-current="{% if link.active %}page{% endif %}">
-                {{ link.title }}
-              </a>
-            </li>
-          {% else %}
-            <li class="nav-item collapse-wrapper">
-              <a 
-                class="nav-link {% if link.child_active %}active{% endif %}" 
-                href="#offcanvas-menu-collapse-{{ forloop.index }}" 
-                aria-controls="offcanvas-menu-collapse-{{ forloop.index }}"
-                aria-expanded="{% if link.child_active %}true{% else %}false{% endif %}" 
-                data-bs-toggle="collapse"
+  <div class="offcanvas-body p-0">
+    <div class="mobile-menu-slider">
+      <!-- Main Menu Panel (Level 0) -->
+      <div class="menu-panel active" data-level="0">
+        <div class="menu-panel-content">
+          {% unless block.settings.main_menu == nil %}
+            <ul class="mobile-nav-list">
+              {% for link in linklists[block.settings.main_menu].links %}
+                <li class="mobile-nav-item">
+                  {% if link.links == blank %}
+                    <a class="mobile-nav-link {% if link.active %}active{% endif %}" href="{{ link.url }}">
+                      {{ link.title }}
+                    </a>
+                  {% else %}
+                    <button
+                      class="mobile-nav-link has-children"
+                      type="button"
+                      data-target="submenu-{{ forloop.index }}">
+                      {{ link.title }}
+                      <span class="nav-arrow">{% render 'svg-icons', icon: 'chevron-right', size: 20 %}</span>
+                    </button>
+                  {% endif %}
+                </li>
+              {% endfor %}
+            </ul>
+          {% endunless %}
+
+          {% if block.settings.social_icons %}
+            <div class="social-icons-wrapper text-center mt-6 mb-4">
+              {% render 'social-icons', show_title: false %}
+            </div>
+          {% endif %}
+
+          {% unless block.settings.secondary_menu == nil %}
+            <ul class="mobile-nav-list secondary-nav mt-4">
+              {% for link in linklists[block.settings.secondary_menu].links %}
+                <li class="mobile-nav-item">
+                  <a class="mobile-nav-link small {% if link.active %}active{% endif %}" href="{{ link.url }}">
+                    {{ link.title }}
+                  </a>
+                </li>
+              {% endfor %}
+            </ul>
+          {% endunless %}
+
+          {% if localization.available_countries.size > 1 %}
+            <div class="text-center mt-4">
+              <a
+                class="mobile-nav-link-icon"
+                href="#modal-localization"
+                data-bs-toggle="modal"
+                aria-controls="modal-localization"
+                aria-label="{{ 'general.accessibility.localization' | t }} {{ localization.country.name }}"
                 role="button">
-                {{ link.title }}
-                {% render 'svg-icons', icon: 'chevron-down', size: 18 %}
+                {{ localization.country | image_url: width: 24, height: 24 | image_tag }}
               </a>
-              <div 
-                id="offcanvas-menu-collapse-{{ forloop.index }}" 
-                class="collapse {% if link.child_active %}show{% endif %}">
-                <ul class="nav flex-column">
+            </div>
+          {% endif %}
+        </div>
+      </div>
+
+      <!-- Submenu Panels (Level 1) -->
+      {% unless block.settings.main_menu == nil %}
+        {% for link in linklists[block.settings.main_menu].links %}
+          {% if link.links != blank %}
+            <div class="menu-panel" data-level="1" data-panel-id="submenu-{{ forloop.index }}">
+              <div class="menu-panel-header">
+                <button class="back-button" type="button" data-back>
+                  {% render 'svg-icons', icon: 'chevron-left', size: 20 %}
+                  <span>Back</span>
+                </button>
+                <span class="panel-title">{{ link.title }}</span>
+              </div>
+              <div class="menu-panel-content">
+                <ul class="mobile-nav-list">
+                  <!-- View All link -->
+                  {% if link.url != '#' and link.url != '' %}
+                    <li class="mobile-nav-item">
+                      <a class="mobile-nav-link view-all" href="{{ link.url }}">
+                        View All {{ link.title }}
+                      </a>
+                    </li>
+                  {% endif %}
                   {% for child_link in link.links %}
-                    <li>
+                    <li class="mobile-nav-item">
                       {% if child_link.title == '-' %}
-                        <hr class="my-3">
+                        <hr class="nav-divider">
+                      {% elsif child_link.links != blank %}
+                        <button
+                          class="mobile-nav-link has-children"
+                          type="button"
+                          data-target="submenu-{{ forloop.parentloop.index }}-{{ forloop.index }}">
+                          {{ child_link.title }}
+                          <span class="nav-arrow">{% render 'svg-icons', icon: 'chevron-right', size: 20 %}</span>
+                        </button>
                       {% else %}
-                        <a 
-                          class="dropdown-item {% if child_link.active %}active{% endif %}" 
-                          href="{{ child_link.url }}"
-                          aria-current="{% if child_link.active %}page{% endif %}">
+                        <a class="mobile-nav-link {% if child_link.active %}active{% endif %}" href="{{ child_link.url }}">
                           {{ child_link.title }}
                         </a>
                       {% endif %}
@@ -49,48 +108,271 @@
                   {% endfor %}
                 </ul>
               </div>
-            </li>
+            </div>
+
+            <!-- Submenu Panels (Level 2) -->
+            {% for child_link in link.links %}
+              {% if child_link.links != blank %}
+                <div class="menu-panel" data-level="2" data-panel-id="submenu-{{ forloop.parentloop.index }}-{{ forloop.index }}">
+                  <div class="menu-panel-header">
+                    <button class="back-button" type="button" data-back>
+                      {% render 'svg-icons', icon: 'chevron-left', size: 20 %}
+                      <span>Back</span>
+                    </button>
+                    <span class="panel-title">{{ child_link.title }}</span>
+                  </div>
+                  <div class="menu-panel-content">
+                    <ul class="mobile-nav-list">
+                      <!-- View All link -->
+                      {% if child_link.url != '#' and child_link.url != '' %}
+                        <li class="mobile-nav-item">
+                          <a class="mobile-nav-link view-all" href="{{ child_link.url }}">
+                            View All {{ child_link.title }}
+                          </a>
+                        </li>
+                      {% endif %}
+                      {% for grandchild_link in child_link.links %}
+                        <li class="mobile-nav-item">
+                          {% if grandchild_link.title == '-' %}
+                            <hr class="nav-divider">
+                          {% else %}
+                            <a class="mobile-nav-link {% if grandchild_link.active %}active{% endif %}" href="{{ grandchild_link.url }}">
+                              {{ grandchild_link.title }}
+                            </a>
+                          {% endif %}
+                        </li>
+                      {% endfor %}
+                    </ul>
+                  </div>
+                </div>
+              {% endif %}
+            {% endfor %}
           {% endif %}
         {% endfor %}
-      </ul>
-    {% endunless %}
-
-    {% if block.settings.social_icons %}
-      <div class="social-icons-wrapper text-center mb-5">
-        {% render 'social-icons', show_title: false %}
-      </div>
-    {% endif %}
-
-    {% unless block.settings.secondary_menu == nil %}
-      <ul class="nav nav-secondary justify-content-center mb-4">
-        {% for link in linklists[block.settings.secondary_menu].links %}
-          <li class="nav-item">
-            <a 
-              class="nav-link py-2 px-4 {% if link.active %}active{% endif %}" 
-              href="{{ link.url }}" 
-              aria-current="{% if link.active %}page{% endif %}">
-              {{ link.title }}
-            </a>
-          </li>
-        {% endfor %}
-      </ul>
-    {% endunless %}
-
-    <ul class="nav justify-content-center mb-4">
-      {% if localization.available_countries.size > 1 %}
-        <li class="nav-item">
-          <a
-            class="nav-link nav-link-icon"
-            href="#modal-localization"
-            data-bs-toggle="modal"
-            aria-controls="modal-localization" 
-            aria-label="{{ 'general.accessibility.localization' | t }} {{ localization.country.name }}"
-            role="button">
-            {{ localization.country | image_url: width: 20, height: 20 | image_tag }}
-          </a>
-        </li>
-      {% endif %}
-    </ul>
-    
+      {% endunless %}
+    </div>
   </div>
 </div>
+
+<style>
+  /* Mobile Sliding Menu Styles */
+  .mobile-menu-slider {
+    position: relative;
+    width: 100%;
+    min-height: 50vh;
+    overflow: hidden;
+  }
+
+  .menu-panel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, #f5f3ff 0%, #faf5ff 100%);
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    overflow-y: auto;
+  }
+
+  .menu-panel.active {
+    position: relative;
+    transform: translateX(0);
+  }
+
+  .menu-panel.slide-out {
+    transform: translateX(-100%);
+  }
+
+  .menu-panel-header {
+    display: flex;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid rgba(167, 139, 250, 0.2);
+    background: rgba(167, 139, 250, 0.1);
+  }
+
+  .back-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: none;
+    border: none;
+    color: #6b21a8;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 0.5rem;
+    margin-left: -0.5rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .back-button:hover {
+    color: #7c3aed;
+  }
+
+  .panel-title {
+    flex: 1;
+    text-align: center;
+    font-weight: 600;
+    color: #6b21a8;
+    font-size: 1.1rem;
+    margin-right: 2rem;
+  }
+
+  .menu-panel-content {
+    padding: 1rem 1.5rem 2rem;
+  }
+
+  .mobile-nav-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .mobile-nav-item {
+    border-bottom: 1px solid rgba(167, 139, 250, 0.15);
+  }
+
+  .mobile-nav-item:last-child {
+    border-bottom: none;
+  }
+
+  .mobile-nav-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 1rem 0;
+    color: #4a5568;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: left;
+  }
+
+  .mobile-nav-link:hover,
+  .mobile-nav-link:focus {
+    color: #7c3aed;
+  }
+
+  .mobile-nav-link.active {
+    color: #7c3aed;
+    font-weight: 600;
+  }
+
+  .mobile-nav-link.view-all {
+    color: #7c3aed;
+    font-weight: 600;
+    font-style: italic;
+  }
+
+  .mobile-nav-link.small {
+    font-size: 0.9rem;
+    padding: 0.75rem 0;
+  }
+
+  .mobile-nav-link.has-children .nav-arrow {
+    color: #a78bfa;
+    transition: transform 0.2s ease;
+  }
+
+  .mobile-nav-link.has-children:hover .nav-arrow {
+    transform: translateX(4px);
+    color: #7c3aed;
+  }
+
+  .nav-divider {
+    margin: 0.5rem 0;
+    border: none;
+    border-top: 1px solid rgba(167, 139, 250, 0.2);
+  }
+
+  .secondary-nav {
+    padding-top: 1rem;
+    border-top: 1px solid rgba(167, 139, 250, 0.2);
+  }
+
+  .mobile-nav-link-icon {
+    display: inline-flex;
+    padding: 0.5rem;
+  }
+
+  /* Offcanvas adjustments */
+  #offcanvas-menu {
+    height: auto;
+    max-height: 85vh;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+  }
+
+  #offcanvas-menu .offcanvas-body {
+    padding: 0;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const menuSlider = document.querySelector('.mobile-menu-slider');
+    if (!menuSlider) return;
+
+    const panels = menuSlider.querySelectorAll('.menu-panel');
+    let panelHistory = [menuSlider.querySelector('.menu-panel[data-level="0"]')];
+
+    // Handle clicks on menu items with children
+    menuSlider.addEventListener('click', function(e) {
+      const trigger = e.target.closest('[data-target]');
+      if (trigger) {
+        e.preventDefault();
+        const targetId = trigger.getAttribute('data-target');
+        const targetPanel = menuSlider.querySelector(`[data-panel-id="${targetId}"]`);
+
+        if (targetPanel) {
+          // Slide out current panel
+          const currentPanel = panelHistory[panelHistory.length - 1];
+          currentPanel.classList.remove('active');
+          currentPanel.classList.add('slide-out');
+
+          // Slide in target panel
+          targetPanel.classList.add('active');
+          panelHistory.push(targetPanel);
+        }
+      }
+
+      // Handle back button
+      const backBtn = e.target.closest('[data-back]');
+      if (backBtn) {
+        e.preventDefault();
+        if (panelHistory.length > 1) {
+          // Slide out current panel
+          const currentPanel = panelHistory.pop();
+          currentPanel.classList.remove('active');
+
+          // Slide in previous panel
+          const prevPanel = panelHistory[panelHistory.length - 1];
+          prevPanel.classList.remove('slide-out');
+          prevPanel.classList.add('active');
+        }
+      }
+    });
+
+    // Reset menu when offcanvas is closed
+    const offcanvasMenu = document.getElementById('offcanvas-menu');
+    if (offcanvasMenu) {
+      offcanvasMenu.addEventListener('hidden.bs.offcanvas', function() {
+        // Reset all panels
+        panels.forEach(panel => {
+          panel.classList.remove('active', 'slide-out');
+        });
+        // Reset to main panel
+        const mainPanel = menuSlider.querySelector('.menu-panel[data-level="0"]');
+        mainPanel.classList.add('active');
+        panelHistory = [mainPanel];
+      });
+    }
+  });
+</script>
