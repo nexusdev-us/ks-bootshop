@@ -11,6 +11,10 @@
   "type": "footer",
   "name": "Footer Group",
   "sections": {
+    "1764089789884ce604": {
+      "type": "_blocks",
+      "settings": {}
+    },
     "newsletter_fL4LWF": {
       "type": "newsletter",
       "settings": {
@@ -100,6 +104,7 @@
     }
   },
   "order": [
+    "1764089789884ce604",
     "newsletter_fL4LWF",
     "footer"
   ]
