@@ -32,3 +32,26 @@ body {
   position: relative;
   z-index: 1010;
 }
+
+/* Fix quantity buttons vertical alignment */
+.qty-input-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.qty-input-wrapper .btn-qty-minus,
+.qty-input-wrapper .btn-qty-plus {
+  position: relative;
+  top: auto;
+  height: auto;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.qty-input-wrapper .form-control {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  width: 4rem;
+}

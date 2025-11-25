@@ -300,6 +300,40 @@
     margin-top: 0.5rem;
     padding-left: 0.5rem;
   }
+
+  /* Ensure collapse shows when expanded */
+  #offcanvas-menu .collapse.show {
+    display: block !important;
+    visibility: visible !important;
+  }
+
+  /* Style the submenu container */
+  #offcanvas-menu .collapse .nav {
+    background: rgba(167, 139, 250, 0.08);
+    border-radius: 8px;
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+  }
+
+  /* Style the chevron icon for collapse toggle */
+  #offcanvas-menu .nav-link[data-bs-toggle="collapse"] svg {
+    transition: transform 0.3s ease;
+    margin-left: auto;
+  }
+
+  #offcanvas-menu .nav-link[data-bs-toggle="collapse"][aria-expanded="true"] svg {
+    transform: rotate(180deg);
+  }
+
+  /* Make sure the collapse toggle is clickable */
+  #offcanvas-menu .nav-link[data-bs-toggle="collapse"] {
+    cursor: pointer;
+  }
+
+  /* Hide the ::after pseudo-element since we're using SVG icon */
+  #offcanvas-menu .accordion-nav .nav-link[data-bs-toggle="collapse"]::after {
+    display: none;
+  }
 }
 
 /* Cart Badge */
