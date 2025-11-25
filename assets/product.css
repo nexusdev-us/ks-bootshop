@@ -47,32 +47,37 @@ body.template-product section {
   }
 }
 
-/* Desktop layout - sticky image on left, scrolling info on right */
+/* Desktop layout - fixed image on left, scrolling info on right */
 @media (min-width: 1200px) {
+  .product-main {
+    overflow: visible;
+  }
+
   .product-main .container {
     max-width: 1400px;
     padding-left: 2rem;
     padding-right: 2rem;
   }
 
-  /* Row needs to allow children to have different heights */
   .product-main .product-layout {
-    display: flex;
-    flex-wrap: nowrap;
-    align-items: flex-start;
+    display: block;
+    position: relative;
   }
 
-  /* Left column - contains sticky element */
+  /* Left column - fixed position */
   .product-main .product-media-col {
-    flex: 0 0 50%;
-    max-width: 50%;
-    align-self: flex-start;
+    position: fixed;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-100%);
+    width: 45%;
+    max-width: 600px;
+    padding-right: 2rem;
+    z-index: 10;
   }
 
-  /* The sticky wrapper inside the left column */
   .product-main .product-media-sticky {
-    position: sticky;
-    top: 2rem;
+    position: static;
   }
 
   .product-main .product-media-gallery {
@@ -80,11 +85,11 @@ body.template-product section {
     position: static;
   }
 
-  /* Right column - scrolls naturally */
+  /* Right column - takes right half, scrolls normally */
   .product-main .product-info-col {
-    flex: 0 0 50%;
-    max-width: 50%;
-    padding-left: 3rem;
+    margin-left: 50%;
+    width: 50%;
+    padding-left: 2rem;
   }
 
   .product-main .product-title {
@@ -96,6 +101,10 @@ body.template-product section {
 @media (min-width: 1600px) {
   .product-main .container {
     max-width: 1500px;
+  }
+
+  .product-main .product-media-col {
+    max-width: 650px;
   }
 
   .product-main .product-title {
