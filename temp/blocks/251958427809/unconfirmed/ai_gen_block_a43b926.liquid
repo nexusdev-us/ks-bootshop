@@ -1,6 +1,521 @@
+{% doc %}
+  @prompt
+    Generate an area that is extremely elegant with tons of beautiful animations saying welcome to our amazing store and that these products are going to be the most satisfying, they are all home made with the finest ingredients, please enjoy our featured products. rememeber make it extremely elegant and fancy being very welcoming
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-elegant-welcome-{{ ai_gen_id }} {
+    position: relative;
+    padding: {{ block.settings.padding_top }}px {{ block.settings.padding_horizontal }}px {{ block.settings.padding_bottom }}px;
+    background: {{ block.settings.background_gradient }};
+    overflow: hidden;
+    min-height: {{ block.settings.min_height }}px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ai-elegant-welcome__overlay-{{ ai_gen_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 30% 50%, {{ block.settings.overlay_color_1 }} 0%, transparent 50%),
+                radial-gradient(circle at 70% 50%, {{ block.settings.overlay_color_2 }} 0%, transparent 50%);
+    opacity: {{ block.settings.overlay_opacity }};
+    pointer-events: none;
+  }
+
+  .ai-elegant-welcome__particles-{{ ai_gen_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .ai-elegant-welcome__particle-{{ ai_gen_id }} {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: {{ block.settings.particle_color }};
+    border-radius: 50%;
+    opacity: 0;
+  }
+
+  .ai-elegant-welcome__content-{{ ai_gen_id }} {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: {{ block.settings.content_max_width }}px;
+    padding: 40px 20px;
+  }
+
+  .ai-elegant-welcome__decorative-line-{{ ai_gen_id }} {
+    width: 80px;
+    height: 2px;
+    background: {{ block.settings.accent_color }};
+    margin: 0 auto 30px;
+    position: relative;
+    opacity: 0;
+    transform: scaleX(0);
+  }
+
+  .ai-elegant-welcome__decorative-line-{{ ai_gen_id }}::before,
+  .ai-elegant-welcome__decorative-line-{{ ai_gen_id }}::after {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: {{ block.settings.accent_color }};
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .ai-elegant-welcome__decorative-line-{{ ai_gen_id }}::before {
+    left: -15px;
+  }
+
+  .ai-elegant-welcome__decorative-line-{{ ai_gen_id }}::after {
+    right: -15px;
+  }
+
+  .ai-elegant-welcome__title-{{ ai_gen_id }} {
+    font-size: {{ block.settings.title_size }}px;
+    color: {{ block.settings.title_color }};
+    margin: 0 0 25px;
+    font-weight: 300;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    opacity: 0;
+    transform: translateY(30px);
+    line-height: 1.3;
+  }
+
+  .ai-elegant-welcome__subtitle-{{ ai_gen_id }} {
+    font-size: {{ block.settings.subtitle_size }}px;
+    color: {{ block.settings.subtitle_color }};
+    margin: 0 0 35px;
+    font-weight: 400;
+    line-height: 1.8;
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  .ai-elegant-welcome__divider-{{ ai_gen_id }} {
+    width: 200px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, {{ block.settings.accent_color }}, transparent);
+    margin: 35px auto;
+    opacity: 0;
+    transform: scaleX(0);
+  }
+
+  .ai-elegant-welcome__cta-{{ ai_gen_id }} {
+    display: inline-block;
+    padding: 16px 50px;
+    background: {{ block.settings.button_background }};
+    color: {{ block.settings.button_text_color }};
+    text-decoration: none;
+    border-radius: {{ block.settings.button_border_radius }}px;
+    font-size: {{ block.settings.button_font_size }}px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 2px solid {{ block.settings.button_border_color }};
+  }
+
+  .ai-elegant-welcome__cta-{{ ai_gen_id }}::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.6s ease;
+  }
+
+  .ai-elegant-welcome__cta-{{ ai_gen_id }}:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  }
+
+  .ai-elegant-welcome__cta-{{ ai_gen_id }}:hover::before {
+    left: 100%;
+  }
+
+  @keyframes ai-elegant-welcome-fadeInUp-{{ ai_gen_id }} {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes ai-elegant-welcome-scaleIn-{{ ai_gen_id }} {
+    to {
+      opacity: 1;
+      transform: scaleX(1);
+    }
+  }
+
+  @keyframes ai-elegant-welcome-float-{{ ai_gen_id }} {
+    0%, 100% {
+      transform: translate(var(--ai-elegant-welcome-x), var(--ai-elegant-welcome-y));
+      opacity: 0;
+    }
+    10%, 90% {
+      opacity: 0.6;
+    }
+    50% {
+      transform: translate(
+        calc(var(--ai-elegant-welcome-x) + var(--ai-elegant-welcome-dx)),
+        calc(var(--ai-elegant-welcome-y) + var(--ai-elegant-welcome-dy))
+      );
+    }
+  }
+
+  .ai-elegant-welcome-{{ ai_gen_id }}.ai-elegant-welcome--loaded .ai-elegant-welcome__decorative-line-{{ ai_gen_id }} {
+    animation: ai-elegant-welcome-scaleIn-{{ ai_gen_id }} 1s cubic-bezier(0.4, 0, 0.2, 1) 0.3s forwards;
+  }
+
+  .ai-elegant-welcome-{{ ai_gen_id }}.ai-elegant-welcome--loaded .ai-elegant-welcome__title-{{ ai_gen_id }} {
+    animation: ai-elegant-welcome-fadeInUp-{{ ai_gen_id }} 1.2s cubic-bezier(0.4, 0, 0.2, 1) 0.6s forwards;
+  }
+
+  .ai-elegant-welcome-{{ ai_gen_id }}.ai-elegant-welcome--loaded .ai-elegant-welcome__subtitle-{{ ai_gen_id }} {
+    animation: ai-elegant-welcome-fadeInUp-{{ ai_gen_id }} 1.2s cubic-bezier(0.4, 0, 0.2, 1) 0.9s forwards;
+  }
+
+  .ai-elegant-welcome-{{ ai_gen_id }}.ai-elegant-welcome--loaded .ai-elegant-welcome__divider-{{ ai_gen_id }} {
+    animation: ai-elegant-welcome-scaleIn-{{ ai_gen_id }} 1s cubic-bezier(0.4, 0, 0.2, 1) 1.2s forwards;
+  }
+
+  .ai-elegant-welcome-{{ ai_gen_id }}.ai-elegant-welcome--loaded .ai-elegant-welcome__cta-{{ ai_gen_id }} {
+    animation: ai-elegant-welcome-fadeInUp-{{ ai_gen_id }} 1.2s cubic-bezier(0.4, 0, 0.2, 1) 1.5s forwards;
+  }
+
+  @media screen and (max-width: 768px) {
+    .ai-elegant-welcome-{{ ai_gen_id }} {
+      padding: {{ block.settings.padding_top | times: 0.6 }}px {{ block.settings.padding_horizontal | times: 0.5 }}px {{ block.settings.padding_bottom | times: 0.6 }}px;
+      min-height: {{ block.settings.min_height | times: 0.7 }}px;
+    }
+
+    .ai-elegant-welcome__title-{{ ai_gen_id }} {
+      font-size: {{ block.settings.title_size | times: 0.6 }}px;
+      letter-spacing: 2px;
+    }
+
+    .ai-elegant-welcome__subtitle-{{ ai_gen_id }} {
+      font-size: {{ block.settings.subtitle_size | times: 0.85 }}px;
+    }
+
+    .ai-elegant-welcome__cta-{{ ai_gen_id }} {
+      padding: 14px 35px;
+      font-size: {{ block.settings.button_font_size | times: 0.9 }}px;
+    }
+  }
+{% endstyle %}
+
+<elegant-welcome-{{ ai_gen_id }} class="ai-elegant-welcome-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-elegant-welcome__overlay-{{ ai_gen_id }}"></div>
+  
+  <div class="ai-elegant-welcome__particles-{{ ai_gen_id }}"></div>
+
+  <div class="ai-elegant-welcome__content-{{ ai_gen_id }}">
+    <div class="ai-elegant-welcome__decorative-line-{{ ai_gen_id }}"></div>
+    
+    {% if block.settings.title != blank %}
+      <h1 class="ai-elegant-welcome__title-{{ ai_gen_id }}">
+        {{ block.settings.title }}
+      </h1>
+    {% endif %}
+
+    {% if block.settings.subtitle != blank %}
+      <div class="ai-elegant-welcome__subtitle-{{ ai_gen_id }}">
+        {{ block.settings.subtitle }}
+      </div>
+    {% endif %}
+
+    <div class="ai-elegant-welcome__divider-{{ ai_gen_id }}"></div>
+
+    {% if block.settings.button_text != blank and block.settings.button_link != blank %}
+      <a href="{{ block.settings.button_link }}" class="ai-elegant-welcome__cta-{{ ai_gen_id }}">
+        {{ block.settings.button_text }}
+      </a>
+    {% endif %}
+  </div>
+</elegant-welcome-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class ElegantWelcome{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+        this.particleCount = 30;
+      }
+
+      connectedCallback() {
+        this.createParticles();
+        
+        setTimeout(() => {
+          this.classList.add('ai-elegant-welcome--loaded');
+        }, 100);
+      }
+
+      createParticles() {
+        const container = this.querySelector('.ai-elegant-welcome__particles-{{ ai_gen_id }}');
+        if (!container) return;
+
+        for (let i = 0; i < this.particleCount; i++) {
+          const particle = document.createElement('div');
+          particle.className = 'ai-elegant-welcome__particle-{{ ai_gen_id }}';
+          
+          const startX = Math.random() * 100;
+          const startY = Math.random() * 100;
+          const deltaX = (Math.random() - 0.5) * 100;
+          const deltaY = (Math.random() - 0.5) * 100;
+          const duration = 8 + Math.random() * 8;
+          const delay = Math.random() * 3;
+          
+          particle.style.cssText = `
+            --ai-elegant-welcome-x: ${startX}%;
+            --ai-elegant-welcome-y: ${startY}%;
+            --ai-elegant-welcome-dx: ${deltaX}px;
+            --ai-elegant-welcome-dy: ${deltaY}px;
+            animation: ai-elegant-welcome-float-{{ ai_gen_id }} ${duration}s ease-in-out ${delay}s infinite;
+          `;
+          
+          container.appendChild(particle);
+        }
+      }
+    }
+
+    customElements.define('elegant-welcome-{{ ai_gen_id }}', ElegantWelcome{{ ai_gen_id }});
+  })();
+</script>
+
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{
+  "name": "Elegant welcome",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Welcome to Our Amazing Store"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "These products are going to be the most satisfying. They are all homemade with the finest ingredients. Please enjoy our featured products."
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "Explore Collection"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "min_height",
+      "min": 300,
+      "max": 800,
+      "step": 50,
+      "unit": "px",
+      "label": "Minimum height",
+      "default": 600
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 150,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 150,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal",
+      "min": 0,
+      "max": 100,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding horizontal",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "content_max_width",
+      "min": 600,
+      "max": 1200,
+      "step": 50,
+      "unit": "px",
+      "label": "Content max width",
+      "default": 900
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "title_size",
+      "min": 30,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "label": "Title size",
+      "default": 56
+    },
+    {
+      "type": "range",
+      "id": "subtitle_size",
+      "min": 14,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "label": "Subtitle size",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "button_font_size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Button font size",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_gradient",
+      "label": "Background color",
+      "default": "#f5f3ff"
+    },
+    {
+      "type": "color",
+      "id": "overlay_color_1",
+      "label": "Overlay color 1",
+      "default": "#004071"
+    },
+    {
+      "type": "color",
+      "id": "overlay_color_2",
+      "label": "Overlay color 2",
+      "default": "#9b046f"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "min": 0,
+      "max": 1,
+      "step": 0.1,
+      "label": "Overlay opacity",
+      "default": 0.1
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title color",
+      "default": "#2e2a39"
+    },
+    {
+      "type": "color",
+      "id": "subtitle_color",
+      "label": "Subtitle color",
+      "default": "#2e2a39"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent color",
+      "default": "#9b046f"
+    },
+    {
+      "type": "color",
+      "id": "particle_color",
+      "label": "Particle color",
+      "default": "#004071"
+    },
+    {
+      "type": "header",
+      "content": "Button style"
+    },
+    {
+      "type": "color",
+      "id": "button_background",
+      "label": "Background",
+      "default": "#004071"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_border_color",
+      "label": "Border color",
+      "default": "#004071"
+    },
+    {
+      "type": "range",
+      "id": "button_border_radius",
+      "min": 0,
+      "max": 50,
+      "step": 2,
+      "unit": "px",
+      "label": "Border radius",
+      "default": 30
+    }
+  ],
+  "presets": [
+    {
+      "name": "Elegant welcome"
+    }
+  ]
+}
 {% endschema %}
