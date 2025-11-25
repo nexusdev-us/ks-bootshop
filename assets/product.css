@@ -11,40 +11,88 @@
   border-bottom-style: solid;
 }
 
-/* Better product page layout on desktop */
+/* Mobile - add margin on sides */
+@media (max-width: 599px) {
+  .product-main .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .product-main .product-media-gallery .swiper-main {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+/* Desktop - much wider layout */
 @media (min-width: 1200px) {
   .product-main .container {
-    max-width: 1400px;
+    max-width: 95% !important;
+    width: 95% !important;
   }
 
   .product-main > .container > .product-contents > .row {
-    gap: 2rem;
+    gap: 3rem;
   }
 
   .product-main .product-media-gallery {
-    max-width: 100%;
+    max-width: 650px;
   }
 
-  /* Product info section - more breathing room */
+  /* Product info section - use more space */
   .product-main [id^="product-inner-"] {
-    padding-left: 1.5rem;
+    padding-left: 2rem;
+    max-width: 100%;
   }
 
   /* Wider product title */
   .product-main .product-title {
     font-size: 1.75rem;
   }
+
+  /* Product description/collapse content */
+  .product-main .collapse-body,
+  .product-main .product-richtext {
+    max-width: 100%;
+  }
 }
 
 /* Even larger screens */
 @media (min-width: 1400px) {
   .product-main .container {
-    max-width: 1600px;
+    max-width: 1600px !important;
+    width: 1600px !important;
+  }
+
+  .product-main .product-media-gallery {
+    max-width: 700px;
   }
 
   .product-main .product-title {
     font-size: 2rem;
   }
+}
+
+@media (min-width: 1800px) {
+  .product-main .container {
+    max-width: 1700px !important;
+    width: 1700px !important;
+  }
+}
+
+/* Lavender background for entire product page */
+.product-main {
+  background-color: #f8f5ff !important;
+}
+
+/* Make all sections on product page have lavender bg */
+body.template-product {
+  background-color: #f8f5ff;
+}
+
+body.template-product .product-main,
+body.template-product section {
+  background-color: #f8f5ff !important;
 }
 
 .product-sale-badge {
