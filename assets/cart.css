@@ -37,6 +37,27 @@
   align-items: center;
   justify-content: center;
   position: relative;
+  background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%) !important;
+  color: #ffffff !important;
+  border: none !important;
+  padding: 0.875rem 1.5rem;
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
+  transition: all 0.3s ease;
+}
+
+.offcanvas-cart .btn-checkout:hover {
+  background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%) !important;
+  color: #ffffff !important;
+  box-shadow: 0 6px 16px rgba(124, 58, 237, 0.4);
+  transform: translateY(-1px);
+}
+
+.offcanvas-cart .btn-checkout:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(124, 58, 237, 0.3);
 }
 
 .offcanvas-cart .cart-empty {
