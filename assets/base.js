@@ -197,22 +197,9 @@ class SwiperSlider extends HTMLElement {
       navigation: this.navigation,
       pagination: this.pagination,
       scrollbar: this.scrollbar,
+      breakpoints: this.breakpoints,
       loop: false,
-      rewind: false,
-      breakpoints: {
-        0: {
-          slidesPerView: Number(this.dataset.breakpointMobile) || 1,
-          spaceBetween: 20
-        },
-        600: {
-          slidesPerView: Number(this.dataset.breakpointTablet) || 2,
-          spaceBetween: 25
-        },
-        1200: {
-          slidesPerView: Math.min(Number(this.dataset.breakpointDesktop) || 4, 4),
-          spaceBetween: 30
-        }
-      }
+      rewind: false
     })
   }
 
