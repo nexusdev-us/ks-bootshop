@@ -17,7 +17,7 @@
   display: flex !important;
   flex-direction: column !important;
   height: 100% !important;
-  padding: 1rem !important;
+  padding: 0.5rem !important;
   text-align: center !important;
   overflow: visible !important;
   position: relative !important;
@@ -47,7 +47,8 @@
    ============================================ */
 
 .product-card .product-card-img-wrapper {
-  margin-bottom: 0.75rem !important;
+  margin: 0 !important;
+  margin-bottom: 0.5rem !important;
   position: relative;
   overflow: hidden;
   border-radius: 10px;
@@ -526,23 +527,13 @@
 }
 
 /* ============================================
-   HOMEPAGE FEATURED PRODUCTS - BIGGER & CENTERED
-   Targets the existing Swiper slider sections
+   HOMEPAGE FEATURED PRODUCTS - BIGGER CARDS
    ============================================ */
 
-/* Make swiper slides bigger with max-width and center them */
-.featured-products .swiper-wrapper {
-  justify-content: center !important;
-}
-
-.featured-products .swiper-slide {
-  max-width: 400px !important;
-  flex-shrink: 0 !important;
-}
-
-/* Bigger padding inside cards on homepage */
+/* Minimal padding so image spans nearly to border */
 .featured-products .product-card {
-  padding: 1.5rem !important;
+  padding: 0.5rem !important;
+  padding-bottom: 1rem !important;
 }
 
 /* Bigger title */
@@ -572,12 +563,9 @@
 
 /* Desktop: even bigger cards */
 @media (min-width: 1200px) {
-  .featured-products .swiper-slide {
-    max-width: 450px !important;
-  }
-
   .featured-products .product-card {
-    padding: 1.75rem !important;
+    padding: 0.5rem !important;
+    padding-bottom: 1.25rem !important;
   }
 
   .featured-products .product-card .product-card-title,
