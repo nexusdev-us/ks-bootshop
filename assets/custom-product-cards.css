@@ -429,6 +429,79 @@
 }
 
 /* ============================================
+   FEATURED PRODUCTS GRID - CENTERED LAYOUT
+   ============================================ */
+
+.featured-products-grid .products-grid-wrapper {
+  padding: 1rem 0;
+}
+
+.featured-products-grid .products-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.featured-products-grid .product-grid-item {
+  display: flex;
+}
+
+.featured-products-grid .product-grid-item .product-card {
+  width: 100%;
+  margin-bottom: 0 !important;
+}
+
+/* Larger cards for grid layout */
+.featured-products-grid .product-card {
+  padding: 1.25rem !important;
+}
+
+.featured-products-grid .product-card .product-card-title,
+.featured-products-grid .product-card .product-title {
+  font-size: 1.05rem !important;
+  white-space: normal !important;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  line-height: 1.4 !important;
+  min-height: 2.8em !important;
+}
+
+.featured-products-grid .product-card .product-card-price,
+.featured-products-grid .product-card .product-price {
+  font-size: 1.1rem !important;
+}
+
+.featured-products-grid .product-card .btn-primary,
+.featured-products-grid .product-card .btn-add-to-cart,
+.featured-products-grid .product-card button[name="add"] {
+  padding: 0.6rem 1.25rem !important;
+  font-size: 0.9rem !important;
+}
+
+/* Mobile - bigger cards */
+@media (max-width: 599px) {
+  .featured-products-grid .product-card {
+    padding: 1rem !important;
+  }
+
+  .featured-products-grid .product-card .product-card-title,
+  .featured-products-grid .product-card .product-title {
+    font-size: 0.95rem !important;
+  }
+}
+
+/* Tablet */
+@media (min-width: 600px) and (max-width: 1199px) {
+  .featured-products-grid .product-card {
+    padding: 1.15rem !important;
+  }
+}
+
+/* ============================================
    LOADING STATE (OPTIONAL)
    ============================================ */
 
