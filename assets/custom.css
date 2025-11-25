@@ -140,6 +140,17 @@ footer,
   fill: #ffffff !important;
 }
 
+/* Sold out button text - red on product pages */
+.product-main .btn-atc:disabled,
+.product-main .btn-atc[disabled],
+.product-main button[name="add"]:disabled,
+.product-main button[name="add"][disabled] {
+  background: #fee2e2 !important;
+  color: #dc2626 !important;
+  border-color: #fecaca !important;
+  opacity: 1 !important;
+}
+
 /* Center product cards on collection pages when only a few items */
 .collection-products .product-list {
   justify-content: center;
