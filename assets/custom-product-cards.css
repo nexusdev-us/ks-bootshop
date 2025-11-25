@@ -464,22 +464,6 @@
    SWIPER SLIDER FOR HOME PAGE COLLECTIONS
    ============================================ */
 
-/* When there are few slides, center the swiper wrapper */
-.has-few-slides .swiper-wrapper {
-  justify-content: center !important;
-}
-
-/* Hide navigation when not needed */
-.has-few-slides .swiper-button-prev,
-.has-few-slides .swiper-button-next {
-  display: none !important;
-}
-
-/* Hide scrollbar when centered */
-.has-few-slides .swiper-scrollbar {
-  display: none !important;
-}
-
 /* Ensure product cards maintain reasonable sizes in sliders */
 .featured-products .swiper-slide .product-card,
 .featured-collections .swiper-slide .collection-card {

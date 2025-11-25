@@ -191,28 +191,7 @@ class SwiperSlider extends HTMLElement {
   }
 
   init () {
-    // Count slides
-    const slideCount = this.querySelectorAll('.swiper-slide').length
-    if (slideCount === 0) return // No slides, don't initialize
-
-    const swiperEl = this.querySelector('.swiper')
-
-    // Get configured slides per view (with max 4 on desktop)
-    const mobileSlides = Number(this.dataset.breakpointMobile) || 1
-    const tabletSlides = Number(this.dataset.breakpointTablet) || 2
-    const desktopSlides = Math.min(Number(this.dataset.breakpointDesktop) || 4, 4)
-
-    // Determine current viewport expected slides
-    const width = window.innerWidth
-    let currentExpected = desktopSlides
-    if (width < 600) currentExpected = mobileSlides
-    else if (width < 1200) currentExpected = tabletSlides
-
-    // Check if we should center (when slides <= viewport capacity)
-    const shouldCenter = slideCount <= currentExpected
-
-    // Base config - always use the breakpoints
-    const config = {
+    this.slider = new window.Swiper(this.querySelector('.swiper'), {
       speed: this.speed,
       autoplay: this.autoplay,
       navigation: this.navigation,
@@ -222,27 +201,19 @@ class SwiperSlider extends HTMLElement {
       rewind: false,
       breakpoints: {
         0: {
-          slidesPerView: Math.min(slideCount, mobileSlides),
+          slidesPerView: Number(this.dataset.breakpointMobile) || 1,
           spaceBetween: 20
         },
         600: {
-          slidesPerView: Math.min(slideCount, tabletSlides),
+          slidesPerView: Number(this.dataset.breakpointTablet) || 2,
           spaceBetween: 25
         },
         1200: {
-          slidesPerView: Math.min(slideCount, desktopSlides),
+          slidesPerView: Math.min(Number(this.dataset.breakpointDesktop) || 4, 4),
           spaceBetween: 30
         }
       }
-    }
-
-    // Add centering class if needed
-    if (shouldCenter) {
-      this.classList.add('has-few-slides')
-      swiperEl.classList.add('swiper-few-slides')
-    }
-
-    this.slider = new window.Swiper(swiperEl, config)
+    })
   }
 
   speed = Number(this.dataset.sliderSpeed)
