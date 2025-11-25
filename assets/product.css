@@ -68,6 +68,13 @@ body.template-product section {
 
 /* Desktop - side by side with sticky image */
 @media (min-width: 1200px) {
+  /* Force all parents to allow sticky */
+  .product-main,
+  .product-main .container,
+  .product-main .product-contents {
+    overflow: visible !important;
+  }
+
   .product-main .container {
     max-width: 1200px;
     padding-left: 2rem;
@@ -75,28 +82,32 @@ body.template-product section {
   }
 
   .product-desktop-layout {
-    display: flex;
-    align-items: flex-start;
+    display: flex !important;
+    align-items: flex-start !important;
     gap: 2rem;
   }
 
   /* LEFT SIDE - Sticky image */
   .product-image-side {
     flex: 0 0 45%;
-    position: sticky;
-    top: 100px;
+    width: 45%;
+    position: -webkit-sticky !important;
+    position: sticky !important;
+    top: 100px !important;
     margin-bottom: 0;
-    align-self: flex-start;
+    align-self: flex-start !important;
+    height: fit-content;
   }
 
   .product-image-side .product-media-gallery {
     max-width: 400px;
+    position: static !important;
   }
 
   /* RIGHT SIDE - Scrollable info */
   .product-info-side {
     flex: 1;
-    padding-bottom: 100px;
+    min-height: 150vh;
   }
 
   .product-main .product-title {
