@@ -16,12 +16,34 @@
    ============================================ */
 
 /* Lavender background for entire product page */
+/* Note: body class is "page-type-product" not "template-product" */
+body.page-type-product,
 body.template-product {
-  background-color: #f8f5ff;
+  background-color: #f8f5ff !important;
 }
 
-body.template-product section {
+/* Override ALL bg-body and bg-white on product pages */
+body.page-type-product .bg-body,
+body.page-type-product .bg-white,
+body.page-type-product section,
+body.page-type-product .product-main,
+body.page-type-product .product-contents,
+body.page-type-product .product-info-side,
+body.page-type-product .product-block-collapse,
+body.page-type-product .collapse-wrapper,
+body.page-type-product .separator,
+body.page-type-product .container,
+body.page-type-product #main {
   background-color: #f8f5ff !important;
+  background: #f8f5ff !important;
+}
+
+/* Keep form inputs and specific elements white for usability */
+body.page-type-product .form-control,
+body.page-type-product .form-select,
+body.page-type-product .btn {
+  background-color: revert;
+  background: revert;
 }
 
 .product-main {
