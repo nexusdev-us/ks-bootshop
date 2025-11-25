@@ -461,48 +461,12 @@
 }
 
 /* ============================================
-   SWIPER SLIDER CENTERING FOR HOME PAGE
+   SWIPER SLIDER FOR HOME PAGE COLLECTIONS
    ============================================ */
 
 /* When there are few slides, center the swiper wrapper */
 .has-few-slides .swiper-wrapper {
   justify-content: center !important;
-}
-
-/* Let Swiper handle slide sizing - it knows best based on our config */
-.featured-collections .swiper-slide,
-.featured-products .swiper-slide {
-  flex-shrink: 0 !important;
-  height: auto !important;
-}
-
-/* Ensure cards inside slides maintain proper sizing */
-.featured-products .swiper-slide .product-card {
-  width: 100% !important;
-  max-width: 320px !important;
-  margin: 0 auto !important;
-}
-
-.featured-collections .swiper-slide .collection-card {
-  width: 100% !important;
-  max-width: 320px !important;
-  margin: 0 auto !important;
-}
-
-/* Desktop: enforce reasonable max widths */
-@media (min-width: 1200px) {
-  .featured-collections .swiper-slide .collection-card,
-  .featured-products .swiper-slide .product-card {
-    max-width: 280px !important;
-  }
-}
-
-/* Tablet: reasonable sizing */
-@media (min-width: 600px) and (max-width: 1199px) {
-  .featured-collections .swiper-slide .collection-card,
-  .featured-products .swiper-slide .product-card {
-    max-width: 300px !important;
-  }
 }
 
 /* Hide navigation when not needed */
@@ -516,16 +480,11 @@
   display: none !important;
 }
 
-/* Ensure swiper container doesn't overflow */
-.featured-collections .swiper,
-.featured-products .swiper {
-  overflow: hidden !important;
-}
-
-/* Maintain proper padding on swiper containers */
-.featured-collections,
-.featured-products {
-  overflow: hidden !important;
+/* Ensure product cards maintain reasonable sizes in sliders */
+.featured-products .swiper-slide .product-card,
+.featured-collections .swiper-slide .collection-card {
+  width: 100% !important;
+  height: auto !important;
 }
 
 /* ============================================
