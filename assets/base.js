@@ -191,7 +191,27 @@ class SwiperSlider extends HTMLElement {
   }
 
   init () {
-    this.slider = new window.Swiper(this.querySelector('.swiper'), {
+    // Check if we should center slides
+    const slideCount = this.querySelectorAll('.swiper-slide').length
+    const width = window.innerWidth
+    let expectedSlides = 4 // default desktop
+
+    if (width < 600) {
+      expectedSlides = Number(this.dataset.breakpointMobile) || 1
+    } else if (width < 1200) {
+      expectedSlides = Number(this.dataset.breakpointTablet) || 2
+    } else {
+      expectedSlides = Number(this.dataset.breakpointDesktop) || 4
+    }
+
+    // Add class if there are fewer slides than expected
+    const swiperEl = this.querySelector('.swiper')
+    if (slideCount <= expectedSlides) {
+      swiperEl.classList.add('swiper-few-slides')
+      this.classList.add('has-few-slides')
+    }
+
+    this.slider = new window.Swiper(swiperEl, {
       speed: this.speed,
       autoplay: this.autoplay,
       navigation: this.navigation,

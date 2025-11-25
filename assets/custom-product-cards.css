@@ -464,38 +464,98 @@
    SWIPER SLIDER CENTERING FOR HOME PAGE
    ============================================ */
 
-/* When centered slides are active, set proper widths */
-.swiper-centered .swiper-slide {
-  width: auto !important;
-  max-width: 320px !important;
+/* When there are few slides, center the swiper wrapper */
+.swiper-few-slides .swiper-wrapper,
+.has-few-slides .swiper-wrapper,
+swiper-slider.has-few-slides .swiper .swiper-wrapper {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: stretch !important;
+  transform: translateX(0) !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
-/* Mobile width adjustments */
+/* Override any Swiper inline transforms */
+.swiper-few-slides.swiper-initialized .swiper-wrapper,
+swiper-slider.has-few-slides .swiper-initialized .swiper-wrapper {
+  transform: translateX(0) !important;
+  transition: none !important;
+}
+
+/* Force centering with higher specificity */
+.featured-collections.has-few-slides .swiper .swiper-wrapper,
+.featured-products.has-few-slides .swiper .swiper-wrapper,
+swiper-slider.featured-collections.has-few-slides .swiper .swiper-wrapper,
+swiper-slider.featured-products.has-few-slides .swiper .swiper-wrapper {
+  display: flex !important;
+  justify-content: center !important;
+  transform: translateX(0) !important;
+}
+
+/* Ensure slides don't stretch when centered */
+.swiper-few-slides .swiper-slide,
+.has-few-slides .swiper-slide {
+  flex: 0 0 auto !important;
+  width: auto !important;
+  margin-right: 0 !important;
+}
+
+/* Add gap between centered slides */
+.swiper-few-slides .swiper-slide:not(:last-child),
+.has-few-slides .swiper-slide:not(:last-child) {
+  margin-right: 2rem !important;
+}
+
+/* Maintain slide padding */
+.has-few-slides .swiper-slide {
+  padding: 1rem !important;
+}
+
+/* Set proper widths for slides based on viewport */
 @media (max-width: 599px) {
-  .swiper-centered .swiper-slide {
+  .swiper-few-slides .swiper-slide,
+  .has-few-slides .swiper-slide {
+    width: 280px !important;
+    min-width: 280px !important;
     max-width: 280px !important;
   }
 }
 
-/* Tablet width adjustments */
 @media (min-width: 600px) and (max-width: 1199px) {
-  .swiper-centered .swiper-slide {
+  .swiper-few-slides .swiper-slide,
+  .has-few-slides .swiper-slide {
+    width: 280px !important;
+    min-width: 280px !important;
+    max-width: 280px !important;
+  }
+}
+
+@media (min-width: 1200px) {
+  .swiper-few-slides .swiper-slide,
+  .has-few-slides .swiper-slide {
+    width: 300px !important;
+    min-width: 300px !important;
     max-width: 300px !important;
   }
 }
 
-/* Desktop width adjustments */
-@media (min-width: 1200px) {
-  .swiper-centered .swiper-slide {
-    max-width: 320px !important;
-  }
+/* Hide navigation arrows when slides are centered */
+.has-few-slides .swiper-button-prev,
+.has-few-slides .swiper-button-next {
+  display: none !important;
 }
 
-/* Ensure product cards inside centered slides maintain proper sizing */
-.swiper-centered .swiper-slide .product-card,
-.swiper-centered .swiper-slide .collection-card {
+/* Ensure the swiper container itself is full width */
+.has-few-slides .swiper {
   width: 100% !important;
-  min-width: 260px !important;
+  overflow: visible !important;
+}
+
+/* Disable scrollbar when centered */
+.has-few-slides .swiper-scrollbar {
+  display: none !important;
 }
 
 /* ============================================
