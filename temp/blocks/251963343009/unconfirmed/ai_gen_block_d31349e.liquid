@@ -1,6 +1,71 @@
+{% doc %}
+  @prompt
+    a blank section that I can simply adjust the height of
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-blank-section-{{ ai_gen_id }} {
+    width: 100%;
+    height: {{ block.settings.height_desktop }}px;
+    background-color: {{ block.settings.background_color }};
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-blank-section-{{ ai_gen_id }} {
+      height: {{ block.settings.height_mobile }}px;
+    }
+  }
+{% endstyle %}
+
+<div
+  class="ai-blank-section-{{ ai_gen_id }}"
+  {{ block.shopify_attributes }}
+></div>
+
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{
+  "name": "Blank section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Height"
+    },
+    {
+      "type": "range",
+      "id": "height_desktop",
+      "min": 50,
+      "max": 1000,
+      "step": 10,
+      "unit": "px",
+      "label": "Desktop height",
+      "default": 300
+    },
+    {
+      "type": "range",
+      "id": "height_mobile",
+      "min": 50,
+      "max": 800,
+      "step": 10,
+      "unit": "px",
+      "label": "Mobile height",
+      "default": 200
+    },
+    {
+      "type": "header",
+      "content": "Style"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#f5f3ff"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Blank section"
+    }
+  ]
+}
 {% endschema %}
