@@ -47,33 +47,27 @@ body.template-product section {
   }
 }
 
-/* Desktop layout - fixed image on left, scrolling info on right */
+/* Desktop layout - sticky image on left, scrolling info on right */
 @media (min-width: 1200px) {
-  .product-main {
-    overflow: visible;
-  }
-
   .product-main .container {
     max-width: 1400px;
     padding-left: 2rem;
     padding-right: 2rem;
   }
 
+  /* Use CSS Grid for proper sticky behavior */
   .product-main .product-layout {
-    display: block;
-    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
   }
 
-  /* Left column - fixed position */
+  /* Left column - the sticky element needs height: fit-content */
   .product-main .product-media-col {
-    position: fixed;
+    position: sticky;
     top: 100px;
-    left: 50%;
-    transform: translateX(-100%);
-    width: 45%;
-    max-width: 600px;
-    padding-right: 2rem;
-    z-index: 10;
+    height: fit-content;
   }
 
   .product-main .product-media-sticky {
@@ -85,11 +79,9 @@ body.template-product section {
     position: static;
   }
 
-  /* Right column - takes right half, scrolls normally */
+  /* Right column - scrolls naturally */
   .product-main .product-info-col {
-    margin-left: 50%;
-    width: 50%;
-    padding-left: 2rem;
+    min-height: 100vh;
   }
 
   .product-main .product-title {
@@ -101,10 +93,6 @@ body.template-product section {
 @media (min-width: 1600px) {
   .product-main .container {
     max-width: 1500px;
-  }
-
-  .product-main .product-media-col {
-    max-width: 650px;
   }
 
   .product-main .product-title {
