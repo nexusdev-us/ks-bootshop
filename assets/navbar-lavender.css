@@ -2,9 +2,13 @@
    LAVENDER NAVIGATION BAR - BUILT FROM SCRATCH
    ============================================ */
 
-/* Navbar Wrapper */
-.lavender-navbar {
-  background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);
+/* Navbar Wrapper - Force lavender styles on ALL pages */
+.lavender-navbar,
+.lavender-navbar.bg-body,
+.lavender-navbar.bg-white,
+.lavender-navbar.text-body {
+  background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%) !important;
+  background-color: transparent !important;
   box-shadow: 0 2px 12px rgba(139, 92, 246, 0.1);
   border-top: none !important;
   border-top-width: 0 !important;
@@ -37,17 +41,21 @@
   width: 100%;
 }
 
+.lavender-navbar .navbar-content,
 .navbar-content {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
   gap: 2rem;
+  width: 100%;
 }
 
+.lavender-navbar .navbar-menu,
 .navbar-menu {
   flex: 1;
-  display: flex;
-  justify-content: center;
+  display: flex !important;
+  justify-content: center !important;
+  text-align: center;
 }
 
 .navbar-icons {
@@ -79,12 +87,14 @@
 }
 
 /* Main Menu */
+.lavender-navbar .main-menu,
 .main-menu {
   list-style: none;
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
-  display: flex;
+  display: flex !important;
   align-items: center;
+  justify-content: center !important;
   gap: 0.5rem;
 }
 
@@ -92,14 +102,15 @@
   position: relative;
 }
 
+.lavender-navbar .menu-link,
 .menu-link {
   display: flex;
   align-items: center;
   gap: 0.35rem;
   padding: 0.75rem 1.25rem;
-  color: #6b21a8;
-  text-decoration: none;
-  font-weight: 500;
+  color: #6b21a8 !important;
+  text-decoration: none !important;
+  font-weight: 600 !important;
   font-size: 1rem;
   border-radius: 8px;
   transition: all 0.3s ease;
@@ -177,14 +188,15 @@
   position: relative;
 }
 
+.lavender-navbar .submenu-link,
 .submenu-link {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0.65rem 1rem;
-  color: #6b21a8;
-  text-decoration: none;
-  font-weight: 500;
+  color: #6b21a8 !important;
+  text-decoration: none !important;
+  font-weight: 500 !important;
   font-size: 0.95rem;
   border-radius: 8px;
   transition: all 0.2s ease;
