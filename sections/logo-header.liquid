@@ -3,6 +3,14 @@
   Disappears when scrolling, reappears at top
 {% endcomment %}
 
+{% liquid
+  if section.settings.logo_url != blank
+    assign logo_link = section.settings.logo_url
+  else
+    assign logo_link = routes.root_url
+  endif
+%}
+
 <div
   id="logo-header"
   class="logo-header {{ section.settings.bg_color }} {{ section.settings.text_color }}"
@@ -11,7 +19,7 @@
   ">
   <div class="container text-center {{ section.settings.pt | prepend: 'pt-' }} {{ section.settings.pb | prepend: 'pb-' }}">
     {% if section.settings.logo %}
-      <a href="{{ routes.root_url }}" class="logo-header-link">
+      <a href="{{ logo_link }}" class="logo-header-link">
         <img
           src="{{ section.settings.logo | image_url: width: section.settings.logo_width }}"
           alt="{{ shop.name }}"
@@ -21,7 +29,7 @@
           class="logo-header-img">
       </a>
     {% else %}
-      <a href="{{ routes.root_url }}" class="logo-header-link">
+      <a href="{{ logo_link }}" class="logo-header-link">
         <h1 class="logo-header-text mb-0">{{ shop.name }}</h1>
       </a>
     {% endif %}
@@ -78,6 +86,12 @@
       "step": 10,
       "default": 200,
       "label": "Logo width (px)"
+    },
+    {
+      "type": "url",
+      "id": "logo_url",
+      "label": "Logo link URL",
+      "info": "Leave blank to link to store homepage. Enter a full URL (e.g. https://example.com) to link elsewhere."
     },
     {
       "type": "select",

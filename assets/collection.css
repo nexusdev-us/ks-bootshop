@@ -4,12 +4,162 @@
 */
 
 /*
-  Collection header
+  Collection header - Elegant Dark Overlay Style
 */
 .collection-header {
   border-top-style: solid;
   border-bottom-style: solid;
   text-align: center;
+  position: relative;
+  min-height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%) !important;
+}
+
+@media (min-width: 768px) {
+  .collection-header {
+    min-height: 350px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .collection-header {
+    min-height: 400px;
+  }
+}
+
+/* Full-width background image */
+.collection-header .img-wrapper {
+  position: absolute !important;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.collection-header .img-wrapper img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Dark gradient overlay */
+.collection-header .img-wrapper::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.3) 0%,
+    rgba(0, 0, 0, 0.5) 50%,
+    rgba(0, 0, 0, 0.7) 100%
+  ) !important;
+  z-index: 2;
+}
+
+/* Content container - no box, just clean text */
+.collection-header .container {
+  position: relative;
+  z-index: 10;
+  padding: 2rem 1.5rem;
+  max-width: 900px !important;
+}
+
+/* Title styling - clean, no background box */
+.collection-header .title {
+  color: #ffffff !important;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+  letter-spacing: 0.02em;
+  animation: fadeInUp 0.6s ease-out both;
+}
+
+.collection-header .title span {
+  background: none !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+}
+
+@media (min-width: 768px) {
+  .collection-header .title {
+    font-size: 2.75rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .collection-header .title {
+    font-size: 3.25rem;
+  }
+}
+
+/* Description styling - clean, no background box */
+.collection-header .description {
+  color: rgba(255, 255, 255, 0.9) !important;
+  font-size: 1rem;
+  line-height: 1.7;
+  max-width: 600px;
+  margin: 0 auto;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.4);
+  animation: fadeInUp 0.6s ease-out 0.15s both;
+}
+
+.collection-header .description p {
+  margin-bottom: 0;
+}
+
+@media (min-width: 768px) {
+  .collection-header .description {
+    font-size: 1.125rem;
+  }
+}
+
+/* Subtle decorative line under title */
+.collection-header .title::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #a78bfa 0%, #8b5cf6 100%);
+  margin: 1rem auto 0;
+  border-radius: 2px;
+}
+
+/* Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* When there's no collection image, show gradient background */
+.collection-header:not(:has(.img-wrapper)) {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%) !important;
+}
+
+/* Alternative: Lavender-tinted dark overlay for brand consistency */
+.collection-header.lavender-overlay .img-wrapper::after {
+  background: linear-gradient(
+    135deg,
+    rgba(91, 33, 182, 0.6) 0%,
+    rgba(49, 46, 129, 0.7) 50%,
+    rgba(30, 27, 75, 0.85) 100%
+  ) !important;
 }
 
 
