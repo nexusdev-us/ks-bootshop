@@ -16,6 +16,7 @@
       "settings": {
         "logo": "shopify://shop_images/estarlav_1f43dc65-f430-486f-87b5-c29ceccd8b78.png",
         "logo_width": 400,
+        "logo_url": "https://lavenderhillbotanicals.com/",
         "bg_color": "bg-body",
         "bg_opacity": 100,
         "text_color": "text-body",
