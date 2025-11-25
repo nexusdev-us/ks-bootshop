@@ -68,10 +68,11 @@ body.template-product section {
 
 /* Desktop - side by side with sticky image */
 @media (min-width: 1200px) {
-  /* Force all parents to allow sticky */
+  /* Force all parents to allow sticky - critical for position:sticky to work */
   .product-main,
   .product-main .container,
-  .product-main .product-contents {
+  .product-main .product-contents,
+  .product-desktop-layout {
     overflow: visible !important;
   }
 
@@ -84,30 +85,30 @@ body.template-product section {
   .product-desktop-layout {
     display: flex !important;
     align-items: flex-start !important;
-    gap: 2rem;
+    gap: 3rem;
   }
 
   /* LEFT SIDE - Sticky image */
   .product-image-side {
     flex: 0 0 45%;
     width: 45%;
-    position: -webkit-sticky !important;
-    position: sticky !important;
-    top: 100px !important;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 120px; /* Account for sticky navbar height */
     margin-bottom: 0;
-    align-self: flex-start !important;
-    height: fit-content;
+    align-self: flex-start;
+    z-index: 10;
   }
 
   .product-image-side .product-media-gallery {
-    max-width: 400px;
+    max-width: 100%;
     position: static !important;
   }
 
-  /* RIGHT SIDE - Scrollable info */
+  /* RIGHT SIDE - Scrollable info - let content determine height */
   .product-info-side {
     flex: 1;
-    min-height: 150vh;
+    min-width: 0; /* Prevent flex overflow */
   }
 
   .product-main .product-title {

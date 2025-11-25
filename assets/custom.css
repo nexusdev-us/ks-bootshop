@@ -2,10 +2,11 @@
   Add here your own custom css styles
 */
 
-/* Fix horizontal overflow */
+/* Fix horizontal overflow - applied to wrapper, not html/body to preserve sticky */
+/* NOTE: overflow on html/body breaks position:sticky, so we use clip instead */
 html, body {
-  overflow-x: hidden !important;
   max-width: 100vw !important;
+  overflow-x: clip; /* clip allows sticky to work, unlike hidden */
 }
 
 /* Beautiful Lavender Gradient Background */
