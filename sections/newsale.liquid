@@ -1,0 +1,399 @@
+{% comment %}
+  Artisan Goat Milk Collection Section
+
+  This section displays a curated collection of products with a special offer
+  and a countdown timer. It's designed to be used on the homepage or any
+  other page where you want to feature a collection.
+
+  Shopify settings:
+  - collection: The collection to display products from.
+  - title: The title of the section.
+  - subtitle: The subtitle of the section.
+  - description: A short description of the collection.
+  - sale_tag: The text for the "Limited Time Sale" tag.
+  - special_price_label: The label for the special price.
+  - regular_price_label: The label for the regular price.
+  - offer_ends_text: The text for the countdown timer.
+  - button_text: The text for the "Shop Now" button.
+{% endcomment %}
+
+{%- assign collection = collections[section.settings.collection] -%}
+{%- assign products = collection.products -%}
+
+<style>
+  /* Scoped styles for the featured product section */
+  .featured-product-advanced-shopify {
+    padding: 4rem 0;
+    background: #f9f7fb;
+  }
+
+  .featured-product-advanced-shopify .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+  }
+
+  .featured-product-advanced-shopify .featured-wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  @media (min-width: 768px) {
+    .featured-product-advanced-shopify .featured-wrapper {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .featured-product-advanced-shopify .featured-media {
+    text-align: center;
+  }
+  
+  .featured-product-advanced-shopify .featured-image {
+    max-width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+
+  .featured-product-advanced-shopify .feature-icons {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 2rem;
+  }
+
+  .featured-product-advanced-shopify .feature-icon {
+    text-align: center;
+    color: #6b4f8c;
+  }
+
+  .featured-product-advanced-shopify .feature-icon i {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .featured-product-advanced-shopify .feature-icon span {
+    font-weight: 600;
+  }
+
+  .featured-product-advanced-shopify .featured-content {
+    color: #333;
+  }
+
+  .featured-product-advanced-shopify .featured-tag {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: #9b7fb8;
+    color: white;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  .featured-product-advanced-shopify .gradient-text {
+    background: linear-gradient(135deg, #9b7fb8 0%, #b8a3d0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .featured-product-advanced-shopify .featured-content h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .featured-product-advanced-shopify .featured-description {
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
+  .featured-product-advanced-shopify .featured-benefits {
+    margin-bottom: 2rem;
+  }
+
+  .featured-product-advanced-shopify .benefit-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    color: #6b4f8c;
+  }
+  
+  .featured-product-advanced-shopify .benefit-item i {
+    color: #8dc63f;
+  }
+
+  .featured-product-advanced-shopify .featured-pricing {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    margin-bottom: 2rem;
+  }
+
+  .featured-product-advanced-shopify .price-box .price-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #9b7fb8;
+  }
+
+  .featured-product-advanced-shopify .price-amount {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #333;
+  }
+  
+  .featured-product-advanced-shopify .price-original {
+    text-decoration: line-through;
+    color: #999;
+  }
+
+  .featured-product-advanced-shopify .countdown-timer {
+    text-align: center;
+  }
+
+  .featured-product-advanced-shopify .countdown-timer p {
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+  }
+
+  .featured-product-advanced-shopify .timer {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .featured-product-advanced-shopify .timer-item {
+    background: #e6dff2;
+    padding: 0.5rem;
+    border-radius: 5px;
+    min-width: 40px;
+  }
+  
+  .featured-product-advanced-shopify .timer-item span {
+    display: block;
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+
+  .featured-product-advanced-shopify .featured-actions {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .featured-product-advanced-shopify .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+  
+  .featured-product-advanced-shopify .btn-primary {
+    background: linear-gradient(135deg, #9b7fb8 0%, #b8a3d0 100%);
+    color: white;
+  }
+  
+  .featured-product-advanced-shopify .btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(155, 127, 184, 0.4);
+  }
+
+  .featured-product-advanced-shopify .btn-wishlist {
+    background: #e6dff2;
+    color: #9b7fb8;
+    border: none;
+    font-size: 1.25rem;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+
+</style>
+
+<section class="featured-product-advanced-shopify">
+  <div class="container">
+    <div class="featured-wrapper">
+      <div class="featured-media">
+        {%- if products.first.featured_image -%}
+          <img src="{{ products.first.featured_image | img_url: '800x' }}" alt="{{ products.first.featured_image.alt | escape }}" class="featured-image">
+        {%- else -%}
+          {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+        {%- endif -%}
+        <div class="feature-icons">
+          <div class="feature-icon">
+            <i class="fas fa-leaf"></i>
+            <span>100% Natural</span>
+          </div>
+          <div class="feature-icon">
+            <i class="fas fa-hand-holding-heart"></i>
+            <span>Handcrafted</span>
+          </div>
+          <div class="feature-icon">
+            <i class="fas fa-award"></i>
+            <span>Farm Fresh</span>
+          </div>
+        </div>
+      </div>
+      <div class="featured-content">
+        <span class="featured-tag">{{ section.settings.sale_tag }}</span>
+        <h2 class="gradient-text">{{ section.settings.title }}</h2>
+        <h3>{{ section.settings.subtitle }}</h3>
+        <p class="featured-description">
+          {{ section.settings.description }}
+        </p>
+        <div class="featured-benefits">
+          <div class="benefit-item">
+            <i class="fas fa-check-circle"></i>
+            <span>Fresh Pennsylvania goat's milk</span>
+          </div>
+          <div class="benefit-item">
+            <i class="fas fa-check-circle"></i>
+            <span>Infused with lavender essential oil</span>
+          </div>
+          <div class="benefit-item">
+            <i class="fas fa-check-circle"></i>
+            <span>Paraben & sulfate free formula</span>
+          </div>
+        </div>
+        <div class="featured-pricing">
+          <div class="price-box">
+            <span class="price-label">{{ section.settings.special_price_label }}</span>
+            <div class="price-amount">
+              {{ products.first.price | money }}
+            </div>
+            <span class="price-original">{{ section.settings.regular_price_label }}: {{ products.first.compare_at_price | money }}</span>
+          </div>
+          <div class="countdown-timer">
+            <p>{{ section.settings.offer_ends_text }}</p>
+            <div class="timer" id="countdown-{{ section.id }}">
+              <div class="timer-item"><span id="days-{{ section.id }}"></span>Days</div>
+              <div class="timer-item"><span id="hours-{{ section.id }}"></span>Hours</div>
+              <div class="timer-item"><span id="minutes-{{ section.id }}"></span>Mins</div>
+              <div class="timer-item"><span id="seconds-{{ section.id }}"></span>Secs</div>
+            </div>
+          </div>
+        </div>
+        <div class="featured-actions">
+          <a href="{{ products.first.url }}" class="btn btn-primary btn-large">
+            <span>{{ section.settings.button_text }}</span>
+            <i class="fas fa-shopping-cart"></i>
+          </a>
+          <button class="btn btn-wishlist">
+            <i class="far fa-heart"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    function updateCountdown() {
+      const now = new Date().getTime();
+      // Set the countdown for 2 days from now. 
+      // You can make this a section setting in Shopify.
+      const deadline = new Date(now + 2 * 24 * 60 * 60 * 1000).getTime();
+
+      const countdownInterval = setInterval(() => {
+        const currentTime = new Date().getTime();
+        const timeLeft = deadline - currentTime;
+
+        const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+        document.getElementById('days-{{ section.id }}').textContent = days;
+        document.getElementById('hours-{{ section.id }}').textContent = hours;
+        document.getElementById('minutes-{{ section.id }}').textContent = minutes;
+        document.getElementById('seconds-{{ section.id }}').textContent = seconds;
+
+        if (timeLeft < 0) {
+          clearInterval(countdownInterval);
+          document.getElementById('countdown-{{ section.id }}').innerHTML = "<p>Offer Expired</p>";
+        }
+      }, 1000);
+    }
+
+    updateCountdown();
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Artisan Collection Sale",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Artisan Goat Milk Collection"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Goat Milk Soap - Horse Design"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Featuring our stunning embossed horse design, this luxurious goat milk soap combines the moisturizing benefits of fresh goat's milk with our signature lavender blend. Perfect for horse lovers and anyone who appreciates handcrafted artisan soap with exceptional skincare benefits."
+    },
+    {
+      "type": "text",
+      "id": "sale_tag",
+      "label": "Sale Tag",
+      "default": "Limited Time Sale"
+    },
+    {
+        "type": "text",
+        "id": "special_price_label",
+        "label": "Special Price Label",
+        "default": "Special Price"
+    },
+    {
+        "type": "text",
+        "id": "regular_price_label",
+        "label": "Regular Price Label",
+        "default": "Regular"
+    },
+    {
+        "type": "text",
+        "id": "offer_ends_text",
+        "label": "Offer Ends Text",
+        "default": "Offer ends in:"
+    },
+    {
+        "type": "text",
+        "id": "button_text",
+        "label": "Button Text",
+        "default": "Shop Now"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Artisan Collection Sale",
+      "category": "Collection"
+    }
+  ]
+}
+{% endschema %}
