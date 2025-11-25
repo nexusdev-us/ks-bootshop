@@ -11,6 +11,42 @@
   border-bottom-style: solid;
 }
 
+/* Better product page layout on desktop */
+@media (min-width: 1200px) {
+  .product-main .container {
+    max-width: 1400px;
+  }
+
+  .product-main > .container > .product-contents > .row {
+    gap: 2rem;
+  }
+
+  .product-main .product-media-gallery {
+    max-width: 100%;
+  }
+
+  /* Product info section - more breathing room */
+  .product-main [id^="product-inner-"] {
+    padding-left: 1.5rem;
+  }
+
+  /* Wider product title */
+  .product-main .product-title {
+    font-size: 1.75rem;
+  }
+}
+
+/* Even larger screens */
+@media (min-width: 1400px) {
+  .product-main .container {
+    max-width: 1600px;
+  }
+
+  .product-main .product-title {
+    font-size: 2rem;
+  }
+}
+
 .product-sale-badge {
   background-color: var(--bs-success);
 }
