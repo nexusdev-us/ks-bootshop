@@ -154,8 +154,8 @@
 
 .product-card .product-sold-out-badge {
   position: absolute !important;
-  top: 0.5rem !important;
-  left: 0.5rem !important;
+  top: 0.75rem !important;
+  left: 1rem !important;
   background: rgba(31, 41, 55, 0.9) !important;
   color: white !important;
   font-size: 0.75rem !important;

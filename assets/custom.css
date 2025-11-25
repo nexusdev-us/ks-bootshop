@@ -97,3 +97,32 @@ footer,
   padding-right: 0.5rem;
   width: 4rem;
 }
+
+/* Newsletter subscribe button - purple with white icon */
+.newsletter .btn,
+.newsletter-form .btn {
+  background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%) !important;
+  color: #ffffff !important;
+  border: none !important;
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
+  transition: all 0.3s ease;
+}
+
+.newsletter .btn:hover,
+.newsletter-form .btn:hover {
+  background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%) !important;
+  color: #ffffff !important;
+  box-shadow: 0 6px 16px rgba(124, 58, 237, 0.4);
+  transform: translateY(-1px);
+}
+
+.newsletter .btn svg,
+.newsletter-form .btn svg {
+  color: #ffffff !important;
+  fill: #ffffff !important;
+}
+
+/* Center product cards on collection pages when only a few items */
+.collection-products .product-list {
+  justify-content: center;
+}
