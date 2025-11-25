@@ -55,19 +55,24 @@ body.template-product section {
     padding-right: 2rem;
   }
 
-  .product-main .row {
+  /* Row needs to allow children to have different heights */
+  .product-main .product-layout {
     display: flex;
     flex-wrap: nowrap;
     align-items: flex-start;
   }
 
-  /* Left column - sticky image */
-  .product-main .row > div:first-child {
-    position: sticky;
-    top: 2rem;
+  /* Left column - contains sticky element */
+  .product-main .product-media-col {
     flex: 0 0 50%;
     max-width: 50%;
     align-self: flex-start;
+  }
+
+  /* The sticky wrapper inside the left column */
+  .product-main .product-media-sticky {
+    position: sticky;
+    top: 2rem;
   }
 
   .product-main .product-media-gallery {
@@ -75,8 +80,8 @@ body.template-product section {
     position: static;
   }
 
-  /* Right column - scrolling product info */
-  .product-main .row > div:last-child {
+  /* Right column - scrolls naturally */
+  .product-main .product-info-col {
     flex: 0 0 50%;
     max-width: 50%;
     padding-left: 3rem;

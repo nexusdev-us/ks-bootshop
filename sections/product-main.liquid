@@ -30,11 +30,13 @@
       <a class="visually-hidden-focusable" href="#product-inner-{{ product.id }}">
         {{ 'general.accessibility.skip_product_content' | t }}
       </a>      
-      <div class="row">
-        <div class="col-desktop-9 mb-5 mb-desktop-0">
-          {% render 'product-block-media-gallery' %}
+      <div class="row product-layout">
+        <div class="col-desktop-9 mb-5 mb-desktop-0 product-media-col">
+          <div class="product-media-sticky">
+            {% render 'product-block-media-gallery' %}
+          </div>
         </div>
-        <div class="col-desktop-9">
+        <div class="col-desktop-9 product-info-col">
           <div id="product-inner-{{ product.id }}">
             <product-form>
               {% form 'product', product, data-productid: product.id, data-variants: variants_json %}
