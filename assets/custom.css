@@ -68,11 +68,30 @@ footer,
 }
 
 /* Ensure offcanvas sidebars have solid background */
-.offcanvas {
+.offcanvas,
+.offcanvas.offcanvas-end,
+.offcanvas.offcanvas-start,
+.offcanvas.offcanvas-bottom,
+.offcanvas.offcanvas-top,
+#offcanvas-cart,
+#offcanvas-search,
+#offcanvas-cart .offcanvas-body,
+#offcanvas-cart .offcanvas-header,
+#offcanvas-cart .offcanvas-footer,
+#offcanvas-search .offcanvas-body,
+#offcanvas-search .offcanvas-header,
+#offcanvas-search .offcanvas-footer,
+.offcanvas-cart,
+.offcanvas-cart .offcanvas-body,
+.offcanvas-cart .offcanvas-header,
+.offcanvas-cart .offcanvas-footer,
+.offcanvas-cart .cart-container {
+  background: #ffffff !important;
   background-color: #ffffff !important;
 }
 
-#offcanvas-menu {
+#offcanvas-menu,
+#offcanvas-menu .offcanvas-body {
   background: linear-gradient(180deg, #f5f3ff 0%, #faf5ff 100%) !important;
 }
 
