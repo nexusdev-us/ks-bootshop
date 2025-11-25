@@ -39,8 +39,8 @@
         "ai_gen_block_4723888_rHC7aC": {
           "type": "ai_gen_block_4723888",
           "settings": {
-            "title": "Featured Collection",
-            "subtitle": "Discover our handpicked selection",
+            "title": "",
+            "subtitle": "",
             "collection": "carrier-oils",
             "products_limit": 12,
             "show_vendor": true,
