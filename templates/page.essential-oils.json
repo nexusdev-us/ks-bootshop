@@ -15,7 +15,7 @@
         "ai_gen_block_c0edbca_iVM74J": {
           "type": "ai_gen_block_c0edbca",
           "settings": {
-            "title": "Body Care",
+            "title": "Essential Oils",
             "subtitle": "Scroll down to see our offerings",
             "description": "<p>Aromatherapy harnesses the therapeutic properties of essential oils extracted from plants, flowers, and herbs to promote physical and emotional well-being. Through careful application and inhalation, these natural essences can reduce stress, enhance mood, improve sleep quality, and support overall health. Whether used in diffusers, massage oils, or bath treatments, aromatherapy offers a gentle, holistic approach to wellness that has been trusted for centuries.</p>",
             "title_size": 48,
@@ -96,6 +96,69 @@
     "blocks_D6L6Ff": {
       "type": "_blocks",
       "name": "Collection cards",
+      "settings": {}
+    },
+    "1764446148126f726a": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_83be112_MRVmkM": {
+          "type": "ai_gen_block_83be112",
+          "settings": {
+            "collection": "essential-oils",
+            "products_limit": 8,
+            "heading": "Listings",
+            "description": "",
+            "heading_alignment": "center",
+            "heading_size": 36,
+            "description_size": 16,
+            "columns_desktop": 4,
+            "columns_tablet": 3,
+            "columns_mobile": "2",
+            "grid_gap": 30,
+            "container_width": 1350,
+            "card_text_align": "center",
+            "card_padding": 20,
+            "card_border_radius": 12,
+            "card_border_width": 1,
+            "card_background": "#ffffff",
+            "card_border_color": "#e5e5e5",
+            "show_vendor": true,
+            "show_price": true,
+            "show_sale_badge": true,
+            "sale_badge_text": "Sale",
+            "product_title_size": 16,
+            "price_size": 18,
+            "show_button": true,
+            "button_text": "View Product",
+            "button_border_radius": 6,
+            "button_background": "#004071",
+            "button_text_color": "#ffffff",
+            "button_hover_background": "#9b046f",
+            "button_hover_text_color": "#ffffff",
+            "show_view_all": true,
+            "view_all_text": "View All Products",
+            "view_all_spacing": 40,
+            "background_color": "#f5f3ff",
+            "heading_color": "#2e2a39",
+            "description_color": "#666666",
+            "product_title_color": "#2e2a39",
+            "vendor_color": "#9b046f",
+            "price_color": "#004071",
+            "compare_price_color": "#999999",
+            "link_hover_color": "#9b046f",
+            "badge_background": "#9b046f",
+            "badge_text_color": "#ffffff",
+            "section_padding_top": 60,
+            "section_padding_bottom": 60,
+            "heading_spacing": 40,
+            "products_spacing": 30
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_83be112_MRVmkM"
+      ],
       "settings": {}
     },
     "hero_carousel_tdHVay": {
@@ -189,6 +252,7 @@
     "blocks_VEdmGr",
     "blocks_mjXtUP",
     "blocks_D6L6Ff",
+    "1764446148126f726a",
     "hero_carousel_tdHVay",
     "18e3bb8e-f1ba-421c-91c3-37c1c5b25a2a",
     "664feedb-7180-4e8f-a84d-1cf45bc1dd42",
