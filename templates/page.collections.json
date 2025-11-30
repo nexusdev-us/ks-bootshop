@@ -56,26 +56,6 @@
     "blocks_D6L6Ff": {
       "type": "_blocks",
       "blocks": {
-        "ai_gen_block_d31349e_dCAQt8": {
-          "type": "ai_gen_block_d31349e",
-          "name": "Blank section",
-          "settings": {
-            "height_desktop": 50,
-            "height_mobile": 50,
-            "background_color": "#ede9fa"
-          },
-          "blocks": {}
-        },
-        "ai_gen_block_d31349e_4xxiiy": {
-          "type": "ai_gen_block_d31349e",
-          "name": "Blank section",
-          "settings": {
-            "height_desktop": 50,
-            "height_mobile": 50,
-            "background_color": "#ede9fa"
-          },
-          "blocks": {}
-        },
         "ai_gen_block_069e213_aVYPVH": {
           "type": "ai_gen_block_069e213",
           "settings": {
@@ -403,8 +383,6 @@
         }
       },
       "block_order": [
-        "ai_gen_block_d31349e_dCAQt8",
-        "ai_gen_block_d31349e_4xxiiy",
         "ai_gen_block_069e213_aVYPVH",
         "ai_gen_block_069e213_kdGz9V",
         "ai_gen_block_069e213_x9xmNT",
