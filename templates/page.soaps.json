@@ -15,9 +15,9 @@
         "ai_gen_block_c0edbca_p3W373": {
           "type": "ai_gen_block_c0edbca",
           "settings": {
-            "title": "Health & Remedies FOR LIFE!",
-            "subtitle": "Heal Naturally with Plant-Powered Remedies and Health enhancement.",
-            "description": "<p>Heal naturally with our plant-powered remedies. Mother Earth knows best for all your wellness needs!</p>",
+            "title": "Soaps",
+            "subtitle": "Pure botanicals crafted with care",
+            "description": "<p>Handcrafted lavender soap made with pure essential oils for a gentle, calming cleanse. Each small batch bar nourishes the skin and leaves a light natural scent.</p>",
             "title_size": 48,
             "title_color": "#004071",
             "title_weight": "600",
@@ -55,9 +55,9 @@
           "type": "ai_gen_block_4723888",
           "name": "Elegant product carousel",
           "settings": {
-            "title": "REMEDIES",
+            "title": "Bar Soap",
             "subtitle": "",
-            "collection": "remedies-1",
+            "collection": "lavender-hill-botanicals",
             "products_limit": 12,
             "show_vendor": true,
             "show_rating": true,
@@ -101,9 +101,9 @@
           "type": "ai_gen_block_4723888",
           "name": "Elegant product carousel",
           "settings": {
-            "title": "Health For Life",
+            "title": "Cream soaps",
             "subtitle": "",
-            "collection": "health-for-life-products",
+            "collection": "lavender-hill-body-washes-and-shampoos",
             "products_limit": 12,
             "show_vendor": true,
             "show_rating": true,
