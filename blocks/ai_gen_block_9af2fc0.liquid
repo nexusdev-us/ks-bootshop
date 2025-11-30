@@ -134,10 +134,18 @@
 
   .ai-pagination-{{ ai_gen_id }} {
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-top: 40px;
+  }
+
+  .ai-pagination-controls-{{ ai_gen_id }} {
+    display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px;
-    margin-top: 40px;
+    gap: 8px;
+    flex-wrap: wrap;
   }
 
   .ai-pagination-button-{{ ai_gen_id }} {
@@ -161,9 +169,88 @@
     cursor: not-allowed;
   }
 
+  .ai-page-number-{{ ai_gen_id }} {
+    min-width: 40px;
+    height: 40px;
+    padding: 0 12px;
+    background-color: transparent;
+    color: {{ block.settings.product_title_color }};
+    border: 1px solid {{ block.settings.card_border_color }};
+    border-radius: {{ block.settings.button_border_radius }}px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+
+  .ai-page-number-{{ ai_gen_id }}:hover {
+    background-color: {{ block.settings.card_border_color }};
+  }
+
+  .ai-page-number-{{ ai_gen_id }}.active {
+    background-color: {{ block.settings.button_color }};
+    color: {{ block.settings.button_text_color }};
+    border-color: {{ block.settings.button_color }};
+  }
+
+  .ai-page-ellipsis-{{ ai_gen_id }} {
+    padding: 0 8px;
+    color: {{ block.settings.description_color }};
+    font-size: 14px;
+  }
+
+  .ai-pagination-controls-{{ ai_gen_id }} [data-page-numbers] {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
   .ai-pagination-info-{{ ai_gen_id }} {
     font-size: 14px;
     color: {{ block.settings.description_color }};
+  }
+
+  .ai-goto-container-{{ ai_gen_id }} {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 5px;
+  }
+
+  .ai-goto-label-{{ ai_gen_id }} {
+    font-size: 14px;
+    color: {{ block.settings.description_color }};
+  }
+
+  .ai-goto-input-{{ ai_gen_id }} {
+    width: 60px;
+    height: 36px;
+    padding: 0 10px;
+    border: 1px solid {{ block.settings.card_border_color }};
+    border-radius: {{ block.settings.button_border_radius }}px;
+    font-size: 14px;
+    text-align: center;
+  }
+
+  .ai-goto-input-{{ ai_gen_id }}:focus {
+    outline: none;
+    border-color: {{ block.settings.button_color }};
+  }
+
+  .ai-goto-button-{{ ai_gen_id }} {
+    padding: 8px 16px;
+    background-color: {{ block.settings.button_color }};
+    color: {{ block.settings.button_text_color }};
+    border: none;
+    border-radius: {{ block.settings.button_border_radius }}px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+  }
+
+  .ai-goto-button-{{ ai_gen_id }}:hover {
+    background-color: {{ block.settings.button_hover_color }};
   }
 
   .ai-loading-{{ ai_gen_id }} {
@@ -205,9 +292,17 @@
     </div>
 
     <div class="ai-pagination-{{ ai_gen_id }}" data-pagination style="display: none;">
-      <button class="ai-pagination-button-{{ ai_gen_id }}" data-prev-button>Previous</button>
+      <div class="ai-pagination-controls-{{ ai_gen_id }}">
+        <button class="ai-pagination-button-{{ ai_gen_id }}" data-prev-button>Previous</button>
+        <div data-page-numbers></div>
+        <button class="ai-pagination-button-{{ ai_gen_id }}" data-next-button>Next</button>
+      </div>
       <span class="ai-pagination-info-{{ ai_gen_id }}" data-page-info></span>
-      <button class="ai-pagination-button-{{ ai_gen_id }}" data-next-button>Next</button>
+      <div class="ai-goto-container-{{ ai_gen_id }}">
+        <span class="ai-goto-label-{{ ai_gen_id }}">Go to page:</span>
+        <input type="number" class="ai-goto-input-{{ ai_gen_id }}" data-goto-input min="1" value="1">
+        <button class="ai-goto-button-{{ ai_gen_id }}" data-goto-button>Go</button>
+      </div>
     </div>
   </div>
 </all-products-{{ ai_gen_id }}>
@@ -229,6 +324,9 @@
         this.prevButton = this.querySelector('[data-prev-button]');
         this.nextButton = this.querySelector('[data-next-button]');
         this.pageInfo = this.querySelector('[data-page-info]');
+        this.pageNumbers = this.querySelector('[data-page-numbers]');
+        this.gotoInput = this.querySelector('[data-goto-input]');
+        this.gotoButton = this.querySelector('[data-goto-button]');
       }
 
       connectedCallback() {
@@ -253,6 +351,32 @@
             this.scrollToTop();
           }
         });
+
+        this.gotoButton.addEventListener('click', () => {
+          this.goToPage();
+        });
+
+        this.gotoInput.addEventListener('keypress', (e) => {
+          if (e.key === 'Enter') {
+            this.goToPage();
+          }
+        });
+      }
+
+      goToPage() {
+        const totalPages = Math.ceil(this.totalProducts / this.productsPerPage);
+        let page = parseInt(this.gotoInput.value);
+
+        if (isNaN(page) || page < 1) {
+          page = 1;
+        } else if (page > totalPages) {
+          page = totalPages;
+        }
+
+        this.gotoInput.value = page;
+        this.currentPage = page;
+        this.renderProducts();
+        this.scrollToTop();
       }
 
       scrollToTop() {
@@ -355,13 +479,85 @@
 
       updatePagination() {
         const totalPages = Math.ceil(this.totalProducts / this.productsPerPage);
-        
+
         this.prevButton.disabled = this.currentPage === 1;
         this.nextButton.disabled = this.currentPage === totalPages;
-        
+
         this.pageInfo.textContent = `Page ${this.currentPage} of ${totalPages} (${this.totalProducts} products)`;
-        
+
+        this.gotoInput.max = totalPages;
+        this.gotoInput.value = this.currentPage;
+
+        this.renderPageNumbers(totalPages);
+
         this.pagination.style.display = totalPages > 1 ? 'flex' : 'none';
+      }
+
+      renderPageNumbers(totalPages) {
+        this.pageNumbers.innerHTML = '';
+
+        const pages = this.getPageRange(totalPages);
+
+        pages.forEach((page, index) => {
+          if (page === '...') {
+            const ellipsis = document.createElement('span');
+            ellipsis.className = 'ai-page-ellipsis-{{ ai_gen_id }}';
+            ellipsis.textContent = '...';
+            this.pageNumbers.appendChild(ellipsis);
+          } else {
+            const button = document.createElement('button');
+            button.className = 'ai-page-number-{{ ai_gen_id }}';
+            if (page === this.currentPage) {
+              button.classList.add('active');
+            }
+            button.textContent = page;
+            button.addEventListener('click', () => {
+              this.currentPage = page;
+              this.renderProducts();
+              this.scrollToTop();
+            });
+            this.pageNumbers.appendChild(button);
+          }
+        });
+      }
+
+      getPageRange(totalPages) {
+        const current = this.currentPage;
+        const pages = [];
+
+        if (totalPages <= 7) {
+          for (let i = 1; i <= totalPages; i++) {
+            pages.push(i);
+          }
+        } else {
+          pages.push(1);
+
+          if (current > 3) {
+            pages.push('...');
+          }
+
+          let start = Math.max(2, current - 1);
+          let end = Math.min(totalPages - 1, current + 1);
+
+          if (current <= 3) {
+            end = 4;
+          }
+          if (current >= totalPages - 2) {
+            start = totalPages - 3;
+          }
+
+          for (let i = start; i <= end; i++) {
+            pages.push(i);
+          }
+
+          if (current < totalPages - 2) {
+            pages.push('...');
+          }
+
+          pages.push(totalPages);
+        }
+
+        return pages;
       }
 
       showLoading() {
