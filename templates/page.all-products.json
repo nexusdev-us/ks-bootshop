@@ -17,6 +17,16 @@
     "17645391936863c6f0": {
       "type": "_blocks",
       "blocks": {
+        "ai_gen_block_d31349e_eTq6yW": {
+          "type": "ai_gen_block_d31349e",
+          "name": "Blank section",
+          "settings": {
+            "height_desktop": 50,
+            "height_mobile": 50,
+            "background_color": "#ede9fa"
+          },
+          "blocks": {}
+        },
         "ai_gen_block_9af2fc0_JVYBHi": {
           "type": "ai_gen_block_9af2fc0",
           "settings": {
@@ -60,6 +70,7 @@
         }
       },
       "block_order": [
+        "ai_gen_block_d31349e_eTq6yW",
         "ai_gen_block_9af2fc0_JVYBHi",
         "ai_gen_block_d31349e_TRxxi8"
       ],
