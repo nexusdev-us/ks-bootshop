@@ -1,0 +1,178 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "1764089870bd6073ce": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_c0edbca_p3W373": {
+          "type": "ai_gen_block_c0edbca",
+          "settings": {
+            "title": "Health & Remedies FOR LIFE!",
+            "subtitle": "Heal Naturally with Plant-Powered Remedies and Health enhancement.",
+            "description": "<p>Heal naturally with our plant-powered remedies. Mother Earth knows best for all your wellness needs!</p>",
+            "title_size": 48,
+            "title_color": "#004071",
+            "title_weight": "600",
+            "title_transform": "uppercase",
+            "title_letter_spacing": 2,
+            "title_spacing": 16,
+            "subtitle_size": 20,
+            "subtitle_color": "#9b046f",
+            "subtitle_style": "italic",
+            "subtitle_spacing": 20,
+            "description_size": 16,
+            "description_color": "#2e2a39",
+            "text_alignment": "center",
+            "max_width": 900,
+            "padding_top": 60,
+            "padding_bottom": 60,
+            "background_color": "#ede9fa",
+            "border_width": 2,
+            "border_style": "solid",
+            "border_color": "#9b046f"
+          },
+          "blocks": {}
+        },
+        "ai_gen_block_d31349e_RbV4Hj": {
+          "type": "ai_gen_block_d31349e",
+          "name": "Blank section",
+          "settings": {
+            "height_desktop": 50,
+            "height_mobile": 50,
+            "background_color": "#ede9fa"
+          },
+          "blocks": {}
+        },
+        "ai_gen_block_4723888_xmdbDm": {
+          "type": "ai_gen_block_4723888",
+          "name": "Elegant product carousel",
+          "settings": {
+            "title": "REMEDIES",
+            "subtitle": "",
+            "collection": "remedies-1",
+            "products_limit": 12,
+            "show_vendor": true,
+            "show_rating": true,
+            "section_padding": 60,
+            "card_width": 320,
+            "card_gap": 30,
+            "card_border_radius": 16,
+            "header_padding_top": 0,
+            "title_size": 36,
+            "subtitle_size": 16,
+            "product_title_size": 18,
+            "price_size": 20,
+            "background_color": "#ede9fa",
+            "title_color": "#2e2a39",
+            "subtitle_color": "#6b7280",
+            "accent_color": "#004071",
+            "card_background": "#ffffff",
+            "product_title_color": "#2e2a39",
+            "price_color": "#004071",
+            "compare_price_color": "#6b7280",
+            "badge_color": "#9b046f",
+            "badge_text_color": "#ffffff",
+            "button_color": "#ffffff",
+            "button_text_color": "#2e2a39",
+            "nav_button_color": "#ffffff",
+            "nav_button_icon_color": "#004071"
+          },
+          "blocks": {}
+        },
+        "ai_gen_block_d31349e_FAgrF3": {
+          "type": "ai_gen_block_d31349e",
+          "name": "Blank section",
+          "settings": {
+            "height_desktop": 50,
+            "height_mobile": 50,
+            "background_color": "#ede9fa"
+          },
+          "blocks": {}
+        },
+        "ai_gen_block_4723888_wq7HrW": {
+          "type": "ai_gen_block_4723888",
+          "name": "Elegant product carousel",
+          "settings": {
+            "title": "Health For Life",
+            "subtitle": "",
+            "collection": "health-for-life-products",
+            "products_limit": 12,
+            "show_vendor": true,
+            "show_rating": true,
+            "section_padding": 60,
+            "card_width": 320,
+            "card_gap": 30,
+            "card_border_radius": 16,
+            "header_padding_top": 0,
+            "title_size": 36,
+            "subtitle_size": 16,
+            "product_title_size": 18,
+            "price_size": 20,
+            "background_color": "#ffffff",
+            "title_color": "#2e2a39",
+            "subtitle_color": "#6b7280",
+            "accent_color": "#004071",
+            "card_background": "#ffffff",
+            "product_title_color": "#2e2a39",
+            "price_color": "#004071",
+            "compare_price_color": "#6b7280",
+            "badge_color": "#9b046f",
+            "badge_text_color": "#ffffff",
+            "button_color": "#ffffff",
+            "button_text_color": "#2e2a39",
+            "nav_button_color": "#ffffff",
+            "nav_button_icon_color": "#004071"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_c0edbca_p3W373",
+        "ai_gen_block_d31349e_RbV4Hj",
+        "ai_gen_block_4723888_xmdbDm",
+        "ai_gen_block_d31349e_FAgrF3",
+        "ai_gen_block_4723888_wq7HrW"
+      ],
+      "settings": {}
+    },
+    "18e3bb8e-f1ba-421c-91c3-37c1c5b25a2a": {
+      "type": "separator",
+      "disabled": true,
+      "settings": {
+        "bg_color": "bg-body text-body",
+        "bg_opacity": 10,
+        "height": 1,
+        "container": "true",
+        "container_max_width": "",
+        "pt": 0,
+        "pb": 0
+      }
+    },
+    "cfc6ff50-e3a5-4219-8350-f2db73f829c8": {
+      "type": "separator",
+      "disabled": true,
+      "settings": {
+        "bg_color": "bg-light text-body",
+        "bg_opacity": 10,
+        "height": 1,
+        "container": "container",
+        "container_max_width": "",
+        "pt": 0,
+        "pb": 0
+      }
+    }
+  },
+  "order": [
+    "1764089870bd6073ce",
+    "18e3bb8e-f1ba-421c-91c3-37c1c5b25a2a",
+    "cfc6ff50-e3a5-4219-8350-f2db73f829c8"
+  ]
+}
