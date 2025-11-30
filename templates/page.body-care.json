@@ -69,7 +69,7 @@
             "subtitle_size": 16,
             "product_title_size": 18,
             "price_size": 20,
-            "background_color": "#ffffff",
+            "background_color": "#ede9fa",
             "title_color": "#2e2a39",
             "subtitle_color": "#6b7280",
             "accent_color": "#004071",
@@ -96,6 +96,16 @@
     "blocks_D6L6Ff": {
       "type": "_blocks",
       "blocks": {
+        "ai_gen_block_d31349e_dCAQt8": {
+          "type": "ai_gen_block_d31349e",
+          "name": "Blank section",
+          "settings": {
+            "height_desktop": 50,
+            "height_mobile": 50,
+            "background_color": "#ede9fa"
+          },
+          "blocks": {}
+        },
         "ai_gen_block_069e213_aVYPVH": {
           "type": "ai_gen_block_069e213",
           "settings": {
@@ -163,6 +173,7 @@
         }
       },
       "block_order": [
+        "ai_gen_block_d31349e_dCAQt8",
         "ai_gen_block_069e213_aVYPVH"
       ],
       "name": "Collection cards",
