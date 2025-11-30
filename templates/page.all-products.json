@@ -9,94 +9,15 @@
  */
 {
   "sections": {
-    "blocks_VEdmGr": {
-      "type": "_blocks",
-      "blocks": {
-        "ai_gen_block_c0edbca_iVM74J": {
-          "type": "ai_gen_block_c0edbca",
-          "settings": {
-            "title": "Body Care",
-            "subtitle": "Scroll down to see our offerings",
-            "description": "<p>Aromatherapy harnesses the therapeutic properties of essential oils extracted from plants, flowers, and herbs to promote physical and emotional well-being. Through careful application and inhalation, these natural essences can reduce stress, enhance mood, improve sleep quality, and support overall health. Whether used in diffusers, massage oils, or bath treatments, aromatherapy offers a gentle, holistic approach to wellness that has been trusted for centuries.</p>",
-            "title_size": 48,
-            "title_color": "#004071",
-            "title_weight": "600",
-            "title_transform": "uppercase",
-            "title_letter_spacing": 2,
-            "title_spacing": 16,
-            "subtitle_size": 20,
-            "subtitle_color": "#9b046f",
-            "subtitle_style": "italic",
-            "subtitle_spacing": 20,
-            "description_size": 16,
-            "description_color": "#2e2a39",
-            "text_alignment": "center",
-            "max_width": 900,
-            "padding_top": 60,
-            "padding_bottom": 60,
-            "background_color": "#f5f3ff",
-            "border_width": 2,
-            "border_style": "solid",
-            "border_color": "#9b046f"
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "ai_gen_block_c0edbca_iVM74J"
-      ],
-      "name": "Aromatherapy header",
-      "settings": {}
-    },
-    "blocks_mjXtUP": {
-      "type": "_blocks",
-      "blocks": {
-        "ai_gen_block_4723888_af4Hrh": {
-          "type": "ai_gen_block_4723888",
-          "settings": {
-            "title": "<strong>NEWLY LISTED</strong>",
-            "subtitle": "",
-            "collection": "new-body-care-products",
-            "products_limit": 12,
-            "show_vendor": true,
-            "show_rating": true,
-            "section_padding": 100,
-            "card_width": 320,
-            "card_gap": 20,
-            "card_border_radius": 16,
-            "header_padding_top": 0,
-            "title_size": 36,
-            "subtitle_size": 16,
-            "product_title_size": 18,
-            "price_size": 20,
-            "background_color": "#ede9fa",
-            "title_color": "#2e2a39",
-            "subtitle_color": "#6b7280",
-            "accent_color": "#004071",
-            "card_background": "#ffffff",
-            "product_title_color": "#2e2a39",
-            "price_color": "#004071",
-            "compare_price_color": "#6b7280",
-            "badge_color": "#9b046f",
-            "badge_text_color": "#ffffff",
-            "button_color": "#ffffff",
-            "button_text_color": "#2e2a39",
-            "nav_button_color": "#ffffff",
-            "nav_button_icon_color": "#004071"
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "ai_gen_block_4723888_af4Hrh"
-      ],
-      "name": "Elegant product carousel",
-      "settings": {}
-    },
     "blocks_D6L6Ff": {
       "type": "_blocks",
+      "name": "Collection cards",
+      "settings": {}
+    },
+    "17645391936863c6f0": {
+      "type": "_blocks",
       "blocks": {
-        "ai_gen_block_d31349e_dCAQt8": {
+        "ai_gen_block_d31349e_TRxxi8": {
           "type": "ai_gen_block_d31349e",
           "name": "Blank section",
           "settings": {
@@ -106,77 +27,54 @@
           },
           "blocks": {}
         },
-        "ai_gen_block_069e213_aVYPVH": {
-          "type": "ai_gen_block_069e213",
+        "ai_gen_block_19f4d49_iTFUJg": {
+          "type": "ai_gen_block_19f4d49",
           "settings": {
-            "heading": "<strong>Product Categories</strong>",
-            "heading_alignment": "center",
-            "heading_size": 36,
-            "heading_color": "#2e2a39",
-            "heading_spacing": 40,
-            "container_width": 1350,
-            "section_padding_top": 60,
-            "section_padding_bottom": 60,
-            "collection_1": "body-creams",
-            "collection_2": "body-deodorant",
-            "collection_3": "",
-            "collection_4": "womens-facials",
-            "collection_5": "men-facials",
-            "collection_6": "body-wellness",
-            "columns_desktop": 3,
-            "columns_tablet": 2,
-            "columns_mobile": "1",
-            "grid_gap": 30,
+            "show_header": true,
+            "title": "All Products",
+            "description": "Browse our complete collection",
+            "container_width": 1200,
+            "products_per_page": 18,
+            "columns_desktop": 4,
+            "columns_mobile": "2",
+            "grid_gap": 20,
+            "section_padding": 40,
+            "background_color": "#ffffff",
+            "title_color": "#000000",
+            "text_color": "#666666",
+            "price_color": "#004071",
             "card_background": "#ffffff",
-            "card_border_radius": 12,
-            "card_shadow_x": 0,
-            "card_shadow_y": 4,
-            "card_shadow_blur": 12,
-            "card_shadow_color": "#0000001a",
-            "hover_lift": 8,
-            "image_aspect_ratio": 100,
-            "image_zoom": 1.1,
-            "overlay_color": "#00000033",
-            "overlay_opacity": 0.2,
-            "overlay_hover_opacity": 0.4,
-            "content_padding": 25,
-            "content_alignment": "center",
-            "title_size": 22,
-            "title_color": "#2e2a39",
-            "title_weight": "600",
-            "title_spacing": 10,
-            "show_description": true,
-            "description_size": 14,
-            "description_color": "#666666",
-            "description_spacing": 15,
-            "show_product_count": true,
-            "product_singular": "product",
-            "product_plural": "products",
-            "count_size": 13,
-            "count_color": "#999999",
-            "count_spacing": 15,
-            "show_button": true,
-            "button_text": "Shop Now",
-            "button_font_size": 14,
-            "button_padding_x": 30,
-            "button_padding_y": 10,
-            "button_bg_color": "#004071",
+            "card_border_color": "#e5e5e5",
+            "title_size": 36,
+            "description_size": 16,
+            "product_title_size": 16,
+            "product_price_size": 18,
+            "card_border_radius": 8,
+            "button_color": "#004071",
+            "button_hover_color": "#003059",
             "button_text_color": "#ffffff",
-            "button_border_width": 0,
-            "button_border_color": "#004071",
-            "button_border_radius": 6,
-            "button_hover_bg_color": "#9b046f",
-            "button_hover_text_color": "#ffffff",
-            "button_hover_border_color": "#9b046f"
+            "button_border_radius": 4,
+            "pagination_bg": "#ffffff",
+            "pagination_color": "#000000",
+            "pagination_border": "#e5e5e5"
           },
           "blocks": {}
         }
       },
       "block_order": [
-        "ai_gen_block_d31349e_dCAQt8",
-        "ai_gen_block_069e213_aVYPVH"
+        "ai_gen_block_d31349e_TRxxi8",
+        "ai_gen_block_19f4d49_iTFUJg"
       ],
-      "name": "Collection cards",
+      "settings": {}
+    },
+    "blocks_VEdmGr": {
+      "type": "_blocks",
+      "name": "Aromatherapy header",
+      "settings": {}
+    },
+    "blocks_mjXtUP": {
+      "type": "_blocks",
+      "name": "Elegant product carousel",
       "settings": {}
     },
     "hero_carousel_tdHVay": {
@@ -267,9 +165,10 @@
     }
   },
   "order": [
+    "blocks_D6L6Ff",
+    "17645391936863c6f0",
     "blocks_VEdmGr",
     "blocks_mjXtUP",
-    "blocks_D6L6Ff",
     "hero_carousel_tdHVay",
     "18e3bb8e-f1ba-421c-91c3-37c1c5b25a2a",
     "664feedb-7180-4e8f-a84d-1cf45bc1dd42",
