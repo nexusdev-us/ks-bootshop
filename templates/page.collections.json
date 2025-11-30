@@ -50,46 +50,6 @@
     },
     "blocks_mjXtUP": {
       "type": "_blocks",
-      "blocks": {
-        "ai_gen_block_4723888_af4Hrh": {
-          "type": "ai_gen_block_4723888",
-          "settings": {
-            "title": "<strong>NEWLY LISTED</strong>",
-            "subtitle": "",
-            "collection": "new-body-care-products",
-            "products_limit": 12,
-            "show_vendor": true,
-            "show_rating": true,
-            "section_padding": 100,
-            "card_width": 320,
-            "card_gap": 20,
-            "card_border_radius": 16,
-            "header_padding_top": 0,
-            "title_size": 36,
-            "subtitle_size": 16,
-            "product_title_size": 18,
-            "price_size": 20,
-            "background_color": "#ede9fa",
-            "title_color": "#2e2a39",
-            "subtitle_color": "#6b7280",
-            "accent_color": "#004071",
-            "card_background": "#ffffff",
-            "product_title_color": "#2e2a39",
-            "price_color": "#004071",
-            "compare_price_color": "#6b7280",
-            "badge_color": "#9b046f",
-            "badge_text_color": "#ffffff",
-            "button_color": "#ffffff",
-            "button_text_color": "#2e2a39",
-            "nav_button_color": "#ffffff",
-            "nav_button_icon_color": "#004071"
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "ai_gen_block_4723888_af4Hrh"
-      ],
       "name": "Elegant product carousel",
       "settings": {}
     },
@@ -109,7 +69,7 @@
         "ai_gen_block_069e213_aVYPVH": {
           "type": "ai_gen_block_069e213",
           "settings": {
-            "heading": "<strong>Product Categories</strong>",
+            "heading": "<strong>Body Care</strong>",
             "heading_alignment": "center",
             "heading_size": 36,
             "heading_color": "#2e2a39",
@@ -117,12 +77,12 @@
             "container_width": 1350,
             "section_padding_top": 60,
             "section_padding_bottom": 60,
-            "collection_1": "body-creams",
-            "collection_2": "body-deodorant",
-            "collection_3": "",
+            "collection_1": "spoonful-of-comfort",
+            "collection_2": "body-care",
+            "collection_3": "womens-collection",
             "collection_4": "womens-facials",
-            "collection_5": "men-facials",
-            "collection_6": "body-wellness",
+            "collection_5": "mens-collection",
+            "collection_6": "deodorants-1",
             "columns_desktop": 3,
             "columns_tablet": 2,
             "columns_mobile": "1",
