@@ -1,6 +1,755 @@
+{% doc %}
+  @prompt
+    We are wanting a pop up banner and when it pops up it shows off the holiday collections and products that we are offering, let me select the collections/products. Make it holiday themed
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-holiday-popup-overlay-{{ ai_gen_id }} {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 9998;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+
+  .ai-holiday-popup-overlay-{{ ai_gen_id }}.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .ai-holiday-popup-{{ ai_gen_id }} {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+    width: 90%;
+    max-width: {{ block.settings.popup_max_width }}px;
+    max-height: 90vh;
+    background-color: {{ block.settings.background_color }};
+    border-radius: {{ block.settings.border_radius }}px;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  }
+
+  .ai-holiday-popup-{{ ai_gen_id }}.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  .ai-holiday-popup-header-{{ ai_gen_id }} {
+    position: relative;
+    background: {{ block.settings.header_background }};
+    padding: 30px 60px 30px 30px;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .ai-holiday-popup-snowflakes-{{ ai_gen_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .ai-holiday-popup-snowflake-{{ ai_gen_id }} {
+    position: absolute;
+    color: {{ block.settings.snowflake_color }};
+    font-size: 20px;
+    opacity: 0.6;
+    animation: ai-holiday-popup-fall-{{ ai_gen_id }} linear infinite;
+  }
+
+  @keyframes ai-holiday-popup-fall-{{ ai_gen_id }} {
+    0% {
+      transform: translateY(-100%) rotate(0deg);
+    }
+    100% {
+      transform: translateY(400%) rotate(360deg);
+    }
+  }
+
+  .ai-holiday-popup-title-{{ ai_gen_id }} {
+    position: relative;
+    margin: 0 0 10px;
+    color: {{ block.settings.title_color }};
+    font-size: {{ block.settings.title_size }}px;
+    font-weight: 700;
+    z-index: 1;
+  }
+
+  .ai-holiday-popup-subtitle-{{ ai_gen_id }} {
+    position: relative;
+    margin: 0;
+    color: {{ block.settings.subtitle_color }};
+    font-size: {{ block.settings.subtitle_size }}px;
+    z-index: 1;
+  }
+
+  .ai-holiday-popup-close-{{ ai_gen_id }} {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: {{ block.settings.close_button_bg }};
+    color: {{ block.settings.close_button_color }};
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    z-index: 2;
+    transition: transform 0.2s ease;
+  }
+
+  .ai-holiday-popup-close-{{ ai_gen_id }}:hover {
+    transform: scale(1.1);
+  }
+
+  .ai-holiday-popup-content-{{ ai_gen_id }} {
+    padding: 30px;
+    overflow-y: auto;
+    max-height: calc(90vh - 200px);
+  }
+
+  .ai-holiday-popup-collections-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+  }
+
+  .ai-holiday-popup-collection-{{ ai_gen_id }} {
+    text-align: center;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+  }
+
+  .ai-holiday-popup-collection-{{ ai_gen_id }}:hover {
+    transform: translateY(-5px);
+  }
+
+  .ai-holiday-popup-collection-image-{{ ai_gen_id }} {
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: {{ block.settings.item_border_radius }}px;
+    overflow: hidden;
+    margin-bottom: 10px;
+    position: relative;
+  }
+
+  .ai-holiday-popup-collection-image-{{ ai_gen_id }} img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .ai-holiday-popup-collection-placeholder-{{ ai_gen_id }} {
+    width: 100%;
+    height: 100%;
+    background-color: #f4f4f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ai-holiday-popup-collection-placeholder-{{ ai_gen_id }} svg {
+    width: 60%;
+    height: 60%;
+  }
+
+  .ai-holiday-popup-collection-title-{{ ai_gen_id }} {
+    color: {{ block.settings.item_title_color }};
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  .ai-holiday-popup-products-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 20px;
+  }
+
+  .ai-holiday-popup-product-{{ ai_gen_id }} {
+    text-align: center;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+  }
+
+  .ai-holiday-popup-product-{{ ai_gen_id }}:hover {
+    transform: translateY(-5px);
+  }
+
+  .ai-holiday-popup-product-image-{{ ai_gen_id }} {
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: {{ block.settings.item_border_radius }}px;
+    overflow: hidden;
+    margin-bottom: 10px;
+    position: relative;
+  }
+
+  .ai-holiday-popup-product-image-{{ ai_gen_id }} img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .ai-holiday-popup-product-placeholder-{{ ai_gen_id }} {
+    width: 100%;
+    height: 100%;
+    background-color: #f4f4f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ai-holiday-popup-product-placeholder-{{ ai_gen_id }} svg {
+    width: 60%;
+    height: 60%;
+  }
+
+  .ai-holiday-popup-product-title-{{ ai_gen_id }} {
+    color: {{ block.settings.item_title_color }};
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0 0 5px;
+  }
+
+  .ai-holiday-popup-product-price-{{ ai_gen_id }} {
+    color: {{ block.settings.item_price_color }};
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  .ai-holiday-popup-divider-{{ ai_gen_id }} {
+    height: 2px;
+    background: linear-gradient(to right, transparent, {{ block.settings.divider_color }}, transparent);
+    margin: 30px 0;
+  }
+
+  .ai-holiday-popup-section-title-{{ ai_gen_id }} {
+    text-align: center;
+    color: {{ block.settings.section_title_color }};
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0 0 20px;
+  }
+
+  .ai-holiday-popup-empty-{{ ai_gen_id }} {
+    text-align: center;
+    padding: 40px 20px;
+    color: #999;
+    font-style: italic;
+  }
+
+  @media screen and (max-width: 768px) {
+    .ai-holiday-popup-{{ ai_gen_id }} {
+      width: 95%;
+      max-height: 95vh;
+    }
+
+    .ai-holiday-popup-header-{{ ai_gen_id }} {
+      padding: 20px 50px 20px 20px;
+    }
+
+    .ai-holiday-popup-title-{{ ai_gen_id }} {
+      font-size: calc({{ block.settings.title_size }}px * 0.8);
+    }
+
+    .ai-holiday-popup-subtitle-{{ ai_gen_id }} {
+      font-size: calc({{ block.settings.subtitle_size }}px * 0.8);
+    }
+
+    .ai-holiday-popup-content-{{ ai_gen_id }} {
+      padding: 20px;
+      max-height: calc(95vh - 150px);
+    }
+
+    .ai-holiday-popup-collections-{{ ai_gen_id }} {
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 15px;
+    }
+
+    .ai-holiday-popup-products-{{ ai_gen_id }} {
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 15px;
+    }
+  }
+{% endstyle %}
+
+<holiday-popup-{{ ai_gen_id }} {{ block.shopify_attributes }}>
+  <div class="ai-holiday-popup-overlay-{{ ai_gen_id }}"></div>
+  
+  <div class="ai-holiday-popup-{{ ai_gen_id }}" role="dialog" aria-modal="true" aria-labelledby="popup-title-{{ ai_gen_id }}">
+    <div class="ai-holiday-popup-header-{{ ai_gen_id }}">
+      <div class="ai-holiday-popup-snowflakes-{{ ai_gen_id }}">
+        {% for i in (1..15) %}
+          <span 
+            class="ai-holiday-popup-snowflake-{{ ai_gen_id }}"
+            style="
+              left: {{ i | times: 6 | plus: 5 }}%;
+              animation-duration: {{ i | modulo: 3 | plus: 3 }}s;
+              animation-delay: {{ i | modulo: 5 | times: 0.2 }}s;
+            "
+          >❄</span>
+        {% endfor %}
+      </div>
+      
+      <h2 id="popup-title-{{ ai_gen_id }}" class="ai-holiday-popup-title-{{ ai_gen_id }}">
+        {{ block.settings.popup_title }}
+      </h2>
+      
+      {% if block.settings.popup_subtitle != blank %}
+        <p class="ai-holiday-popup-subtitle-{{ ai_gen_id }}">
+          {{ block.settings.popup_subtitle }}
+        </p>
+      {% endif %}
+      
+      <button 
+        class="ai-holiday-popup-close-{{ ai_gen_id }}"
+        aria-label="Close popup"
+      >×</button>
+    </div>
+
+    <div class="ai-holiday-popup-content-{{ ai_gen_id }}">
+      {% assign has_collections = false %}
+      {% for i in (1..6) %}
+        {% assign collection_key = 'collection_' | append: i %}
+        {% if block.settings[collection_key] != blank %}
+          {% assign has_collections = true %}
+          {% break %}
+        {% endif %}
+      {% endfor %}
+
+      {% if has_collections %}
+        <h3 class="ai-holiday-popup-section-title-{{ ai_gen_id }}">{{ block.settings.collections_heading }}</h3>
+        <div class="ai-holiday-popup-collections-{{ ai_gen_id }}">
+          {% for i in (1..6) %}
+            {% assign collection_key = 'collection_' | append: i %}
+            {% assign collection = block.settings[collection_key] %}
+            
+            {% if collection != blank %}
+              <a href="{{ collection.url }}" class="ai-holiday-popup-collection-{{ ai_gen_id }}">
+                <div class="ai-holiday-popup-collection-image-{{ ai_gen_id }}">
+                  {% if collection.featured_image %}
+                    <img
+                      src="{{ collection.featured_image | image_url: width: 400 }}"
+                      alt="{{ collection.featured_image.alt | escape }}"
+                      loading="lazy"
+                      width="400"
+                      height="400"
+                    >
+                  {% else %}
+                    <div class="ai-holiday-popup-collection-placeholder-{{ ai_gen_id }}">
+                      {{ 'collection-apparel-1' | placeholder_svg_tag }}
+                    </div>
+                  {% endif %}
+                </div>
+                <h4 class="ai-holiday-popup-collection-title-{{ ai_gen_id }}">{{ collection.title }}</h4>
+              </a>
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% endif %}
+
+      {% assign has_products = false %}
+      {% for i in (1..8) %}
+        {% assign product_key = 'product_' | append: i %}
+        {% if block.settings[product_key] != blank %}
+          {% assign has_products = true %}
+          {% break %}
+        {% endif %}
+      {% endfor %}
+
+      {% if has_collections and has_products %}
+        <div class="ai-holiday-popup-divider-{{ ai_gen_id }}"></div>
+      {% endif %}
+
+      {% if has_products %}
+        <h3 class="ai-holiday-popup-section-title-{{ ai_gen_id }}">{{ block.settings.products_heading }}</h3>
+        <div class="ai-holiday-popup-products-{{ ai_gen_id }}">
+          {% for i in (1..8) %}
+            {% assign product_key = 'product_' | append: i %}
+            {% assign product = block.settings[product_key] %}
+            
+            {% if product != blank %}
+              <a href="{{ product.url }}" class="ai-holiday-popup-product-{{ ai_gen_id }}">
+                <div class="ai-holiday-popup-product-image-{{ ai_gen_id }}">
+                  {% if product.featured_image %}
+                    <img
+                      src="{{ product.featured_image | image_url: width: 400 }}"
+                      alt="{{ product.featured_image.alt | escape }}"
+                      loading="lazy"
+                      width="400"
+                      height="400"
+                    >
+                  {% else %}
+                    <div class="ai-holiday-popup-product-placeholder-{{ ai_gen_id }}">
+                      {{ 'product-apparel-1' | placeholder_svg_tag }}
+                    </div>
+                  {% endif %}
+                </div>
+                <h4 class="ai-holiday-popup-product-title-{{ ai_gen_id }}">{{ product.title }}</h4>
+                <p class="ai-holiday-popup-product-price-{{ ai_gen_id }}">{{ product.price | money }}</p>
+              </a>
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% endif %}
+
+      {% unless has_collections or has_products %}
+        <div class="ai-holiday-popup-empty-{{ ai_gen_id }}">
+          Next, add collections or products to showcase your holiday offerings
+        </div>
+      {% endunless %}
+    </div>
+  </div>
+</holiday-popup-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class HolidayPopup{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+        this.popup = this.querySelector('.ai-holiday-popup-{{ ai_gen_id }}');
+        this.overlay = this.querySelector('.ai-holiday-popup-overlay-{{ ai_gen_id }}');
+        this.closeBtn = this.querySelector('.ai-holiday-popup-close-{{ ai_gen_id }}');
+        this.delay = {{ block.settings.popup_delay }} * 1000;
+        this.cookieName = 'holiday_popup_{{ ai_gen_id }}_closed';
+        this.cookieDays = {{ block.settings.cookie_days }};
+      }
+
+      connectedCallback() {
+        if (!this.hasSeenPopup()) {
+          setTimeout(() => {
+            this.showPopup();
+          }, this.delay);
+        }
+
+        this.closeBtn.addEventListener('click', () => this.closePopup());
+        this.overlay.addEventListener('click', () => this.closePopup());
+
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && this.popup.classList.contains('active')) {
+            this.closePopup();
+          }
+        });
+      }
+
+      hasSeenPopup() {
+        const cookies = document.cookie.split(';');
+        for (let cookie of cookies) {
+          const [name, value] = cookie.trim().split('=');
+          if (name === this.cookieName && value === 'true') {
+            return true;
+          }
+        }
+        return false;
+      }
+
+      setCookie() {
+        const date = new Date();
+        date.setTime(date.getTime() + (this.cookieDays * 24 * 60 * 60 * 1000));
+        const expires = 'expires=' + date.toUTCString();
+        document.cookie = this.cookieName + '=true;' + expires + ';path=/';
+      }
+
+      showPopup() {
+        this.overlay.classList.add('active');
+        this.popup.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+
+      closePopup() {
+        this.overlay.classList.remove('active');
+        this.popup.classList.remove('active');
+        document.body.style.overflow = '';
+        this.setCookie();
+      }
+    }
+
+    customElements.define('holiday-popup-{{ ai_gen_id }}', HolidayPopup{{ ai_gen_id }});
+  })();
+</script>
+
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{
+  "name": "Holiday popup banner",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Popup settings"
+    },
+    {
+      "type": "range",
+      "id": "popup_delay",
+      "min": 0,
+      "max": 10,
+      "step": 1,
+      "unit": "s",
+      "label": "Delay before showing",
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "cookie_days",
+      "min": 1,
+      "max": 30,
+      "step": 1,
+      "unit": "d",
+      "label": "Days before showing again",
+      "default": 7
+    },
+    {
+      "type": "range",
+      "id": "popup_max_width",
+      "min": 600,
+      "max": 1200,
+      "step": 50,
+      "unit": "px",
+      "label": "Maximum width",
+      "default": 900
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "label": "Border radius",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "item_border_radius",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "Item border radius",
+      "default": 8
+    },
+    {
+      "type": "header",
+      "content": "Header"
+    },
+    {
+      "type": "text",
+      "id": "popup_title",
+      "label": "Title",
+      "default": "🎄 Holiday Collection 🎁"
+    },
+    {
+      "type": "text",
+      "id": "popup_subtitle",
+      "label": "Subtitle",
+      "default": "Discover our festive favorites and special holiday offers"
+    },
+    {
+      "type": "range",
+      "id": "title_size",
+      "min": 20,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "label": "Title size",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "subtitle_size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Subtitle size",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "header_background",
+      "label": "Background",
+      "default": "#165B33"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "subtitle_color",
+      "label": "Subtitle color",
+      "default": "#F0F0F0"
+    },
+    {
+      "type": "color",
+      "id": "snowflake_color",
+      "label": "Snowflake color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "header",
+      "content": "Collections"
+    },
+    {
+      "type": "text",
+      "id": "collections_heading",
+      "label": "Collections heading",
+      "default": "Shop by Collection"
+    },
+    {
+      "type": "collection",
+      "id": "collection_1",
+      "label": "Collection 1"
+    },
+    {
+      "type": "collection",
+      "id": "collection_2",
+      "label": "Collection 2"
+    },
+    {
+      "type": "collection",
+      "id": "collection_3",
+      "label": "Collection 3"
+    },
+    {
+      "type": "collection",
+      "id": "collection_4",
+      "label": "Collection 4"
+    },
+    {
+      "type": "collection",
+      "id": "collection_5",
+      "label": "Collection 5"
+    },
+    {
+      "type": "collection",
+      "id": "collection_6",
+      "label": "Collection 6"
+    },
+    {
+      "type": "header",
+      "content": "Products"
+    },
+    {
+      "type": "text",
+      "id": "products_heading",
+      "label": "Products heading",
+      "default": "Featured Holiday Products"
+    },
+    {
+      "type": "product",
+      "id": "product_1",
+      "label": "Product 1"
+    },
+    {
+      "type": "product",
+      "id": "product_2",
+      "label": "Product 2"
+    },
+    {
+      "type": "product",
+      "id": "product_3",
+      "label": "Product 3"
+    },
+    {
+      "type": "product",
+      "id": "product_4",
+      "label": "Product 4"
+    },
+    {
+      "type": "product",
+      "id": "product_5",
+      "label": "Product 5"
+    },
+    {
+      "type": "product",
+      "id": "product_6",
+      "label": "Product 6"
+    },
+    {
+      "type": "product",
+      "id": "product_7",
+      "label": "Product 7"
+    },
+    {
+      "type": "product",
+      "id": "product_8",
+      "label": "Product 8"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "section_title_color",
+      "label": "Section title",
+      "default": "#165B33"
+    },
+    {
+      "type": "color",
+      "id": "item_title_color",
+      "label": "Item title",
+      "default": "#2E2A39"
+    },
+    {
+      "type": "color",
+      "id": "item_price_color",
+      "label": "Price",
+      "default": "#C41E3A"
+    },
+    {
+      "type": "color",
+      "id": "divider_color",
+      "label": "Divider",
+      "default": "#D4AF37"
+    },
+    {
+      "type": "color",
+      "id": "close_button_bg",
+      "label": "Close button background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "close_button_color",
+      "label": "Close button icon",
+      "default": "#165B33"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Holiday popup banner"
+    }
+  ]
+}
 {% endschema %}
