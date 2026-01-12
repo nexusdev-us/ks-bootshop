@@ -182,3 +182,8 @@ footer,
 .collection-products .product-list {
   justify-content: center;
 }
+
+/* Make blank/spacer sections transparent to show body gradient */
+[class*="ai-blank-section"] {
+  background-color: transparent !important;
+}
