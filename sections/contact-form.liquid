@@ -1,3 +1,6 @@
+<!-- Font Awesome for contact icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 <section
   id="contact-form-section-{{ section.id }}"
   class="
@@ -183,13 +186,50 @@
       padding: 0.875rem 2rem;
       font-weight: 600;
       border-radius: 10px;
-      transition: all 0.2s ease;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(124, 58, 237, 0.25);
+    }
+
+    .contact-form-box .btn-primary::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transition: left 0.5s ease;
     }
 
     .contact-form-box .btn-primary:hover {
       background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
-      transform: translateY(-2px);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(124, 58, 237, 0.4);
+    }
+
+    .contact-form-box .btn-primary:hover::before {
+      left: 100%;
+    }
+
+    .contact-form-box .btn-primary:active {
+      transform: translateY(-1px) scale(0.98);
       box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
+      background: linear-gradient(135deg, #6d28d9 0%, #5b21b6 100%);
+    }
+
+    .contact-form-box .btn-primary:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.4), 0 8px 25px rgba(124, 58, 237, 0.4);
+    }
+
+    .contact-form-box .btn-primary i {
+      transition: transform 0.3s ease;
+    }
+
+    .contact-form-box .btn-primary:hover i {
+      transform: translateX(4px);
     }
 
     .form-success {
