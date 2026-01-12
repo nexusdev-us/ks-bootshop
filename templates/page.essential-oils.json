@@ -59,7 +59,7 @@
             "collection": "lavender-hill-botanicals-essential-oils",
             "products_limit": 12,
             "show_vendor": true,
-            "show_rating": true,
+            "show_rating": false,
             "section_padding": 100,
             "card_width": 320,
             "card_gap": 20,
