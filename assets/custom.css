@@ -154,7 +154,11 @@ footer,
   background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%) !important;
   color: #ffffff !important;
   box-shadow: 0 6px 16px rgba(124, 58, 237, 0.4);
-  transform: translateY(-1px);
+}
+
+/* Keep the button vertically centered - don't override the positioning transform */
+.newsletter-form .form-floating button:hover {
+  transform: translateY(-50%);
 }
 
 .newsletter .btn svg,
