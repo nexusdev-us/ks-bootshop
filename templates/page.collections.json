@@ -456,7 +456,7 @@
         "description": "<p>Please contact us anytime from Monday to Friday</p>",
         "description_font_size": "",
         "btn_primary_text": "Contact us",
-        "btn_primary_url": "shopify://pages/contact-us",
+        "btn_primary_url": "https://lavenderhillbotanicals.com/#contact",
         "btn_primary_color": "btn-outline-primary",
         "btn_secondary_text": "",
         "btn_secondary_url": "",

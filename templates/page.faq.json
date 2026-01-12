@@ -67,7 +67,7 @@
         "open_first_item": true,
         "header_title": "FAQs",
         "header_title_font_size": "h1",
-        "header_description": "<p>Still need to reach us? Please <a href=\"\/pages\/contact-us\" title=\"Contact us\">contact us<\/a> anytime<\/p>",
+        "header_description": "<p>Still need to reach us? Please <a href=\"https:\/\/lavenderhillbotanicals.com\/#contact\" title=\"Contact us\">contact us<\/a> anytime<\/p>",
         "header_description_font_size": "fs-md",
         "pt": 11,
         "pb": 11
@@ -91,7 +91,7 @@
         "description": "<p>Please contact us anytime from Monday to Friday<\/p>",
         "description_font_size": "fs-md",
         "btn_primary_text": "Contact us",
-        "btn_primary_url": "shopify:\/\/pages\/contact",
+        "btn_primary_url": "https:\/\/lavenderhillbotanicals.com\/#contact",
         "btn_primary_color": "btn-primary",
         "btn_secondary_text": "",
         "btn_secondary_url": "",
