@@ -393,12 +393,36 @@
   height: 100%;
 }
 
-/* Responsive menu adjustments for smaller desktop screens */
-@media (min-width: 1200px) and (max-width: 1400px) {
+/* Responsive menu adjustments for smaller desktop screens (1080p range) */
+@media (min-width: 1200px) and (max-width: 1599px) {
+  .lavender-navbar .navbar-content,
+  .navbar-content {
+    gap: 1rem;
+  }
+
+  .lavender-navbar .main-menu,
+  .main-menu {
+    gap: 0.25rem;
+    flex-wrap: nowrap;
+  }
+
   .lavender-navbar .menu-link,
   .menu-link {
-    padding: 0.6rem 0.9rem;
-    font-size: 0.95rem;
+    padding: 0.5rem 0.7rem;
+    font-size: 0.875rem;
+  }
+
+  .navbar-icons {
+    gap: 0.5rem;
+  }
+
+  .navbar-icon {
+    padding: 0.4rem;
+  }
+
+  .navbar-icon svg {
+    width: 20px;
+    height: 20px;
   }
 }
 
