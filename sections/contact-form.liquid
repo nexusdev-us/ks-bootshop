@@ -1,58 +1,337 @@
 <section
-  id="contact-form-section-{{ section.id }}" 
+  id="contact-form-section-{{ section.id }}"
   class="
-    contact-form-section 
-    {{ section.settings.bg_color }} 
+    contact-form-section
+    {{ section.settings.bg_color }}
     {{ section.settings.bg_gradient }}
     {{ section.settings.text_color }}
     {{ section.settings.border_top_width | prepend: 'border-top-' }}
     {{ section.settings.border_bottom_width | prepend: 'border-bottom-' }}
-    {{ section.settings.border_color }} 
-    {{ section.settings.pt | prepend: 'pt-' }} 
+    {{ section.settings.border_color }}
+    {{ section.settings.pt | prepend: 'pt-' }}
     {{ section.settings.pb | prepend: 'pb-' }}
   "
   style="
     --bs-bg-opacity: {{ section.settings.bg_opacity | append: '%' }};
     --bs-border-opacity: {{ section.settings.border_opacity | append: '%' }};
   ">
-  <div 
-    class="container" 
+
+  <style>
+    /* Contact Page - Lavender Theme */
+    .contact-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    @media (max-width: 991px) {
+      .contact-wrapper {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+    }
+
+    .contact-info {
+      padding: 2rem;
+      background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);
+      border-radius: 16px;
+      border: 1px solid rgba(167, 139, 250, 0.2);
+    }
+
+    .contact-info .gradient-text {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: #6b21a8;
+      margin-bottom: 0.75rem;
+    }
+
+    .contact-intro {
+      color: #5b21b6;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.7);
+      border-radius: 12px;
+      border: 1px solid rgba(167, 139, 250, 0.15);
+      transition: all 0.2s ease;
+    }
+
+    .contact-card:hover {
+      background: rgba(255, 255, 255, 0.9);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(139, 92, 246, 0.1);
+    }
+
+    .card-icon {
+      width: 44px;
+      height: 44px;
+      min-width: 44px;
+      background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.1rem;
+    }
+
+    .contact-card-content h4 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #6b21a8;
+      margin: 0 0 0.25rem 0;
+    }
+
+    .contact-card-content a,
+    .contact-card-content p {
+      font-size: 0.875rem;
+      color: #7c3aed;
+      margin: 0;
+      text-decoration: none;
+    }
+
+    .contact-card-content a:hover {
+      text-decoration: underline;
+    }
+
+    .response-time {
+      display: block;
+      font-size: 0.75rem;
+      color: #a78bfa;
+      margin-top: 0.25rem;
+    }
+
+    .social-connect h4 {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #6b21a8;
+      margin-bottom: 0.75rem;
+    }
+
+    .social-icons-contact {
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .social-icon-link {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: rgba(139, 92, 246, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #7c3aed;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .social-icon-link:hover {
+      background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    /* Contact Form Styling */
+    .contact-form-box {
+      padding: 2rem;
+      background: white;
+      border-radius: 16px;
+      border: 1px solid rgba(167, 139, 250, 0.2);
+      box-shadow: 0 4px 20px rgba(139, 92, 246, 0.08);
+    }
+
+    .contact-form-box .form-floating {
+      margin-bottom: 1.25rem;
+    }
+
+    .contact-form-box .form-control {
+      border: 1px solid rgba(167, 139, 250, 0.3);
+      border-radius: 10px;
+      padding: 1rem;
+      font-size: 0.95rem;
+      transition: all 0.2s ease;
+    }
+
+    .contact-form-box .form-control:focus {
+      border-color: #8b5cf6;
+      box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.15);
+    }
+
+    .contact-form-box .form-floating label {
+      color: #6b21a8;
+    }
+
+    .contact-form-box .btn-primary {
+      background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+      border: none;
+      padding: 0.875rem 2rem;
+      font-weight: 600;
+      border-radius: 10px;
+      transition: all 0.2s ease;
+    }
+
+    .contact-form-box .btn-primary:hover {
+      background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
+    }
+
+    .form-success {
+      background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+      border: 1px solid #10b981;
+      color: #065f46;
+      border-radius: 10px;
+    }
+
+    /* Mobile adjustments */
+    @media (max-width: 767px) {
+      .contact-info,
+      .contact-form-box {
+        padding: 1.5rem;
+      }
+
+      .contact-info .gradient-text {
+        font-size: 1.5rem;
+      }
+
+      .card-icon {
+        width: 40px;
+        height: 40px;
+        min-width: 40px;
+        font-size: 1rem;
+      }
+    }
+  </style>
+
+  <div
+    class="container"
     style="max-width: {{ section.settings.container_max_width }}px">
-    <div class="row align-items-center">
-      {% if section.settings.img != nil %}
-        <div class="col-desktop-7 mb-6 mb-desktop-0">
-          {% render 'image-url', img: section.settings.img, size: 900, orientation: section.settings.img_orientation, class: section.settings.img_border %}
+
+    <div class="contact-wrapper">
+      <!-- Contact Info Side -->
+      <div class="contact-info">
+        <h2 class="gradient-text">{{ section.settings.header_title }}</h2>
+        {% if section.settings.header_description != blank %}
+          <p class="contact-intro">{{ section.settings.header_description | strip_html }}</p>
+        {% endif %}
+
+        <div class="contact-cards">
+          {% if section.settings.email != blank %}
+            <div class="contact-card">
+              <div class="card-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div class="contact-card-content">
+                <h4>Email Us</h4>
+                <a href="mailto:{{ section.settings.email }}">{{ section.settings.email }}</a>
+                <span class="response-time">{{ section.settings.email_note | default: "Response within 24 hours" }}</span>
+              </div>
+            </div>
+          {% endif %}
+
+          {% if section.settings.phone != blank %}
+            <div class="contact-card">
+              <div class="card-icon">
+                <i class="fas fa-phone"></i>
+              </div>
+              <div class="contact-card-content">
+                <h4>Call Us</h4>
+                <p>{{ section.settings.phone }}</p>
+                <span class="response-time">{{ section.settings.phone_note | default: "Mon-Fri, 9AM-5PM EST" }}</span>
+              </div>
+            </div>
+          {% endif %}
+
+          {% if section.settings.address != blank %}
+            <div class="contact-card">
+              <div class="card-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div class="contact-card-content">
+                <h4>Visit Us</h4>
+                <p>{{ section.settings.address | newline_to_br }}</p>
+                <span class="response-time">{{ section.settings.address_note | default: "By appointment" }}</span>
+              </div>
+            </div>
+          {% endif %}
         </div>
-      {% endif %}
-      <div class="{% if section.settings.img == nil %}col-desktop-18{% else %}col-desktop-11{% endif %}">
-        {% render 'section-header' %}
+
+        {% if settings.social_facebook != blank or settings.social_instagram != blank or settings.social_pinterest != blank or settings.social_twitter != blank %}
+          <div class="social-connect">
+            <h4>Follow Our Journey</h4>
+            <div class="social-icons-contact">
+              {% if settings.social_instagram != blank %}
+                <a href="{{ settings.social_instagram }}" class="social-icon-link" target="_blank" rel="noopener" aria-label="Instagram">
+                  <i class="fab fa-instagram"></i>
+                </a>
+              {% endif %}
+              {% if settings.social_facebook != blank %}
+                <a href="{{ settings.social_facebook }}" class="social-icon-link" target="_blank" rel="noopener" aria-label="Facebook">
+                  <i class="fab fa-facebook-f"></i>
+                </a>
+              {% endif %}
+              {% if settings.social_pinterest != blank %}
+                <a href="{{ settings.social_pinterest }}" class="social-icon-link" target="_blank" rel="noopener" aria-label="Pinterest">
+                  <i class="fab fa-pinterest-p"></i>
+                </a>
+              {% endif %}
+              {% if settings.social_twitter != blank %}
+                <a href="{{ settings.social_twitter }}" class="social-icon-link" target="_blank" rel="noopener" aria-label="Twitter">
+                  <i class="fab fa-twitter"></i>
+                </a>
+              {% endif %}
+            </div>
+          </div>
+        {% endif %}
+      </div>
+
+      <!-- Contact Form Side -->
+      <div class="contact-form-box">
         {% form 'contact' %}
           {% if form.posted_successfully? %}
-            <p class="form-success alert alert-success mb-5" role="alert">
+            <p class="form-success alert mb-5" role="alert">
               {{ 'general.contact_form.success' | t }}
             </p>
           {% endif %}
           {{ form.errors | default_errors }}
-          <div class="form-floating  mb-5">
-            <input 
+
+          <div class="form-floating mb-4">
+            <input
               id="contact-form-name"
-              class="form-control" 
-              type="text" 
+              class="form-control"
+              type="text"
               name="contact[name]"
-              value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"  
+              value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
               placeholder="{{ 'general.contact_form.name' | t }}"
               required>
             <label for="contact-form-name">
               {{ 'general.contact_form.name' | t }}
             </label>
           </div>
-          <div class="form-floating  mb-5">
-            <input 
+
+          <div class="form-floating mb-4">
+            <input
               id="contact-form-email"
-              class="form-control" 
-              type="email" 
+              class="form-control"
+              type="email"
               name="contact[email]"
-              value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"  
+              value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
               placeholder="{{ 'general.contact_form.email' | t }}"
               spellcheck="false"
               autocapitalize="off"
@@ -61,39 +340,40 @@
               {{ 'general.contact_form.email' | t }}
             </label>
           </div>
-          <div class="form-floating  mb-5">
-            <input 
-              id="contact-form-phone"
-              class="form-control" 
-              type="tel" 
-              name="contact[phone]"
-              value="{{ customer.phone }}"  
-              placeholder="{{ 'general.contact_form.phone' | t }}"
-              pattern="[0-9\-]*"
-              autocomplete="tel">
-            <label for="contact-form-phone">
-              {{ 'general.contact_form.phone' | t }}
-            </label>
+
+          <div class="form-floating mb-4">
+            <select
+              id="contact-form-topic"
+              class="form-control form-select"
+              name="contact[topic]">
+              <option value="">Select Topic</option>
+              <option value="Order Inquiry">Order Inquiry</option>
+              <option value="Product Question">Product Question</option>
+              <option value="Wholesale">Wholesale</option>
+              <option value="Farm Visit">Farm Visit</option>
+              <option value="Other">Other</option>
+            </select>
+            <label for="contact-form-topic">Topic</label>
           </div>
-          <div class="form-floating mb-5">
+
+          <div class="form-floating mb-4">
             <textarea
               id="contact-form-message"
               class="form-control"
               name="contact[message]"
-              value="{{ customer.phone }}"  
               placeholder="{{ 'general.contact_form.message' | t }}"
               required
-              style="height: 200px">
-              {{- form.body -}}
-            </textarea>
+              style="height: 150px">{{- form.body -}}</textarea>
             <label for="contact-form-message">
               {{ 'general.contact_form.message' | t }}
             </label>
           </div>
-          <button 
-              type="submit" 
-              class="btn btn-lg w-100 btn-primary">
-              {{ 'general.contact_form.send' | t }}
+
+          <button
+            type="submit"
+            class="btn btn-lg w-100 btn-primary">
+            <i class="fas fa-paper-plane me-2"></i>
+            {{ 'general.contact_form.send' | t }}
           </button>
         {% endform %}
       </div>
@@ -199,6 +479,7 @@
       "type": "text",
       "id": "container_max_width",
       "label": "Container max-width (px)",
+      "default": "1100",
       "info": "Leave empty to use the global container width"
     },
     {
@@ -209,76 +490,53 @@
       "type": "text",
       "id": "header_title",
       "label": "Title",
-      "default": "Contact form"
+      "default": "Let's Connect"
     },
     {
-      "type": "select",
-      "id": "header_title_font_size",
-      "label": "Title font-size",
-      "default": "h2",
-      "options": [
-        { "value": "h1", "label": "H1" },
-        { "value": "h2", "label": "H2" },
-        { "value": "h3", "label": "H3" },
-        { "value": "h4", "label": "H4" },
-        { "value": "h5", "label": "H5" },
-        { "value": "h6", "label": "H6" }
-      ]
-    },
-    {
-      "type": "richtext",
+      "type": "textarea",
       "id": "header_description",
-      "label": "Description (optional)",
-      "default": "<p>Add on optional description for this section</p>"
-    },
-    {
-      "type": "select",
-      "id": "header_description_font_size",
-      "label": "Description font-size",
-      "default": "fs-md",
-      "options": [
-        { "value": "fs-sm", "label": "sm" },
-        { "value": "fs-md", "label": "md" },
-        { "value": "fs-lg", "label": "lg" },
-        { "value": "fs-xl", "label": "xl" },
-        { "value": "fs-xxl", "label": "xxl" }
-      ]
+      "label": "Description",
+      "default": "Have questions? We're here to help you discover the perfect lavender products for your needs."
     },
     {
       "type": "header",
-      "content": "Image"
+      "content": "Contact Information"
     },
     {
-      "type": "image_picker",
-      "id": "img",
-      "label": "Image"
+      "type": "text",
+      "id": "email",
+      "label": "Email address",
+      "default": "support@lavenderhillbotanicals.com"
     },
     {
-      "type": "select",
-      "id": "img_orientation",
-      "label": "Image orientation",
-      "default": "adapt",
-      "options": [
-        { "group": "Adapt", "value": "adapt", "label": "Adapt" },
-        { "group": "Square", "value": "ratio-1x1", "label": "1x1" },
-        { "group": "Horizontal", "value": "ratio-4x3", "label": "4x3" },
-        { "group": "Horizontal", "value": "ratio-16x9", "label": "16x9" },
-        { "group": "Horizontal", "value": "ratio-21x9", "label": "21x9" },
-        { "group": "Vertical", "value": "ratio-3x4", "label": "3x4" },
-        { "group": "Vertical", "value": "ratio-9x16", "label": "9x16" },
-        { "group": "Vertical", "value": "ratio-9x21", "label": "9x21" }
-      ]
+      "type": "text",
+      "id": "email_note",
+      "label": "Email note",
+      "default": "Response within 24 hours"
     },
     {
-      "type": "select",
-      "id": "img_border",
-      "label": "Image border",
-      "default": "img-thumbnail",
-      "options": [
-        { "value": "", "label": "None" },
-        { "value": "rounded",  "label": "Rounded" },
-        { "value": "img-thumbnail", "label": "Thumbnail" }
-      ]
+      "type": "text",
+      "id": "phone",
+      "label": "Phone number",
+      "default": "(610) 944-2309"
+    },
+    {
+      "type": "text",
+      "id": "phone_note",
+      "label": "Phone note",
+      "default": "Mon-Fri, 9AM-5PM EST"
+    },
+    {
+      "type": "textarea",
+      "id": "address",
+      "label": "Address",
+      "default": "580 Swan Road\nAtglen, PA 19310"
+    },
+    {
+      "type": "text",
+      "id": "address_note",
+      "label": "Address note",
+      "default": "Thu & Sat, 10AM-3PM"
     },
     {
       "type": "header",
@@ -291,7 +549,7 @@
       "min": 0,
       "max": 20,
       "step": 1,
-      "default": 10
+      "default": 8
     },
     {
       "type": "range",
@@ -300,7 +558,7 @@
       "min": 0,
       "max": 20,
       "step": 1,
-      "default": 10
+      "default": 8
     }
   ],
   "disabled_on": {
