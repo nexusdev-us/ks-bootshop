@@ -180,52 +180,48 @@
       color: #6b21a8;
     }
 
-    .contact-form-box .btn-primary {
-      background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
-      border: none;
+    .contact-form-box .btn-primary,
+    .contact-form-box .btn-primary:link,
+    .contact-form-box .btn-primary:visited {
+      background: #7c3aed !important;
+      background-color: #7c3aed !important;
+      border: none !important;
       padding: 0.875rem 2rem;
       font-weight: 600;
       border-radius: 10px;
       transition: all 0.3s ease;
       position: relative;
       overflow: hidden;
-      box-shadow: 0 4px 15px rgba(124, 58, 237, 0.25);
-    }
-
-    .contact-form-box .btn-primary::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-      transition: left 0.5s ease;
+      box-shadow: 0 4px 15px rgba(124, 58, 237, 0.4);
+      color: #ffffff !important;
     }
 
     .contact-form-box .btn-primary:hover {
-      background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
+      background: #6d28d9 !important;
+      background-color: #6d28d9 !important;
       transform: translateY(-3px);
-      box-shadow: 0 8px 25px rgba(124, 58, 237, 0.4);
-    }
-
-    .contact-form-box .btn-primary:hover::before {
-      left: 100%;
+      box-shadow: 0 8px 25px rgba(124, 58, 237, 0.5);
+      color: #ffffff !important;
     }
 
     .contact-form-box .btn-primary:active {
       transform: translateY(-1px) scale(0.98);
       box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
-      background: linear-gradient(135deg, #6d28d9 0%, #5b21b6 100%);
+      background: #5b21b6 !important;
+      background-color: #5b21b6 !important;
+      color: #ffffff !important;
     }
 
     .contact-form-box .btn-primary:focus {
       outline: none;
-      box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.4), 0 8px 25px rgba(124, 58, 237, 0.4);
+      box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.5), 0 8px 25px rgba(124, 58, 237, 0.4);
+      background: #7c3aed !important;
+      color: #ffffff !important;
     }
 
     .contact-form-box .btn-primary i {
       transition: transform 0.3s ease;
+      color: #ffffff !important;
     }
 
     .contact-form-box .btn-primary:hover i {
