@@ -24,7 +24,7 @@
   }
 
   .es-banner-collapsed {
-    padding: 14px 20px;
+    padding: 8px 16px;
     text-align: center;
     cursor: pointer;
     position: relative;
@@ -34,10 +34,10 @@
   .es-banner-text {
     display: inline-block;
     color: #ffffff;
-    font-size: 15px;
+    font-size: 13px;
     font-weight: 600;
-    letter-spacing: 0.5px;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    letter-spacing: 0.3px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
   }
 
   .es-banner-highlight {
@@ -50,36 +50,38 @@
 
   .es-expand-btn {
     display: inline-block;
-    margin-left: 15px;
-    padding: 6px 16px;
-    background: rgba(255, 255, 255, 0.98);
-    border: 2px solid #ffffff;
-    border-radius: 25px;
+    margin-left: 12px;
+    padding: 4px 12px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid #ffffff;
+    border-radius: 20px;
     color: #7c3aed;
-    font-size: 13px;
-    font-weight: 700;
+    font-size: 11px;
+    font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
   }
 
   .es-expand-btn:hover {
     background: #ffffff;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   }
 
   .es-banner-expanded {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.5s ease;
+    opacity: 0;
+    transition: max-height 0.4s ease-out, opacity 0.3s ease-out, padding 0.3s ease-out;
     background: linear-gradient(135deg, #faf5ff 0%, #ffffff 100%);
     position: relative;
     z-index: 1;
+    padding: 0 20px;
   }
 
   .es-banner-expanded.show {
-    max-height: 2500px;
+    max-height: 1000px;
+    opacity: 1;
     padding: 40px 20px;
   }
 
@@ -194,13 +196,19 @@
   }
 
   @media (max-width: 768px) {
+    .es-banner-collapsed {
+      padding: 6px 12px;
+    }
+
     .es-banner-text {
-      font-size: 14px;
+      font-size: 11px;
     }
 
     .es-expand-btn {
       display: block;
-      margin: 12px auto 0;
+      margin: 8px auto 0;
+      padding: 3px 10px;
+      font-size: 10px;
       width: fit-content;
     }
 
@@ -311,8 +319,13 @@
     const expanded = document.getElementById('esBannerExpanded');
     const collapsed = document.getElementById('esBannerCollapsed');
 
-    expanded.classList.add('show');
-    collapsed.style.display = 'none';
+    collapsed.style.opacity = '0';
+    collapsed.style.transition = 'opacity 0.2s ease-out';
+
+    setTimeout(() => {
+      collapsed.style.display = 'none';
+      expanded.classList.add('show');
+    }, 200);
 
     localStorage.setItem('esbannerExpanded', 'true');
 
@@ -327,13 +340,25 @@
     const collapsed = document.getElementById('esBannerCollapsed');
 
     expanded.classList.remove('show');
-    collapsed.style.display = 'block';
+
+    // Wait for collapse animation to finish before showing collapsed bar
+    setTimeout(() => {
+      collapsed.style.display = 'block';
+      collapsed.style.opacity = '0';
+      // Trigger reflow for smooth fade-in
+      collapsed.offsetHeight;
+      collapsed.style.opacity = '1';
+    }, 400);
 
     localStorage.setItem('esbannerExpanded', 'false');
   }
 
   document.addEventListener('DOMContentLoaded', function() {
     const isExpanded = localStorage.getItem('esbannerExpanded') === 'true';
+    const collapsed = document.getElementById('esBannerCollapsed');
+
+    // Set up transition for collapsed bar
+    collapsed.style.transition = 'opacity 0.2s ease-out';
 
     if (isExpanded) {
       expandESBanner();
