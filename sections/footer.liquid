@@ -1,95 +1,232 @@
-<footer 
-  id="footer" 
-  class="
-    small 
-    {{ section.settings.bg_color }} 
-    {{ section.settings.bg_gradient }}
-    {{ section.settings.text_color }} 
-    {{ section.settings.border_top_width | prepend: 'border-top-' }}
-    {{ section.settings.border_bottom_width | prepend: 'border-bottom-' }}
-    {{ section.settings.border_color }} 
-    {{ section.settings.pt | prepend: 'pt-' }} 
-    {{ section.settings.pb | prepend: 'pb-' }}
-    "
-  style="
-    --bs-bg-opacity: {{ section.settings.bg_opacity | append: '%' }};
-    --bs-border-opacity: {{ section.settings.border_opacity | append: '%' }};
-  ">
-  <div class="container">
-    <div
-      id="footer-mobile" 
-      class="d-desktop-none">
-      <div class="mb-8" role="list">
+<style>
+  .lavender-footer {
+    background: linear-gradient(135deg, #6b21a8 0%, #7c3aed 50%, #8b5cf6 100%);
+    color: #ffffff;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .lavender-footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+
+  .footer-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .footer-top {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+    padding: 2.5rem 0 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  .footer-brand {
+    flex: 1;
+    min-width: 250px;
+    max-width: 350px;
+  }
+
+  .footer-brand-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: #ffffff;
+  }
+
+  .footer-brand-desc {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.85);
+    margin: 0;
+  }
+
+  .footer-links {
+    flex: 2;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 0.5rem 1.5rem;
+  }
+
+  .footer-link {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 0.4rem 0.75rem;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+  }
+
+  .footer-link:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-1px);
+  }
+
+  .footer-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem 0;
+  }
+
+  .footer-social {
+    display: flex;
+    gap: 0.75rem;
+  }
+
+  .footer-social a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    transition: all 0.2s ease;
+  }
+
+  .footer-social a:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px);
+  }
+
+  .footer-social a svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .footer-copyright {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.7);
+    text-align: center;
+    flex: 1;
+  }
+
+  .footer-copyright a {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .footer-copyright a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+  }
+
+  .footer-payment {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .footer-payment svg {
+    height: 24px;
+    width: auto;
+    opacity: 0.8;
+  }
+
+  /* Mobile adjustments */
+  @media (max-width: 768px) {
+    .footer-top {
+      flex-direction: column;
+      text-align: center;
+      gap: 1.5rem;
+    }
+
+    .footer-brand {
+      max-width: 100%;
+    }
+
+    .footer-links {
+      justify-content: center;
+    }
+
+    .footer-bottom {
+      flex-direction: column;
+      text-align: center;
+      gap: 1.25rem;
+    }
+
+    .footer-social {
+      justify-content: center;
+    }
+
+    .footer-payment {
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+  }
+</style>
+
+<footer id="footer" class="lavender-footer">
+  <div class="container footer-content">
+    <div class="footer-top">
+      <!-- Brand Section -->
+      <div class="footer-brand">
         {% for block in section.blocks %}
-          <div class="collapse-wrapper" role="listitem" {{ block.shopify_attributes }}>
-            <button
-              id="footer-mobile-collapse-btn-{{ forloop.index }}" 
-              class="heading {{ block.settings.title_font_size }}" 
-              type="button" 
-              data-bs-toggle="collapse" 
-              data-bs-target="#footer-mobile-collapse-{{ forloop.index }}" 
-              aria-expanded="false" 
-              aria-controls="footer-mobile-collapse-{{ forloop.index }}">
-              {{ block.settings.title }}
-              {% render 'svg-icons', icon: 'chevron-down', size: 18 %}
-            </button>
-            <div id="footer-mobile-collapse-{{ forloop.index }}" class="collapse">
-              <div class="collapse-inner">
-                {% render 'footer-block', block: block %}
-              </div>
-            </div>
-          </div>
+          {% if block.type == 'richtext' %}
+            <h3 class="footer-brand-name">{{ block.settings.title }}</h3>
+            {% unless block.settings.description == blank %}
+              <div class="footer-brand-desc">{{ block.settings.description | strip_html }}</div>
+            {% endunless %}
+            {% break %}
+          {% endif %}
         {% endfor %}
       </div>
-    </div>
-    <div 
-      id="footer-desktop" 
-      class="d-none d-desktop-block">
-      <div class="row" role="list">
+
+      <!-- Quick Links - Horizontal -->
+      <nav class="footer-links" aria-label="Footer navigation">
         {% for block in section.blocks %}
-          <div class="footer-block col" role="listitem" {{ block.shopify_attributes }}>
-            <h3 class="title {{ block.settings.title_font_size }}">
-              <span>
-                {{ block.settings.title }}
-              </span>
-            </h3>
-            {% render 'footer-block', block: block %}
-          </div>
+          {% if block.type == 'menu' %}
+            {% for link in linklists[block.settings.menu].links %}
+              <a href="{{ link.url }}" class="footer-link">{{ link.title }}</a>
+            {% endfor %}
+          {% endif %}
         {% endfor %}
-      </div>
-      <hr class="my-8">
+      </nav>
     </div>
 
-    <div 
-      id="footer-copyright" 
-      class="">
-      <div class="row align-items-center">
-        <div class="col-desktop-5">
-          {% if section.settings.social_icons %}
-            <div class="social-icons-wrapper text-center text-desktop-start mb-5 mb-desktop-0">
-              {% render 'social-icons', icon_size: 18, show_title: false %}
-            </div>
-          {% endif %}
+    <div class="footer-bottom">
+      <!-- Social Icons -->
+      {% if section.settings.social_icons %}
+        <div class="footer-social">
+          {% render 'social-icons', icon_size: 18, show_title: false %}
         </div>
-        <div class="col-desktop-8">
-          <div class="fs-sm text-center">
-            &copy; {{ 'now' | date: "%Y" }} {{ shop.name | replace: ' (', '<span hidden>' | replace: ')', '</span>' }}.
-            {% if section.settings.show_powered_by %}
-              Theme by <a href="https://www.kondasoft.com" target="_blank" rel="sponsored">KondaSoft</a>,
-              Powered by <a href="https://www.shopify.com" target="_blank" rel="sponsored">Shopify</a>
-            {% endif %}
-          </div>
-        </div>
-        <div class="col-desktop-5">
-          {% if section.settings.show_payment_icons %}
-            <div class="payment-icons-wrapper text-center text-desktop-end mt-5 mt-desktop-0">
-              {% render 'payment-icons' %}
-            </div>
-          {% endif %}
-        </div>
+      {% endif %}
+
+      <!-- Copyright -->
+      <div class="footer-copyright">
+        &copy; {{ 'now' | date: "%Y" }} {{ shop.name | replace: ' (', '<span hidden>' | replace: ')', '</span>' }}.
+        {% if section.settings.show_powered_by %}
+          Theme by <a href="https://NimbusMax.com/" target="_blank">NimbusMax</a>
+        {% endif %}
       </div>
+
+      <!-- Payment Icons -->
+      {% if section.settings.show_payment_icons %}
+        <div class="footer-payment">
+          {% render 'payment-icons' %}
+        </div>
+      {% endif %}
     </div>
-    
   </div>
 </footer>
 
@@ -98,96 +235,6 @@
   "name": "Footer",
   "limit": 1,
   "settings": [
-    {
-      "type": "header",
-      "content": "Styling"
-    },
-    {
-      "type": "select",
-      "id": "bg_color",
-      "label": "Background color",
-      "default": "bg-body",
-      "options": [
-        { "value": "bg-primary", "label": "Primary" },
-        { "value": "bg-secondary", "label": "Secondary" },
-        { "value": "bg-body", "label": "Body" },
-        { "value": "bg-white", "label": "White" }
-      ]
-    },
-    {
-      "type": "range",
-      "id": "bg_opacity",
-      "label": "Background opacity",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "default": 100,
-      "unit": "%"
-    },
-    {
-      "type": "select",
-      "id": "bg_gradient",
-      "label": "Background gradient",
-      "options": [
-        { "value": "bg-gradient", "label": "Yes" },
-        { "value": "", "label": "No" }
-      ],
-      "default": ""
-    },
-    {
-      "type": "select",
-      "id": "text_color",
-      "label": "Text color",
-      "default": "text-body",
-      "options": [
-        { "value": "text-primary", "label": "Primary" },
-        { "value": "text-secondary", "label": "Secondary" },
-        { "value": "text-body", "label": "Body" },
-        { "value": "text-white", "label": "White" }
-      ]
-    },
-    {
-      "type": "range",
-      "id": "border_top_width",
-      "label": "Border top width",
-      "default": 0,
-      "min": 0,
-      "max": 16,
-      "step": 1,
-      "unit": "px"
-    },
-    {
-      "type": "range",
-      "id": "border_bottom_width",
-      "label": "Border bottom width",
-      "default": 0,
-      "min": 0,
-      "max": 16,
-      "step": 1,
-      "unit": "px"
-    },
-    {
-      "type": "select",
-      "id": "border_color",
-      "label": "Border color",
-      "default": "border-body",
-      "options": [
-        { "value": "border-primary", "label": "Primary" },
-        { "value": "border-secondary", "label": "Secondary" },
-        { "value": "border-body", "label": "Body" },
-        { "value": "border-white", "label": "White" }
-      ]
-    },
-    {
-      "type": "range",
-      "id": "border_opacity",
-      "label": "Border opacity",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "default": 100,
-      "unit": "%"
-    },
     {
       "type": "header",
       "content": "General"
@@ -207,47 +254,26 @@
     {
       "type": "checkbox",
       "id": "show_powered_by",
-      "label": "Show powered by",
+      "label": "Show theme credit (NimbusMax)",
       "default": true
-    },
-    {
-      "type": "header",
-      "content": "Spacing"
-    },
-    {
-      "type": "range",
-      "id": "pt",
-      "label": "Top",
-      "min": 0,
-      "max": 20,
-      "step": 1,
-      "default": 10
-    },
-    {
-      "type": "range",
-      "id": "pb",
-      "label": "Bottom",
-      "min": 0,
-      "max": 20,
-      "step": 1,
-      "default": 10
     }
   ],
   "blocks": [
     {
       "type": "richtext",
-      "name": "Richtext",
+      "name": "Brand Info",
+      "limit": 1,
       "settings": [
         {
           "type": "text",
           "id": "title",
-          "label": "Title",
-          "default": "Block Title"
+          "label": "Brand Name",
+          "default": "Lavender Hill Botanicals"
         },
         {
           "type": "select",
           "id": "title_font_size",
-          "label": "Title",
+          "label": "Title size",
           "options": [
             { "value": "fs-sm", "label": "sm" },
             { "value": "fs-md", "label": "md" },
@@ -255,80 +281,20 @@
             { "value": "fs-xl", "label": "xl" },
             { "value": "fs-xxl", "label": "xxl" }
           ],
-          "default": "fs-lg",
-          "info": "Only on desktop"
+          "default": "fs-xl"
         },
         {
           "type": "richtext",
           "id": "description",
           "label": "Description",
-          "default": "<p>Some description for this block</p>"
-        },
-        {
-          "type": "header",
-          "content": "Buttons"
-        },
-        {
-          "type": "text",
-          "id": "btn_primary_text",
-          "label": "Primary button text",
-          "info": "Leave empty to disable"
-        },
-        {
-          "type": "url",
-          "id": "btn_primary_url",
-          "label": "Primary button URL"
-        },
-        {
-          "type": "select",
-          "id": "btn_primary_color",
-          "label": "Primary button color",
-          "default": "btn-primary",
-          "options": [
-            { "group": "Solid", "value": "btn-primary", "label": "Primary" },
-            { "group": "Solid", "value": "btn-secondary", "label": "Secondary" },
-            { "group": "Solid", "value": "btn-white", "label": "White" },
-            { "group": "Light", "value": "btn-light-primary", "label": "Primary" },
-            { "group": "Light", "value": "btn-light-secondary", "label": "Secondary" },
-            { "group": "Light", "value": "btn-light-white", "label": "White" },
-            { "group": "Outline", "value": "btn-outline-primary", "label": "Primary" },
-            { "group": "Outline", "value": "btn-outline-secondary", "label": "Secondary" },
-            { "group": "Outline", "value": "btn-outline-white", "label": "White" }
-          ]
-        },
-        {
-          "type": "text",
-          "id": "btn_secondary_text",
-          "label": "Secondary button text",
-          "info": "Leave empty to disable"
-        },
-        {
-          "type": "url",
-          "id": "btn_secondary_url",
-          "label": "Secondary button URL"
-        },
-        {
-          "type": "select",
-          "id": "btn_secondary_color",
-          "label": "Secondary button color",
-          "default": "btn-secondary",
-          "options": [
-            { "group": "Solid", "value": "btn-primary", "label": "Primary" },
-            { "group": "Solid", "value": "btn-secondary", "label": "Secondary" },
-            { "group": "Solid", "value": "btn-white", "label": "White" },
-            { "group": "Light", "value": "btn-light-primary", "label": "Primary" },
-            { "group": "Light", "value": "btn-light-secondary", "label": "Secondary" },
-            { "group": "Light", "value": "btn-light-white", "label": "White" },
-            { "group": "Outline", "value": "btn-outline-primary", "label": "Primary" },
-            { "group": "Outline", "value": "btn-outline-secondary", "label": "Secondary" },
-            { "group": "Outline", "value": "btn-outline-white", "label": "White" }
-          ]
+          "default": "<p>World's Finest Ingredients from boutique distillers.</p>"
         }
       ]
     },
     {
       "type": "menu",
-      "name": "Menu",
+      "name": "Quick Links",
+      "limit": 1,
       "settings": [
         {
           "type": "link_list",
@@ -338,7 +304,7 @@
         {
           "type": "select",
           "id": "title_font_size",
-          "label": "Title",
+          "label": "Title size",
           "options": [
             { "value": "fs-sm", "label": "sm" },
             { "value": "fs-md", "label": "md" },
@@ -346,14 +312,13 @@
             { "value": "fs-xl", "label": "xl" },
             { "value": "fs-xxl", "label": "xxl" }
           ],
-          "default": "fs-lg",
-          "info": "Only on desktop"
+          "default": "fs-lg"
         },
         {
           "type": "text",
           "id": "title",
           "label": "Title",
-          "default": "Block Title"
+          "default": "Quick Links"
         }
       ]
     }
