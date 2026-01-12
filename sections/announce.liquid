@@ -72,7 +72,7 @@
     max-height: 0;
     overflow: hidden;
     opacity: 0;
-    transition: max-height 0.4s ease-out, opacity 0.3s ease-out, padding 0.3s ease-out;
+    transition: max-height 0.5s ease-out, opacity 0.3s ease-out, padding 0.3s ease-out;
     background: linear-gradient(135deg, #faf5ff 0%, #ffffff 100%);
     position: relative;
     z-index: 1;
@@ -80,7 +80,7 @@
   }
 
   .es-banner-expanded.show {
-    max-height: 1000px;
+    max-height: 1600px;
     opacity: 1;
     padding: 40px 20px;
   }
@@ -348,7 +348,7 @@
       // Trigger reflow for smooth fade-in
       collapsed.offsetHeight;
       collapsed.style.opacity = '1';
-    }, 400);
+    }, 500);
 
     localStorage.setItem('esbannerExpanded', 'false');
   }
