@@ -8,7 +8,9 @@
       "Bash(theme deploy)",
       "Bash(shopify theme push:*)",
       "Bash(theme deploy:*)",
-      "Bash(git pull:*)"
+      "Bash(git pull:*)",
+      "Bash(find:*)",
+      "Bash(grep:*)"
     ],
     "deny": [],
     "ask": []

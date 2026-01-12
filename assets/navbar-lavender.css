@@ -90,7 +90,7 @@
 .lavender-navbar .main-menu,
 .main-menu {
   list-style: none;
-  margin: 0 auto;
+  margin: 0;
   padding: 0;
   display: flex !important;
   align-items: center;
@@ -406,8 +406,8 @@
 .lavender-navbar .container,
 .navbar-desktop .container {
   max-width: 100%;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
 @media (min-width: 1400px) {
