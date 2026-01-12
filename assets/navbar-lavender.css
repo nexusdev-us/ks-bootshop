@@ -96,6 +96,8 @@
   align-items: center;
   justify-content: center !important;
   gap: 0.5rem;
+  flex-wrap: wrap; /* Allow menu items to wrap on smaller screens */
+  max-width: 100%; /* Prevent overflow */
 }
 
 .menu-item {
@@ -228,7 +230,8 @@
 }
 
 /* Mobile Navbar Styling */
-@media (max-width: 991px) {
+/* Using 1199px to match Bootstrap custom breakpoint (desktop: 1200px) */
+@media (max-width: 1199px) {
   .navbar-mobile .nav-link-icon {
     color: #6b21a8;
     padding: 0.75rem;
@@ -388,4 +391,28 @@
   left: 100%;
   width: 0.25rem;
   height: 100%;
+}
+
+/* Responsive menu adjustments for smaller desktop screens */
+@media (min-width: 1200px) and (max-width: 1400px) {
+  .lavender-navbar .menu-link,
+  .menu-link {
+    padding: 0.6rem 0.9rem;
+    font-size: 0.95rem;
+  }
+}
+
+/* Ensure navbar container doesn't clip */
+.lavender-navbar .container,
+.navbar-desktop .container {
+  max-width: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 1400px) {
+  .lavender-navbar .container,
+  .navbar-desktop .container {
+    max-width: var(--bs-container-max-width, 1350px);
+  }
 }

@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-KS BootShop v5.0.0 is a free, production-ready Shopify theme built on Bootstrap 5. This instance (Strapify) is customized for Essential Starr's Apothecary. The theme implements Shopify 2.0 architecture with section groups, dynamic Theme Editor customization, and extensive Bootstrap customization.
+KS BootShop v5.0.0 is a free, production-ready Shopify theme built on Bootstrap 5. This instance (Strapify) is customized for Lavender Hill Botanicals. The theme implements Shopify 2.0 architecture with section groups, dynamic Theme Editor customization, and extensive Bootstrap customization.
 
 ## Development Commands
 
@@ -201,7 +201,7 @@ Product blocks (`snippets/product-block-*.liquid`) are modular components for pr
 **Settings Schema (`config/settings_schema.json` - 1,117 lines):**
 
 Key configuration groups:
-1. **Colors** - Primary (#d63384), Secondary (#6C757D), Body bg/color
+1. **Colors** - Primary (#004071), Secondary (#9b046f), Body bg (#f5f3ff)
 2. **General** - Container width (1400px), border radius, logo, favicon
 3. **Typography** - Body and heading fonts
 4. **Buttons** - Size, weight, padding, text transform

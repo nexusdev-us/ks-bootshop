@@ -7,7 +7,8 @@
       "Bash(git submodule:*)",
       "Bash(theme deploy)",
       "Bash(shopify theme push:*)",
-      "Bash(theme deploy:*)"
+      "Bash(theme deploy:*)",
+      "Bash(git pull:*)"
     ],
     "deny": [],
     "ask": []
