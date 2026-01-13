@@ -2,9 +2,10 @@
   Add here your own custom css styles
 */
 
-/* Prevent horizontal scroll without clipping sticky navbar */
+/* Prevent horizontal scroll without clipping fixed navbar */
 body {
   overflow-x: hidden;
+  padding-top: 70px; /* Account for fixed navbar height */
 }
 
 /* Ensure navbar can render fully */

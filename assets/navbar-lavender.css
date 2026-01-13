@@ -14,8 +14,9 @@
   border-top-width: 0 !important;
   border-top-style: none !important;
   border-bottom: 1px solid rgba(167, 139, 250, 0.2);
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
   z-index: 1000;
   width: 100%;
 }
