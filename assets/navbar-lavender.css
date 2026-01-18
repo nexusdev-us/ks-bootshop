@@ -401,6 +401,14 @@
   height: 100%;
 }
 
+/* Prevent navbar from wrapping on all desktop sizes */
+@media (min-width: 1200px) {
+  .lavender-navbar .main-menu,
+  .main-menu {
+    flex-wrap: nowrap;
+  }
+}
+
 /* Responsive menu adjustments for smaller desktop screens (1080p range) */
 @media (min-width: 1200px) and (max-width: 1599px) {
   .lavender-navbar .navbar-content,

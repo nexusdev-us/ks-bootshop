@@ -10,6 +10,15 @@
 /* Desktop navigation menu */
 .nav-desktop-menu {
   gap: 0.5rem;
+  flex-wrap: nowrap !important;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.nav-desktop-menu::-webkit-scrollbar {
+  display: none;
 }
 
 .nav-desktop-menu .nav-link {
@@ -161,4 +170,27 @@
 .dropdown-item:focus {
   outline: 2px solid #a78bfa;
   outline-offset: 2px;
+}
+
+/* High DPI / Large screen adjustments - prevent navbar from breaking */
+@media (min-width: 1200px) {
+  .nav-desktop-menu {
+    flex-wrap: nowrap !important;
+  }
+
+  .nav-desktop-menu .nav-link {
+    white-space: nowrap;
+  }
+}
+
+/* Scale down menu items on screens where they might overflow */
+@media (min-width: 1200px) and (max-width: 1400px) {
+  .nav-desktop-menu {
+    gap: 0.25rem;
+  }
+
+  .nav-desktop-menu .nav-link {
+    padding: 0.5rem 0.75rem !important;
+    font-size: 0.9rem;
+  }
 }
