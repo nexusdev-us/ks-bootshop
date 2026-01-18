@@ -188,3 +188,24 @@ footer,
 [class*="ai-blank-section"] {
   background-color: transparent !important;
 }
+
+/* Announcement bar button - improved hover state */
+.announcement-bar .btn,
+.announcement-bar a.btn {
+  background: white !important;
+  color: #6b21a8 !important;
+  border: 2px solid white !important;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.announcement-bar .btn:hover,
+.announcement-bar a.btn:hover,
+.announcement-bar .btn:focus,
+.announcement-bar a.btn:focus {
+  background: #6b21a8 !important;
+  color: white !important;
+  border-color: #6b21a8 !important;
+  box-shadow: 0 4px 12px rgba(107, 33, 168, 0.4);
+  transform: translateY(-2px);
+}

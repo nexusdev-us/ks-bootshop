@@ -59,13 +59,17 @@
     font-size: 11px;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.3s ease;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
   }
 
   .es-expand-btn:hover {
-    background: #ffffff;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    background: #6b21a8;
+    color: #ffffff;
+    border-color: #6b21a8;
+    box-shadow: 0 4px 12px rgba(107, 33, 168, 0.4);
+    transform: translateY(-2px);
   }
 
   .es-banner-expanded {
@@ -255,7 +259,7 @@
       ✨ {{ section.settings.collapsed_text }}
       <span class="es-banner-highlight">{{ section.settings.highlight_text }}</span> 🌿
     </span>
-    <button class="es-expand-btn" onclick="expandESBanner()">{{ section.settings.button_text }}</button>
+    <a href="{{ section.settings.button_url | default: 'https://lavenderhillbotanicals.com/' }}" class="es-expand-btn">{{ section.settings.button_text }}</a>
   </div>
 
   <div class="es-banner-expanded" id="esBannerExpanded">
@@ -387,6 +391,12 @@
       "id": "button_text",
       "label": "Button Text",
       "default": "Read the Full Story →"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Button URL",
+      "default": "https://lavenderhillbotanicals.com/"
     },
     {
       "type": "text",
