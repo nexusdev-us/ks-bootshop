@@ -92,7 +92,7 @@
   .ai-elegant-carousel__image-wrapper-{{ ai_gen_id }} {
     position: relative;
     width: 100%;
-    padding-bottom: 125%;
+    padding-bottom: {{ block.settings.image_aspect_ratio }}%;
     overflow: hidden;
     background: #f5f5f5;
   }
@@ -654,6 +654,17 @@
     {
       "type": "header",
       "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "image_aspect_ratio",
+      "min": 60,
+      "max": 150,
+      "step": 5,
+      "unit": "%",
+      "label": "Image height ratio",
+      "default": 100,
+      "info": "100% = square, higher = taller, lower = shorter"
     },
     {
       "type": "range",
