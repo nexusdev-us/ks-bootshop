@@ -114,7 +114,7 @@ footer,
 /* Logo header scrolls away naturally (not sticky) */
 #logo-header {
   position: relative;
-  z-index: 1010;
+  z-index: 1;
 }
 
 /* Fix quantity buttons vertical alignment */
